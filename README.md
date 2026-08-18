@@ -37,18 +37,6 @@ npx skills add https://github.com/dlazyai/ecommerce-skills --list
 
 默认装到当前项目（`.claude/skills/<name>/`），加 `-g` 装到用户级、所有项目共用。后续 `npx skills update` 更新、`npx skills remove` 卸载。
 
-懒得记命令：仓库根目录的 [`install.sh`](install.sh)（macOS / Linux）和 [`install.ps1`](install.ps1)（Windows）就是上面这条一键安装的封装。
-
-```bash
-./install.sh                 # 当前项目
-./install.sh -g              # 用户级，所有项目共用
-./install.sh claude-code     # 只装给指定 agent
-```
-
-```powershell
-.\install.ps1 -Global
-```
-
 不想装也行：任何一份 `skill.md` 的内容直接贴进对话，Agent 照着执行即可。
 
 ---
@@ -183,6 +171,42 @@ batch-image          清单驱动，整批统一视觉
 - **生成结果需要人工鉴别**。所有技能的输出都是模型推断，被遮挡区域、重建区域的内容不保证与实物一致；关键部位（图案位置、五金细节、尺码信息）上架前必须人工核对。
 - **不做的事**写在每个技能的「能力边界」里，包括：不编造商品不具备的功能、不生成虚假促销、不伪造他人肖像代言、不抹除商品缺陷。
 - **合规**：带文案的技能（[item-detail](skills/item-detail/skill.md)、[item-selling-point](skills/item-selling-point/skill.md)）注意绝对化用语与虚假促销；上架前建议过一遍 [detect-task](skills/detect-task/skill.md)。
+
+---
+
+## 发布到 ClawHub（维护者）
+
+发布脚本是 `scripts/publish-skills.mjs`，它会把 `skills/<name>/skill.md` 改写成 ClawHub 要的 `SKILL.md`（重命名、把 `../../docs/…` 素材引用换成 GitHub 绝对地址、补版本号），在 `.publish-tmp/` 里暂存后逐个发布，源文件不动。
+
+```bash
+npm install                # 装 clawhub CLI（devDependency）
+npm run clawhub:login      # 首次发布前登录，token 存在本机
+npm run publish:dry        # 只打印 slug / 版本 / 显示名，不发布
+npm run publish:skills     # 正式发布（跳过 .publish-skills.done 里已发成功的）
+```
+
+| 命令 | 作用 |
+| --- | --- |
+| `npm run publish:dry` | `--dry-run`，预览将要发布的技能与版本 |
+| `npm run publish:skills` | 发布，断点续传：已成功的技能记在 `scripts/.publish-skills.done` |
+| `npm run publish:force` | `--force`，忽略断点记录，全部重发 |
+| `npm run publish:reset` | 清掉断点记录与 `.publish-tmp/` 暂存目录 |
+| `npm run clawhub:whoami` | 校验登录状态 |
+
+追加参数用 `--` 透传给脚本：
+
+```bash
+npm run publish:skills -- --only flat-lay,one-shot     # 只发指定技能
+npm run publish:skills -- --ref main --keep-staging    # 指定素材 ref，保留暂存目录便于排查
+npm run publish:skills -- --changelog "修正尺寸参数"    # 自定义 changelog
+```
+
+其它参数见脚本头部注释：`--owner`、`--repo`、`--tags`。
+
+两个前置条件：
+
+- **新增技能必须先在 `scripts/skill-display-names.json` 里补中文显示名**，否则脚本直接报错退出；
+- **`docs/` 和 `skills/` 的改动要先 push**——线上素材地址指向 `<owner>/<repo>@<ref>`，没推上去线上就是碎图；有未提交改动时脚本会 WARN。
 
 ---
 

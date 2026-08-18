@@ -25,6 +25,7 @@
  *     --owner <handle>       以某个 publisher 身份发布（默认取 git remote 的 owner）
  *     --ref <git-ref>        素材绝对地址用哪个 ref（默认 main）
  *     --repo <owner/repo>    覆盖自动探测的 GitHub 仓库
+ *     --commit <sha>         覆盖自动探测的 source commit（clawhub 要求与 --source-repo 同时给）
  *     --tags <a,b>           传给 clawhub 的 tags（默认 latest）
  *     --changelog <text>     changelog 文案
  *     --keep-staging         保留 .publish-tmp/ 便于排查改写结果
@@ -93,6 +94,21 @@ if (!repo) {
 	process.exit(1);
 }
 const owner = opt("--owner", repo.split("/")[0]);
+
+// clawhub publish 的 --source-repo 必须和 --source-commit 一起给，
+// 只给 ref 会被 CLI 直接拒掉。素材地址走的是 <ref> 在 GitHub 上的状态，
+// 所以优先取 origin/<ref>，取不到再退回本地 <ref> / HEAD。
+const commit =
+	opt("--commit", "") ||
+	gitOut(`git rev-parse origin/${ref}`) ||
+	gitOut(`git rev-parse ${ref}`) ||
+	gitOut("git rev-parse HEAD");
+if (!commit) {
+	console.error(
+		`探测不到 ${ref} 对应的 commit，请用 --commit <sha> 指定`,
+	);
+	process.exit(1);
+}
 
 const RAW = `https://raw.githubusercontent.com/${repo}/${ref}`;
 const BLOB = `https://github.com/${repo}/blob/${ref}`;
@@ -171,6 +187,7 @@ const publish = async (dir, version, displayName, slug) => {
 		`--changelog ${q(changelog)}`,
 		`--source-repo ${q(repo)}`,
 		`--source-ref ${q(ref)}`,
+		`--source-commit ${q(commit)}`,
 		`--source-path ${q(`skills/${slug}`)}`,
 	].join(" ");
 	const { stdout, stderr } = await execAsync(cmd, {
@@ -283,7 +300,9 @@ for (const slug of dirs) {
 		);
 		try {
 			const out = await publish(stageDir, version, displayName, slug);
-			if (/OK\. Published/.test(out)) {
+			// clawhub 有三种成功文案：直接 published，或进安全扫描队列
+			// （pending / 状态未上报），后两种都是 spinner.succeed，不能当失败。
+			if (/OK\. Published|Update submitted for/.test(out)) {
 				console.log(`OK    ${slug}@${version}  「${displayName}」`);
 				fs.appendFileSync(STATE_FILE, `${slug}\n`);
 				published = true;
@@ -297,7 +316,9 @@ for (const slug of dirs) {
 			const msg = String(e.message || e);
 			if (/already exists/i.test(msg)) {
 				version = bumpPatch(version);
-			} else if (/rate limit|reset in|429/i.test(msg)) {
+			} else if (/rate limit|too many requests|429/i.test(msg)) {
+				// 注意：不能拿 "reset in" 判限流——clawhub 每条报错末尾都带
+				// "(reset in Ns)"，权限不足之类的硬错误会被误当成限流反复重试。
 				console.log(`WAIT  ${slug}  限流，等 60s`);
 				await sleep(60_000);
 			} else {

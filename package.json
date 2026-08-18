@@ -1,0 +1,26 @@
+{
+  "name": "ecommerce-skills",
+  "version": "1.0.0",
+  "private": true,
+  "description": "面向电商视觉生产的 Agent 技能库",
+  "type": "module",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dlazyai/ecommerce-skills.git"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "publish:skills": "node scripts/publish-skills.mjs",
+    "publish:dry": "node scripts/publish-skills.mjs --dry-run",
+    "publish:force": "node scripts/publish-skills.mjs --force",
+    "publish:reset": "rm -f scripts/.publish-skills.done && rm -rf .publish-tmp",
+    "clawhub:login": "clawhub login",
+    "clawhub:whoami": "clawhub whoami"
+  },
+  "devDependencies": {
+    "clawhub": "^0.23.3"
+  }
+}
