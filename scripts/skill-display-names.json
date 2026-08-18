@@ -1,0 +1,24 @@
+{
+	"_comment": "ClawHub 技能的中文 displayName 映射（slug -> \"<中文> <English>\"）。发布必须走 `clawhub publish --name`：`clawhub sync` 没有 --name 参数，用它批量发会把 displayName 重算成 slug 的 Title Case，中文名全丢。新增技能后必须在这里补一条，否则 publish-skills.mjs 直接退出。",
+	"names": {
+		"flat-lay": "服装图一键上身 Flat Lay",
+		"wear-everything": "鞋包配饰真人穿戴 Wear Everything",
+		"image-fusion": "多单品搭配融图 Image Fusion",
+		"one-shot": "换模特换背景 One Shot",
+		"fission-pattern": "一图裂变套图 Fission Pattern",
+		"item-detail": "商品详情图生成 Item Detail",
+		"creative-scene": "创意生图 Creative Scene",
+		"batch-image": "多商品批量生图 Batch Image",
+		"detect-task": "投前 AI 图检测 Detect Task",
+		"to-3d": "平铺图转 3D 立体图 To 3D",
+		"clothing-extraction": "商品平铺图提取 Clothing Extraction",
+		"fabric-on-body": "一键替换服装面料 Fabric on Body",
+		"clothing-detail": "服装细节放大图 Clothing Detail",
+		"clothing-grass-planting": "穿搭种草图 Clothing Grass Planting",
+		"item-selling-point": "卖点主图生成 Item Selling Point",
+		"item-change-background": "商品换背景 Item Change Background",
+		"remove-watermark": "一键去水印去文字 Remove Watermark",
+		"material-enhancement": "材质质感增强 Material Enhancement",
+		"item-repair": "商品图精修 Item Repair"
+	}
+}

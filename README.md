@@ -1,58 +1,55 @@
 # ecommerce-skills
 
-一套面向**电商视觉生产**的 Agent 技能库：把「拍商品图」这件事拆成 19 个可组合的技能，每个技能是一份可直接执行的 `skill.md`，底层统一通过 [dLazy CLI](https://dlazy.com) 调用图像 / 文本模型。
+一套面向**电商视觉生产**的 Agent 技能库：把「拍商品图」这件事拆成 19 个可组合的技能，每个技能是一份可直接执行的 `skill.md`，底层统一走命令行调用图像 / 文本模型。
 
 平铺图 → 模特上身图 → 换模特换背景 → 裂变套图 → 详情页 → 投前检测，整条链路不用摄影棚、不约模特。
 
 ---
 
-## 目录结构
+## 安装
 
-```
-ecommerce-skills/
-├── skills/                     # 19 个技能，每个一个目录
-│   └── <skill-name>/
-│       └── skill.md            # 技能定义（frontmatter + 完整执行文档）
-├── docs/                       # 每个技能的示例素材与实跑输出
-│   └── <skill-name>/
-│       ├── <输入素材>.jpg
-│       └── example-output.jpg  # 由 dlazy 实际生成
-└── README.md
-```
+技能用 [`npx skills`](https://github.com/vercel-labs/skills) 安装，它会扫描本仓库的 `skills/` 目录，把技能装进 Claude Code / Codex / Cursor 等 agent 的技能目录。
 
-`skills/<name>/skill.md` 里的素材引用是相对路径 `../../docs/<name>/…`，可直接在 GitHub 上渲染。
-
----
-
-## 开始之前
-
-### 1. 安装 dLazy CLI
+一次装全部 19 个：
 
 ```bash
-npm install -g @dlazy/cli@1.2.3
-# 或免安装
-npx @dlazy/cli@1.2.3 <command>
+npx skills add https://github.com/dlazyai/ecommerce-skills --all
 ```
 
-### 2. 认证
+`--all` 等价于 `--skill '*' --agent '*' -y`：装全部技能、装到所有检测到的 agent、跳过确认。只想装给某一个 agent：
 
 ```bash
-dlazy login              # 设备码流程，自动写入 ~/.dlazy/config.json
-# 或
-dlazy auth set YOUR_API_KEY
+npx skills add https://github.com/dlazyai/ecommerce-skills --skill '*' --agent claude-code
 ```
 
-API Key 在 [dlazy.com/dashboard/organization/api-key](https://dlazy.com/dashboard/organization/api-key) 获取，可随时轮换或吊销。也可以用环境变量 `DLAZY_API_KEY` 逐次传入。
-
-### 3. 验证
+只装用得上的几个（技能名就是下面索引表第一列，一个技能一个 `--skill`）：
 
 ```bash
-dlazy tools                                   # 列出可用模型
-dlazy gpt-image-2 --dry-run --prompt test \
-  --images docs/flat-lay/garment-flatlay.jpg --size 1024x1536
+npx skills add https://github.com/dlazyai/ecommerce-skills \
+  --skill flat-lay --skill fission-pattern --skill detect-task
 ```
 
-`--dry-run` 只打印参数与算力估价，不真正生成——**每个技能都建议先 dry-run 估价再跑**。
+先看看有哪些：
+
+```bash
+npx skills add https://github.com/dlazyai/ecommerce-skills --list
+```
+
+默认装到当前项目（`.claude/skills/<name>/`），加 `-g` 装到用户级、所有项目共用。后续 `npx skills update` 更新、`npx skills remove` 卸载。
+
+懒得记命令：仓库根目录的 [`install.sh`](install.sh)（macOS / Linux）和 [`install.ps1`](install.ps1)（Windows）就是上面这条一键安装的封装。
+
+```bash
+./install.sh                 # 当前项目
+./install.sh -g              # 用户级，所有项目共用
+./install.sh claude-code     # 只装给指定 agent
+```
+
+```powershell
+.\install.ps1 -Global
+```
+
+不想装也行：任何一份 `skill.md` 的内容直接贴进对话，Agent 照着执行即可。
 
 ---
 
@@ -154,7 +151,7 @@ batch-image          清单驱动，整批统一视觉
 
 ## 算力成本参考
 
-`--dry-run` 的实测估价（credits / 张）：
+每个技能都支持 `--dry-run`：只打印参数与算力估价、不真正生成。下表是各模型的实测估价（credits / 张）：
 
 | 模型 | 单价 | 用在哪 |
 | --- | --- | --- |
@@ -171,54 +168,13 @@ batch-image          清单驱动，整批统一视觉
 2. **探索期用低档**：`banana-pro --imageSize 1K --batch 4` 看方向，定稿再出 2K。
 3. **批量场景 `--batch 1`**：`--batch N` 会让成本乘 N；批量靠 SKU 数量，不靠 batch。
 
-> 余额不足会返回 `code: "insufficient_balance"`，充值入口：[dlazy.com/dashboard/organization/settings?tab=credits](https://dlazy.com/dashboard/organization/settings?tab=credits)
-
----
-
-## skill.md 的统一结构
-
-19 个技能的 `skill.md` 结构完全一致，方便交叉阅读与批量维护：
-
-| 章节 | 内容 |
-| --- | --- |
-| frontmatter | `name` + `description`（description 写全能力、参数枚举与触发词，供 Agent 检索） |
-| 能力边界 | 能做什么 / **不做**什么 |
-| 输入素材规则 | 尺寸、分辨率、格式，以及推荐（✅）与拉低效果（❌）的输入类型 |
-| 技能专属章节 | 该技能特有的参数维度、模板、映射表 |
-| dLazy 工具调用 | **所有技能逐字一致**：Authentication / About & Provenance / How It Works / Usage（含真实 `-h` 输出）/ 参数约定 / Output Format / Command Examples / Error Handling |
-| Prompt 模板 | 可填空的模板 + 按问题追加的修正句表 |
-| 执行流程 | 编号步骤，从校验输入到质检 |
-| 生成效果示例 | 输入素材 + 实际命令 + **dlazy 实跑输出** |
-| 常见问题 | 现象 / 原因 / 处理 三列表 |
-
-**dLazy 调用章节在所有技能中统一**，每个技能只替换自己的模型名与 `-h` 选项块。
+> 余额不足会返回 `code: "insufficient_balance"`，按技能文档「错误处理」一节的提示充值后重跑即可。
 
 ---
 
 ## 示例素材说明
 
-`docs/<skill-name>/` 下的**输入素材**用于演示，**输出图全部由 `dlazy` 实际执行生成**——不是效果图，命令原样写在各技能的「生成效果示例」一节里，可复现。
-
-图片已做 JPEG 重压缩（像素尺寸不变），整个 `docs/` 约 10MB。
-
----
-
-## 新增一个技能
-
-1. 在 `skills/<new-name>/` 建 `skill.md`，照抄任一现有技能的章节结构。
-2. `dlazy -h` 挑一个合适的模型，把它的 `-h` 输出贴进「Usage」，dLazy 章节其余部分逐字复用。
-3. 在 `docs/<new-name>/` 放输入素材，跑一次真实生成得到 `example-output.jpg`。
-4. 把命令、参数、输出说明写进「生成效果示例」。
-5. 更新本文件的技能索引表。
-
-自检：
-
-```bash
-# 引用的素材是否都存在
-grep -oh 'src="[^"]*"' skills/*/skill.md | sed 's/src="//;s/"//' | sort -u
-# 跨技能链接是否有效
-grep -oh '](\.\./[a-z0-9-]*/skill\.md)' skills/*/skill.md | sort -u
-```
+`docs/<skill-name>/` 下的**输入素材**用于演示，**输出图全部为实际执行生成**——不是效果图，命令原样写在各技能的「生成效果示例」一节里，可复现。
 
 ---
 

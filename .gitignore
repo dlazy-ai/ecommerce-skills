@@ -142,3 +142,7 @@ vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 .vite/
 samples/
+
+# publish-skills.mjs 的中转目录与断点记录
+.publish-tmp/
+scripts/.publish-skills.done
