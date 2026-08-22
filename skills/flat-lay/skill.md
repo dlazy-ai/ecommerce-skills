@@ -11,6 +11,33 @@ description: 服装平铺图一键上身试穿。输入一张服装平铺图或�
 
 ---
 
+## 生成效果示例
+
+| 输入：服装平铺图 | 输入：参考图 |
+| --- | --- |
+| <img src="../../docs/flat-lay/garment-flatlay.jpg" width="300"> | <img src="../../docs/flat-lay/pose-reference.jpg" width="300"> |
+| `garment-flatlay.jpg` — 军绿色麻花针织圆领毛衣，800×800 | `pose-reference.jpg` — 男青年正面站姿、浅灰墙棚拍，768×1024 |
+
+实际执行的命令：
+
+```bash
+dlazy gpt-image-2 \
+  --prompt 'E-commerce on-model product photography. Image 1 is the garment flat-lay: an olive-green cable-knit crewneck sweater. Image 2 is the pose/scene reference. Dress the model from image 2 in the garment from image 1, replacing the grey T-shirt. Keep the garment 100% faithful: identical olive-green color, cable-knit and diamond texture, oversized drop-shoulder fit, ribbed collar and cuffs, and the small woven label on the right cuff. Reproduce the reference exactly for pose, camera angle, crop, body proportions, lighting and the plain light-grey studio wall background. Photorealistic full-frame catalog shot, sharp fabric detail, natural soft light, no text or watermark.' \
+  --images docs/flat-lay/garment-flatlay.jpg docs/flat-lay/pose-reference.jpg \
+  --size 1024x1536 --quality high --imageFormat jpeg \
+  --save docs/flat-lay/example-output.jpg
+```
+
+**输出**
+
+<img src="../../docs/flat-lay/example-output.jpg" width="320">
+
+`example-output.jpg` — 1024×1536，60 credits，约 60s。
+
+麻花织法、菱形提花、落肩版型、袖口罗纹与右袖织标均被保留；姿势、景别、光线与浅灰背景照抄参考图。
+
+---
+
 ## 一、能力边界
 
 | 能力 | 说明 |
@@ -279,34 +306,7 @@ Photorealistic full-frame catalog shot, sharp fabric detail, natural soft light,
 
 ---
 
-## 七、生成效果示例
-
-| 输入：服装平铺图 | 输入：参考图 |
-| --- | --- |
-| <img src="../../docs/flat-lay/garment-flatlay.jpg" width="300"> | <img src="../../docs/flat-lay/pose-reference.jpg" width="300"> |
-| `garment-flatlay.jpg` — 军绿色麻花针织圆领毛衣，800×800 | `pose-reference.jpg` — 男青年正面站姿、浅灰墙棚拍，768×1024 |
-
-实际执行的命令：
-
-```bash
-dlazy gpt-image-2 \
-  --prompt 'E-commerce on-model product photography. Image 1 is the garment flat-lay: an olive-green cable-knit crewneck sweater. Image 2 is the pose/scene reference. Dress the model from image 2 in the garment from image 1, replacing the grey T-shirt. Keep the garment 100% faithful: identical olive-green color, cable-knit and diamond texture, oversized drop-shoulder fit, ribbed collar and cuffs, and the small woven label on the right cuff. Reproduce the reference exactly for pose, camera angle, crop, body proportions, lighting and the plain light-grey studio wall background. Photorealistic full-frame catalog shot, sharp fabric detail, natural soft light, no text or watermark.' \
-  --images docs/flat-lay/garment-flatlay.jpg docs/flat-lay/pose-reference.jpg \
-  --size 1024x1536 --quality high --imageFormat jpeg \
-  --save docs/flat-lay/example-output.jpg
-```
-
-**输出**
-
-<img src="../../docs/flat-lay/example-output.jpg" width="320">
-
-`example-output.jpg` — 1024×1536，60 credits，约 60s。
-
-麻花织法、菱形提花、落肩版型、袖口罗纹与右袖织标均被保留；姿势、景别、光线与浅灰背景照抄参考图。
-
----
-
-## 八、常见问题
+## 七、常见问题
 
 | 现象 | 原因 | 处理 |
 | --- | --- | --- |

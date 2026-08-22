@@ -11,6 +11,31 @@ description: 相同穿搭改模特场景姿势（种草图）。上传一张已�
 
 ---
 
+## 生成效果示例
+
+| 输入：原穿搭图 | 输入：场景/模特参考图 |
+| --- | --- |
+| <img src="../../docs/clothing-grass-planting/source-outfit.jpg" width="240"> | <img src="../../docs/clothing-grass-planting/scene-reference.jpg" width="240"> |
+| `source-outfit.jpg` — 浅灰针织连衣裙 + 珍珠项链 + 托特包 + 银色高跟鞋，喷泉庭院 | `scene-reference.jpg` — 咖啡馆门口街拍，手抚头发，树影暖光 |
+
+实际执行的命令：
+
+```bash
+dlazy gpt-image-2 \
+  --prompt 'Lifestyle social-commerce photo. Image 1 shows the outfit to keep: a light-grey textured sleeveless knit mini dress with a mock neckline, a pearl choker, a cream-and-tan tote bag and silver pointed heels. Image 2 is the model, pose, scene and lighting reference: a young woman on a sunlit tree-lined street outside a coffee shop, hand in her hair, warm dappled daylight, shallow depth of field. Put the complete outfit from image 1 onto the model from image 2. Keep every garment detail faithful: same grey knit texture, same neckline and hem length, same pearl choker, same tote bag colour blocking. Reproduce image 2 for the model identity, pose, camera angle, crop, street background and colour grading. Photorealistic influencer-style photo, no text, no watermark.' \
+  --images docs/clothing-grass-planting/source-outfit.jpg docs/clothing-grass-planting/scene-reference.jpg \
+  --size 1024x1536 --quality medium --imageFormat jpeg \
+  --save docs/clothing-grass-planting/example-output.jpg
+```
+
+**输出**
+
+<img src="../../docs/clothing-grass-planting/example-output.jpg" width="320">
+
+`example-output.jpg` — 1024×1536。连衣裙的浅灰针织纹理、立领、腰线与裙长，珍珠项链的珠径，托特包的米白/棕拼色全部保留；模特、抚发姿势、咖啡馆街景、树影暖光与浅景深照抄参考图。
+
+---
+
 ## 1、能力边界
 
 | 保持不变 | 会改变 |
@@ -283,32 +308,7 @@ slight film grain, natural colour grading, no text, no watermark.
 
 ---
 
-## 7、生成效果示例
-
-| 输入：原穿搭图 | 输入：场景/模特参考图 |
-| --- | --- |
-| <img src="../../docs/clothing-grass-planting/source-outfit.jpg" width="240"> | <img src="../../docs/clothing-grass-planting/scene-reference.jpg" width="240"> |
-| `source-outfit.jpg` — 浅灰针织连衣裙 + 珍珠项链 + 托特包 + 银色高跟鞋，喷泉庭院 | `scene-reference.jpg` — 咖啡馆门口街拍，手抚头发，树影暖光 |
-
-实际执行的命令：
-
-```bash
-dlazy gpt-image-2 \
-  --prompt 'Lifestyle social-commerce photo. Image 1 shows the outfit to keep: a light-grey textured sleeveless knit mini dress with a mock neckline, a pearl choker, a cream-and-tan tote bag and silver pointed heels. Image 2 is the model, pose, scene and lighting reference: a young woman on a sunlit tree-lined street outside a coffee shop, hand in her hair, warm dappled daylight, shallow depth of field. Put the complete outfit from image 1 onto the model from image 2. Keep every garment detail faithful: same grey knit texture, same neckline and hem length, same pearl choker, same tote bag colour blocking. Reproduce image 2 for the model identity, pose, camera angle, crop, street background and colour grading. Photorealistic influencer-style photo, no text, no watermark.' \
-  --images docs/clothing-grass-planting/source-outfit.jpg docs/clothing-grass-planting/scene-reference.jpg \
-  --size 1024x1536 --quality medium --imageFormat jpeg \
-  --save docs/clothing-grass-planting/example-output.jpg
-```
-
-**输出**
-
-<img src="../../docs/clothing-grass-planting/example-output.jpg" width="320">
-
-`example-output.jpg` — 1024×1536。连衣裙的浅灰针织纹理、立领、腰线与裙长，珍珠项链的珠径，托特包的米白/棕拼色全部保留；模特、抚发姿势、咖啡馆街景、树影暖光与浅景深照抄参考图。
-
----
-
-## 8、常见问题
+## 7、常见问题
 
 | 现象 | 原因 | 处理 |
 | --- | --- | --- |

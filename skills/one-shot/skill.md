@@ -11,6 +11,31 @@ description: 同一商品替换模特和背景。输入一张已有的模特图�
 
 ---
 
+## 生成效果示例
+
+| 输入：原模特图 |
+| --- |
+| <img src="../../docs/one-shot/source-model.jpg" width="280"> |
+| `source-model.jpg` — 男青年身穿灰色落肩短袖，浅灰棚拍背景，768×1024 |
+
+实际执行的命令（换模特换背景）：
+
+```bash
+dlazy gpt-image-2 \
+  --prompt 'Replace the model and the background of this e-commerce photo while keeping the garment untouched. Keep the grey oversized short-sleeve T-shirt exactly as it is: same slate-grey colour, same drop-shoulder cut, same white chest logo, same folds and hem. Replace the person with a different male model of similar build and age, and replace the plain studio wall with a sunlit outdoor city street with soft bokeh. Keep the same pose, camera angle, crop and framing. Photorealistic catalog shot, natural light, no text, no watermark.' \
+  --images docs/one-shot/source-model.jpg \
+  --size 1024x1536 --quality medium --imageFormat jpeg \
+  --save docs/one-shot/example-output.jpg
+```
+
+**输出**
+
+<img src="../../docs/one-shot/example-output.jpg" width="320">
+
+`example-output.jpg` — 1024×1536。灰色落肩短袖的颜色、版型、胸前 logo 与下摆弧线保持不变；模特换成另一位男青年，棚拍灰墙换成树影斑驳的街景，姿势与景别沿用原图。
+
+---
+
 ## 1、能力边界
 
 | 模式 | 说明 |
@@ -278,32 +303,7 @@ Photorealistic catalog shot, natural light, no text, no watermark.
 
 ---
 
-## 7、生成效果示例
-
-| 输入：原模特图 |
-| --- |
-| <img src="../../docs/one-shot/source-model.jpg" width="280"> |
-| `source-model.jpg` — 男青年身穿灰色落肩短袖，浅灰棚拍背景，768×1024 |
-
-实际执行的命令（换模特换背景）：
-
-```bash
-dlazy gpt-image-2 \
-  --prompt 'Replace the model and the background of this e-commerce photo while keeping the garment untouched. Keep the grey oversized short-sleeve T-shirt exactly as it is: same slate-grey colour, same drop-shoulder cut, same white chest logo, same folds and hem. Replace the person with a different male model of similar build and age, and replace the plain studio wall with a sunlit outdoor city street with soft bokeh. Keep the same pose, camera angle, crop and framing. Photorealistic catalog shot, natural light, no text, no watermark.' \
-  --images docs/one-shot/source-model.jpg \
-  --size 1024x1536 --quality medium --imageFormat jpeg \
-  --save docs/one-shot/example-output.jpg
-```
-
-**输出**
-
-<img src="../../docs/one-shot/example-output.jpg" width="320">
-
-`example-output.jpg` — 1024×1536。灰色落肩短袖的颜色、版型、胸前 logo 与下摆弧线保持不变；模特换成另一位男青年，棚拍灰墙换成树影斑驳的街景，姿势与景别沿用原图。
-
----
-
-## 8、常见问题
+## 7、常见问题
 
 | 现象 | 原因 | 处理 |
 | --- | --- | --- |

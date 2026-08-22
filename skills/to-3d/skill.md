@@ -11,6 +11,31 @@ description: 平铺图生成服装 3D 效果图。上传一张服装平铺图，
 
 ---
 
+## 生成效果示例
+
+| 输入：平铺图 |
+| --- |
+| <img src="../../docs/to-3d/garment-flatlay.jpg" width="280"> |
+| `garment-flatlay.jpg` — 军绿麻花针织圆领毛衣平铺图，800×800 |
+
+实际执行的命令：
+
+```bash
+dlazy gpt-image-2 \
+  --prompt 'Turn this flat-lay garment photo into a dimensional 3D ghost-mannequin product shot. The olive-green cable-knit crewneck sweater must gain realistic volume: filled shoulders and chest, sleeves with natural bend, visible interior of the collar, soft self-shadow under the hem, as if worn by an invisible mannequin. Keep the garment 100% faithful: same olive-green colour, same cable-knit and diamond stitch pattern, same ribbed collar and cuffs, same woven cuff label. Clean seamless light-grey studio background, soft top light, sharp fibre detail. No mannequin, no person, no text.' \
+  --images docs/to-3d/garment-flatlay.jpg \
+  --size 1024x1024 --quality medium --imageFormat jpeg \
+  --save docs/to-3d/example-output.jpg
+```
+
+**输出**
+
+<img src="../../docs/to-3d/example-output.jpg" width="320">
+
+`example-output.jpg` — 1024×1024。肩胸被撑起、袖子自然弯曲、领口露出内里罗纹与背面内衬、下摆有自重投影；麻花与菱形织法、军绿色、罗纹结构与右袖织标保持不变，画面里没有出现人台或人体。
+
+---
+
 ## 1、能力边界
 
 | 能力 | 说明 |
@@ -266,32 +291,7 @@ No mannequin, no person, no visible support, no text.
 
 ---
 
-## 7、生成效果示例
-
-| 输入：平铺图 |
-| --- |
-| <img src="../../docs/to-3d/garment-flatlay.jpg" width="280"> |
-| `garment-flatlay.jpg` — 军绿麻花针织圆领毛衣平铺图，800×800 |
-
-实际执行的命令：
-
-```bash
-dlazy gpt-image-2 \
-  --prompt 'Turn this flat-lay garment photo into a dimensional 3D ghost-mannequin product shot. The olive-green cable-knit crewneck sweater must gain realistic volume: filled shoulders and chest, sleeves with natural bend, visible interior of the collar, soft self-shadow under the hem, as if worn by an invisible mannequin. Keep the garment 100% faithful: same olive-green colour, same cable-knit and diamond stitch pattern, same ribbed collar and cuffs, same woven cuff label. Clean seamless light-grey studio background, soft top light, sharp fibre detail. No mannequin, no person, no text.' \
-  --images docs/to-3d/garment-flatlay.jpg \
-  --size 1024x1024 --quality medium --imageFormat jpeg \
-  --save docs/to-3d/example-output.jpg
-```
-
-**输出**
-
-<img src="../../docs/to-3d/example-output.jpg" width="320">
-
-`example-output.jpg` — 1024×1024。肩胸被撑起、袖子自然弯曲、领口露出内里罗纹与背面内衬、下摆有自重投影；麻花与菱形织法、军绿色、罗纹结构与右袖织标保持不变，画面里没有出现人台或人体。
-
----
-
-## 8、常见问题
+## 7、常见问题
 
 | 现象 | 原因 | 处理 |
 | --- | --- | --- |

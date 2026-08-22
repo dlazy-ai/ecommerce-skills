@@ -11,6 +11,31 @@ description: 自由搭配组合生成模特图。一次上传最多 8 张单品�
 
 ---
 
+## 生成效果示例
+
+| 输入单品 1 | 输入单品 2 | 输入单品 3 |
+| --- | --- | --- |
+| <img src="../../docs/image-fusion/item-sweater.jpg" width="200"> | <img src="../../docs/image-fusion/item-hat.jpg" width="200"> | <img src="../../docs/image-fusion/item-necklace.jpg" width="200"> |
+| `item-sweater.jpg` — 军绿麻花针织毛衣 | `item-hat.jpg` — 彩色编织渔夫帽 | `item-necklace.jpg` — 珍珠项链 |
+
+实际执行的命令：
+
+```bash
+dlazy seedream-5.0 \
+  --prompt '电商搭配商拍图。将参考图中的多件单品组合到同一个模特身上：图1 的军绿色麻花针织圆领毛衣作为上装，图2 的彩色编织渔夫帽戴在头上，图3 的珍珠项链戴在颈部。每件单品必须与参考图完全一致——颜色、织法纹理、图案、材质与细节都不能改。下装自动补一条米白色阔腿长裤，脚穿白色运动鞋。青年亚洲女模特，正面站姿，全身入画，纯浅灰色摄影棚背景，柔和顶光，真实照片质感，无文字无水印。' \
+  --images docs/image-fusion/item-sweater.jpg docs/image-fusion/item-hat.jpg docs/image-fusion/item-necklace.jpg \
+  --size 3:4 --resolution 2k \
+  --save docs/image-fusion/example-output.jpg
+```
+
+**输出**
+
+<img src="../../docs/image-fusion/example-output.jpg" width="320">
+
+`example-output.jpg` — 3:4 / 2K，5 credits。三件单品同时到位，毛衣的麻花织法、渔夫帽的编织配色与项链的珠径都被保留；未提供的下装与鞋按 prompt 指定补齐。
+
+---
+
 ## 1、能力边界
 
 | 能力 | 说明 |
@@ -287,32 +312,7 @@ dlazy seedream-5.0 --dry-run --prompt '...' --images a.jpg b.jpg --size 3:4
 
 ---
 
-## 8、生成效果示例
-
-| 输入单品 1 | 输入单品 2 | 输入单品 3 |
-| --- | --- | --- |
-| <img src="../../docs/image-fusion/item-sweater.jpg" width="200"> | <img src="../../docs/image-fusion/item-hat.jpg" width="200"> | <img src="../../docs/image-fusion/item-necklace.jpg" width="200"> |
-| `item-sweater.jpg` — 军绿麻花针织毛衣 | `item-hat.jpg` — 彩色编织渔夫帽 | `item-necklace.jpg` — 珍珠项链 |
-
-实际执行的命令：
-
-```bash
-dlazy seedream-5.0 \
-  --prompt '电商搭配商拍图。将参考图中的多件单品组合到同一个模特身上：图1 的军绿色麻花针织圆领毛衣作为上装，图2 的彩色编织渔夫帽戴在头上，图3 的珍珠项链戴在颈部。每件单品必须与参考图完全一致——颜色、织法纹理、图案、材质与细节都不能改。下装自动补一条米白色阔腿长裤，脚穿白色运动鞋。青年亚洲女模特，正面站姿，全身入画，纯浅灰色摄影棚背景，柔和顶光，真实照片质感，无文字无水印。' \
-  --images docs/image-fusion/item-sweater.jpg docs/image-fusion/item-hat.jpg docs/image-fusion/item-necklace.jpg \
-  --size 3:4 --resolution 2k \
-  --save docs/image-fusion/example-output.jpg
-```
-
-**输出**
-
-<img src="../../docs/image-fusion/example-output.jpg" width="320">
-
-`example-output.jpg` — 3:4 / 2K，5 credits。三件单品同时到位，毛衣的麻花织法、渔夫帽的编织配色与项链的珠径都被保留；未提供的下装与鞋按 prompt 指定补齐。
-
----
-
-## 9、常见问题
+## 8、常见问题
 
 | 现象 | 原因 | 处理 |
 | --- | --- | --- |

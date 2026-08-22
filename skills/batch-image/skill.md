@@ -11,6 +11,39 @@ description: 批量生图（企业功能）。一次对最多 100 个商品同�
 
 ---
 
+## 生成效果示例
+
+| 输入：商品清单（2 个 SKU） |
+| --- |
+| `SKU001` <img src="../../docs/batch-image/sku-a-sweater.jpg" width="150"> `军绿色麻花针织圆领毛衣，落肩宽松版型` |
+| `SKU002` <img src="../../docs/batch-image/sku-b-shoes.jpg" width="150"> `黑色亮面皮革布洛克德比鞋，厚底系带` |
+
+实际执行的命令（循环体，两个 SKU 只有 `DESC` 与 `--images` 不同，规范段逐字相同）：
+
+```bash
+for sku in a-sweater b-shoes; do
+  case $sku in
+    a-sweater) DESC='军绿色麻花针织圆领毛衣，落肩宽松版型' ;;
+    b-shoes)   DESC='黑色亮面皮革布洛克德比鞋，厚底系带' ;;
+  esac
+  dlazy seedream-5.0 \
+    --prompt "电商商拍图。图1 是商品：${DESC}。商品的颜色、材质纹理、款式细节必须与图1完全一致。放置在同一套统一视觉里：纯米白色摄影棚背景，柔和顶光加左侧补光，45 度视角，画面下方留出统一的商品投影，构图与留白在整组图中保持一致。真实商业产品摄影，无文字无水印。" \
+    --images docs/batch-image/sku-${sku}.jpg --size 1:1 --resolution 2k \
+    --save docs/batch-image/example-output-${sku}.jpg
+done
+```
+
+**输出：同一套视觉规范下的两个 SKU**
+
+| SKU001 | SKU002 |
+| --- | --- |
+| <img src="../../docs/batch-image/example-output-a-sweater.jpg" width="280"> | <img src="../../docs/batch-image/example-output-b-shoes.jpg" width="280"> |
+| 1:1 / 2K，5 credits | 1:1 / 2K，5 credits |
+
+两张的背景色、光位、视角与投影方向一致——因为规范段逐字相同；商品各自保真。100 个 SKU 就是这个循环跑 100 次，总价约 500 credits。
+
+---
+
 ## 1、能力边界
 
 | 能力 | 说明 |
@@ -336,40 +369,7 @@ echo "SKU 数：$(wc -l < manifest.csv)"
 
 ---
 
-## 8、生成效果示例
-
-| 输入：商品清单（2 个 SKU） |
-| --- |
-| `SKU001` <img src="../../docs/batch-image/sku-a-sweater.jpg" width="150"> `军绿色麻花针织圆领毛衣，落肩宽松版型` |
-| `SKU002` <img src="../../docs/batch-image/sku-b-shoes.jpg" width="150"> `黑色亮面皮革布洛克德比鞋，厚底系带` |
-
-实际执行的命令（循环体，两个 SKU 只有 `DESC` 与 `--images` 不同，规范段逐字相同）：
-
-```bash
-for sku in a-sweater b-shoes; do
-  case $sku in
-    a-sweater) DESC='军绿色麻花针织圆领毛衣，落肩宽松版型' ;;
-    b-shoes)   DESC='黑色亮面皮革布洛克德比鞋，厚底系带' ;;
-  esac
-  dlazy seedream-5.0 \
-    --prompt "电商商拍图。图1 是商品：${DESC}。商品的颜色、材质纹理、款式细节必须与图1完全一致。放置在同一套统一视觉里：纯米白色摄影棚背景，柔和顶光加左侧补光，45 度视角，画面下方留出统一的商品投影，构图与留白在整组图中保持一致。真实商业产品摄影，无文字无水印。" \
-    --images docs/batch-image/sku-${sku}.jpg --size 1:1 --resolution 2k \
-    --save docs/batch-image/example-output-${sku}.jpg
-done
-```
-
-**输出：同一套视觉规范下的两个 SKU**
-
-| SKU001 | SKU002 |
-| --- | --- |
-| <img src="../../docs/batch-image/example-output-a-sweater.jpg" width="280"> | <img src="../../docs/batch-image/example-output-b-shoes.jpg" width="280"> |
-| 1:1 / 2K，5 credits | 1:1 / 2K，5 credits |
-
-两张的背景色、光位、视角与投影方向一致——因为规范段逐字相同；商品各自保真。100 个 SKU 就是这个循环跑 100 次，总价约 500 credits。
-
----
-
-## 9、常见问题
+## 8、常见问题
 
 | 现象 | 原因 | 处理 |
 | --- | --- | --- |

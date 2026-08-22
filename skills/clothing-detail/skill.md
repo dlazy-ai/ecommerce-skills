@@ -11,6 +11,31 @@ description: 服装图生成细节放大图。上传一张服装图，生成局�
 
 ---
 
+## 生成效果示例
+
+| 输入：服装图 |
+| --- |
+| <img src="../../docs/clothing-detail/garment-flatlay.jpg" width="280"> |
+| `garment-flatlay.jpg` — 军绿麻花针织毛衣平铺图，800×800 |
+
+实际执行的命令：
+
+```bash
+dlazy gpt-image-2 \
+  --prompt 'Macro detail shot for an e-commerce detail page. Zoom into the shoulder-and-collar area of this olive-green cable-knit sweater and render a photorealistic close-up that fills the frame. Show the ribbed crewneck collar meeting the raglan-style cable panel, individual yarn plies and the twist of the cable braid, the loft of the wool fibres, and soft directional light raking across the surface to reveal depth. Keep the colour and stitch pattern exactly as in the source. Shallow depth of field with the far edge softly out of focus, clean neutral background bokeh, no person, no text, no watermark.' \
+  --images docs/clothing-detail/garment-flatlay.jpg \
+  --size 1024x1024 --quality high --imageFormat jpeg \
+  --save docs/clothing-detail/example-output.jpg
+```
+
+**输出**
+
+<img src="../../docs/clothing-detail/example-output.jpg" width="320">
+
+`example-output.jpg` — 1024×1024，60 credits。领口罗纹与麻花panel的交接、每根纱线的捻向、羊毛纤维的绒毛感都被解析出来，侧光让菱形提花的凹凸立体可见，远端落入柔和虚化。
+
+---
+
 ## 1、能力边界
 
 | 能力 | 说明 |
@@ -275,32 +300,7 @@ No person, no text, no watermark.
 
 ---
 
-## 7、生成效果示例
-
-| 输入：服装图 |
-| --- |
-| <img src="../../docs/clothing-detail/garment-flatlay.jpg" width="280"> |
-| `garment-flatlay.jpg` — 军绿麻花针织毛衣平铺图，800×800 |
-
-实际执行的命令：
-
-```bash
-dlazy gpt-image-2 \
-  --prompt 'Macro detail shot for an e-commerce detail page. Zoom into the shoulder-and-collar area of this olive-green cable-knit sweater and render a photorealistic close-up that fills the frame. Show the ribbed crewneck collar meeting the raglan-style cable panel, individual yarn plies and the twist of the cable braid, the loft of the wool fibres, and soft directional light raking across the surface to reveal depth. Keep the colour and stitch pattern exactly as in the source. Shallow depth of field with the far edge softly out of focus, clean neutral background bokeh, no person, no text, no watermark.' \
-  --images docs/clothing-detail/garment-flatlay.jpg \
-  --size 1024x1024 --quality high --imageFormat jpeg \
-  --save docs/clothing-detail/example-output.jpg
-```
-
-**输出**
-
-<img src="../../docs/clothing-detail/example-output.jpg" width="320">
-
-`example-output.jpg` — 1024×1024，60 credits。领口罗纹与麻花panel的交接、每根纱线的捻向、羊毛纤维的绒毛感都被解析出来，侧光让菱形提花的凹凸立体可见，远端落入柔和虚化。
-
----
-
-## 8、常见问题
+## 7、常见问题
 
 | 现象 | 原因 | 处理 |
 | --- | --- | --- |

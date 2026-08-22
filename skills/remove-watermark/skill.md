@@ -11,6 +11,33 @@ description: 一键去除水印和文字。上传一张图，自动识别并去�
 
 ---
 
+## 生成效果示例
+
+| 输入：带水印文字的图 |
+| --- |
+| <img src="../../docs/remove-watermark/source-watermarked.jpg" width="280"> |
+| `source-watermarked.jpg` — 家纺促销主图：红金边框 + 标题 + 活动时间 + 价格气泡 + 满减券条 + 多色可选角标 |
+
+实际执行的命令：
+
+```bash
+dlazy gpt-image-2 \
+  --prompt 'Remove every piece of text, price tag, badge, ribbon and decorative promotional frame from this image, and reconstruct what was behind them. Delete the red-and-gold border frame, the large headline, the date line, the price bubble with the number, the coupon banner and the bottom-right colour label. Keep the photograph itself completely unchanged: same bedroom, same bed, same taupe and cream bedding set, same table lamp, same wall art, same perspective, same colour grading and same resolution. Inpaint the cleared areas so the room continues naturally — walls, headboard, floor and bedding must look seamless, with no ghosting, blur patches or leftover letter shapes. Clean product photo, absolutely no text.' \
+  --images docs/remove-watermark/source-watermarked.jpg \
+  --size 1024x1024 --quality medium --imageFormat jpeg \
+  --save docs/remove-watermark/example-output.jpg
+```
+
+**输出**
+
+<img src="../../docs/remove-watermark/example-output.jpg" width="320">
+
+`example-output.jpg` — 1024×1024。红金边框、标题、活动时间、价格气泡、满减券条与角标全部清除，墙面、床头、地板与四件套接续自然，无字形残影；卧室、床品配色、台灯与墙上装饰画保留。
+
+> 注意：对比原图可以看到房间透视被轻微重构了——这是重建而非像素级修补的正常结果。要严格保留原始像素请用专业修图工具。
+
+---
+
 ## 1、能力边界
 
 | 能去掉 | 说明 |
@@ -277,34 +304,7 @@ Clean product photo, absolutely no text.
 
 ---
 
-## 7、生成效果示例
-
-| 输入：带水印文字的图 |
-| --- |
-| <img src="../../docs/remove-watermark/source-watermarked.jpg" width="280"> |
-| `source-watermarked.jpg` — 家纺促销主图：红金边框 + 标题 + 活动时间 + 价格气泡 + 满减券条 + 多色可选角标 |
-
-实际执行的命令：
-
-```bash
-dlazy gpt-image-2 \
-  --prompt 'Remove every piece of text, price tag, badge, ribbon and decorative promotional frame from this image, and reconstruct what was behind them. Delete the red-and-gold border frame, the large headline, the date line, the price bubble with the number, the coupon banner and the bottom-right colour label. Keep the photograph itself completely unchanged: same bedroom, same bed, same taupe and cream bedding set, same table lamp, same wall art, same perspective, same colour grading and same resolution. Inpaint the cleared areas so the room continues naturally — walls, headboard, floor and bedding must look seamless, with no ghosting, blur patches or leftover letter shapes. Clean product photo, absolutely no text.' \
-  --images docs/remove-watermark/source-watermarked.jpg \
-  --size 1024x1024 --quality medium --imageFormat jpeg \
-  --save docs/remove-watermark/example-output.jpg
-```
-
-**输出**
-
-<img src="../../docs/remove-watermark/example-output.jpg" width="320">
-
-`example-output.jpg` — 1024×1024。红金边框、标题、活动时间、价格气泡、满减券条与角标全部清除，墙面、床头、地板与四件套接续自然，无字形残影；卧室、床品配色、台灯与墙上装饰画保留。
-
-> 注意：对比原图可以看到房间透视被轻微重构了——这是重建而非像素级修补的正常结果。要严格保留原始像素请用专业修图工具。
-
----
-
-## 8、常见问题
+## 7、常见问题
 
 | 现象 | 原因 | 处理 |
 | --- | --- | --- |

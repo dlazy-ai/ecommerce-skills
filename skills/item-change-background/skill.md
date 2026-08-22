@@ -11,6 +11,31 @@ description: 商品图生成逼真场景图（商品换背景）。上传一张�
 
 ---
 
+## 生成效果示例
+
+| 输入：商品图 |
+| --- |
+| <img src="../../docs/item-change-background/product-shoes.jpg" width="280"> |
+| `product-shoes.jpg` — 黑色鳄鱼纹亮面皮革布洛克德比鞋，白底，800×800 |
+
+实际执行的命令：
+
+```bash
+dlazy gpt-image-2 \
+  --prompt 'Place this product into a photorealistic lifestyle scene. Keep the pair of black patent leather derby shoes 100% faithful: same glossy patent finish, same brogue perforation pattern, same lacing, same chunky lug sole, same proportions and camera angle. Replace the plain background with a warm autumn scene: a weathered wooden floor beside a window, a few dry maple leaves, soft late-afternoon side light casting a natural contact shadow under each shoe, blurred indoor background. The shoes must sit believably on the surface with correct perspective and grounded shadows. Photorealistic commercial product photography, no text, no watermark.' \
+  --images docs/item-change-background/product-shoes.jpg \
+  --size 1024x1024 --quality medium --imageFormat jpeg \
+  --save docs/item-change-background/example-output.jpg
+```
+
+**输出**
+
+<img src="../../docs/item-change-background/example-output.jpg" width="320">
+
+`example-output.jpg` — 1024×1024。鞋的鳄鱼纹压花、雕花孔、白色沿条明线与厚齿底保持不变；背景换成窗边旧木板 + 枫叶，午后侧光在鞋头形成高光，每只鞋下都有接地投影，木纹的暖色被亮面皮革轻微反射。
+
+---
+
 ## 1、能力边界
 
 | 方式 | 说明 |
@@ -288,32 +313,7 @@ Photorealistic commercial product photography, no text, no watermark.
 
 ---
 
-## 7、生成效果示例
-
-| 输入：商品图 |
-| --- |
-| <img src="../../docs/item-change-background/product-shoes.jpg" width="280"> |
-| `product-shoes.jpg` — 黑色鳄鱼纹亮面皮革布洛克德比鞋，白底，800×800 |
-
-实际执行的命令：
-
-```bash
-dlazy gpt-image-2 \
-  --prompt 'Place this product into a photorealistic lifestyle scene. Keep the pair of black patent leather derby shoes 100% faithful: same glossy patent finish, same brogue perforation pattern, same lacing, same chunky lug sole, same proportions and camera angle. Replace the plain background with a warm autumn scene: a weathered wooden floor beside a window, a few dry maple leaves, soft late-afternoon side light casting a natural contact shadow under each shoe, blurred indoor background. The shoes must sit believably on the surface with correct perspective and grounded shadows. Photorealistic commercial product photography, no text, no watermark.' \
-  --images docs/item-change-background/product-shoes.jpg \
-  --size 1024x1024 --quality medium --imageFormat jpeg \
-  --save docs/item-change-background/example-output.jpg
-```
-
-**输出**
-
-<img src="../../docs/item-change-background/example-output.jpg" width="320">
-
-`example-output.jpg` — 1024×1024。鞋的鳄鱼纹压花、雕花孔、白色沿条明线与厚齿底保持不变；背景换成窗边旧木板 + 枫叶，午后侧光在鞋头形成高光，每只鞋下都有接地投影，木纹的暖色被亮面皮革轻微反射。
-
----
-
-## 8、常见问题
+## 7、常见问题
 
 | 现象 | 原因 | 处理 |
 | --- | --- | --- |
