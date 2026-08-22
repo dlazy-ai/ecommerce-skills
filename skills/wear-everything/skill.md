@@ -11,6 +11,31 @@ description: 鞋包等多类型商品一键穿戴。输入一张商品图（鞋�
 
 ---
 
+## 生成效果示例
+
+| 输入：商品图 | 输入：参考图 |
+| --- | --- |
+| <img src="../../docs/wear-everything/product-sunglasses.jpg" width="280"> | <img src="../../docs/wear-everything/model-reference.jpg" width="280"> |
+| `product-sunglasses.jpg` — 玳瑁色方框墨镜，768×1024 | `model-reference.jpg` — 女青年正脸、夜景街拍，768×1024 |
+
+实际执行的命令：
+
+```bash
+dlazy gpt-image-2 \
+  --prompt 'On-model accessory product photography. Image 1 is the product: a pair of tortoise-brown rectangular sunglasses with dark grey lenses. Image 2 is the model/scene reference. Put the sunglasses from image 1 onto the face of the model in image 2, correctly seated on the nose bridge and ears with natural perspective, realistic lens reflections and a soft shadow on the cheekbones. Keep the product 100% faithful: identical frame shape, tortoise-brown acetate color and grain, hinge and temple design, lens tint. Change nothing else — face, hair, scarf, coat, bag chain, night street background, colour grading and crop must stay pixel-identical to image 2. Photorealistic, no text, no watermark.' \
+  --images docs/wear-everything/product-sunglasses.jpg docs/wear-everything/model-reference.jpg \
+  --size 1024x1536 --quality medium --imageFormat jpeg \
+  --save docs/wear-everything/example-output.jpg
+```
+
+**输出**
+
+<img src="../../docs/wear-everything/example-output.jpg" width="320">
+
+`example-output.jpg` — 1024×1536。墨镜按正确的鼻梁/耳挂关系落位，镜框玳瑁纹理与镜片色保留；模特五官、围巾千鸟格、夜景街道与色调保持原样。
+
+---
+
 ## 1、能力边界
 
 | 能力 | 说明 |
@@ -292,32 +317,7 @@ Photorealistic, no text, no watermark.
 
 ---
 
-## 8、生成效果示例
-
-| 输入：商品图 | 输入：参考图 |
-| --- | --- |
-| <img src="../../docs/wear-everything/product-sunglasses.jpg" width="280"> | <img src="../../docs/wear-everything/model-reference.jpg" width="280"> |
-| `product-sunglasses.jpg` — 玳瑁色方框墨镜，768×1024 | `model-reference.jpg` — 女青年正脸、夜景街拍，768×1024 |
-
-实际执行的命令：
-
-```bash
-dlazy gpt-image-2 \
-  --prompt 'On-model accessory product photography. Image 1 is the product: a pair of tortoise-brown rectangular sunglasses with dark grey lenses. Image 2 is the model/scene reference. Put the sunglasses from image 1 onto the face of the model in image 2, correctly seated on the nose bridge and ears with natural perspective, realistic lens reflections and a soft shadow on the cheekbones. Keep the product 100% faithful: identical frame shape, tortoise-brown acetate color and grain, hinge and temple design, lens tint. Change nothing else — face, hair, scarf, coat, bag chain, night street background, colour grading and crop must stay pixel-identical to image 2. Photorealistic, no text, no watermark.' \
-  --images docs/wear-everything/product-sunglasses.jpg docs/wear-everything/model-reference.jpg \
-  --size 1024x1536 --quality medium --imageFormat jpeg \
-  --save docs/wear-everything/example-output.jpg
-```
-
-**输出**
-
-<img src="../../docs/wear-everything/example-output.jpg" width="320">
-
-`example-output.jpg` — 1024×1536。墨镜按正确的鼻梁/耳挂关系落位，镜框玳瑁纹理与镜片色保留；模特五官、围巾千鸟格、夜景街道与色调保持原样。
-
----
-
-## 9、常见问题
+## 8、常见问题
 
 | 现象 | 原因 | 处理 |
 | --- | --- | --- |

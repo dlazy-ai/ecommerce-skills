@@ -11,6 +11,31 @@ description: 一键替换服装面料。上传一张服装版式图（款式/版
 
 ---
 
+## 生成效果示例
+
+| 输入：服装版式图 | 输入：面料图 |
+| --- | --- |
+| <img src="../../docs/fabric-on-body/style-sheet.jpg" width="260"> | <img src="../../docs/fabric-on-body/fabric-swatch.jpg" width="260"> |
+| `style-sheet.jpg` — 落肩宽松圆领毛衣版型，800×800 | `fabric-swatch.jpg` — 象牙白真丝缎面小样，640×640 |
+
+实际执行的命令：
+
+```bash
+dlazy gpt-image-2 \
+  --prompt 'Fabric replacement for a garment style sheet. Image 1 is the garment pattern/style reference: an oversized drop-shoulder crewneck sweater with ribbed collar, cuffs and hem. Image 2 is the target fabric: ivory silk satin with a soft lustrous sheen and fine weave. Re-render the exact same garment silhouette from image 1 in the fabric from image 2. Keep the pattern identical: same oversized drop-shoulder cut, same body length, same sleeve length, same collar/cuff/hem construction, same flat-lay layout and camera angle. Replace only the material — the sweater must now read as ivory silk satin with specular highlights on the folds and soft drape instead of chunky knit. Clean white background, even studio light, no text.' \
+  --images docs/fabric-on-body/style-sheet.jpg docs/fabric-on-body/fabric-swatch.jpg \
+  --size 1024x1024 --quality medium --imageFormat jpeg \
+  --save docs/fabric-on-body/example-output.jpg
+```
+
+**输出**
+
+<img src="../../docs/fabric-on-body/example-output.jpg" width="320">
+
+`example-output.jpg` — 1024×1024。落肩剪裁、身长袖长、罗纹领口袖口下摆的结构与平铺角度都与版式图一致；材质从粗针织变成象牙白真丝缎面，褶皱上出现高光、垂坠变得柔顺，罗纹部位仍以缎面质感保留。
+
+---
+
 ## 1、能力边界
 
 | 输入 | 说明 |
@@ -286,32 +311,7 @@ Clean [背景色] background, even studio light, no text.
 
 ---
 
-## 7、生成效果示例
-
-| 输入：服装版式图 | 输入：面料图 |
-| --- | --- |
-| <img src="../../docs/fabric-on-body/style-sheet.jpg" width="260"> | <img src="../../docs/fabric-on-body/fabric-swatch.jpg" width="260"> |
-| `style-sheet.jpg` — 落肩宽松圆领毛衣版型，800×800 | `fabric-swatch.jpg` — 象牙白真丝缎面小样，640×640 |
-
-实际执行的命令：
-
-```bash
-dlazy gpt-image-2 \
-  --prompt 'Fabric replacement for a garment style sheet. Image 1 is the garment pattern/style reference: an oversized drop-shoulder crewneck sweater with ribbed collar, cuffs and hem. Image 2 is the target fabric: ivory silk satin with a soft lustrous sheen and fine weave. Re-render the exact same garment silhouette from image 1 in the fabric from image 2. Keep the pattern identical: same oversized drop-shoulder cut, same body length, same sleeve length, same collar/cuff/hem construction, same flat-lay layout and camera angle. Replace only the material — the sweater must now read as ivory silk satin with specular highlights on the folds and soft drape instead of chunky knit. Clean white background, even studio light, no text.' \
-  --images docs/fabric-on-body/style-sheet.jpg docs/fabric-on-body/fabric-swatch.jpg \
-  --size 1024x1024 --quality medium --imageFormat jpeg \
-  --save docs/fabric-on-body/example-output.jpg
-```
-
-**输出**
-
-<img src="../../docs/fabric-on-body/example-output.jpg" width="320">
-
-`example-output.jpg` — 1024×1024。落肩剪裁、身长袖长、罗纹领口袖口下摆的结构与平铺角度都与版式图一致；材质从粗针织变成象牙白真丝缎面，褶皱上出现高光、垂坠变得柔顺，罗纹部位仍以缎面质感保留。
-
----
-
-## 8、常见问题
+## 7、常见问题
 
 | 现象 | 原因 | 处理 |
 | --- | --- | --- |

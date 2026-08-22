@@ -11,6 +11,31 @@ description: 优化服装材质和细节质感（材质增强）。上传一张�
 
 ---
 
+## 生成效果示例
+
+| 输入：原图（待增强） | 输入：高清商品图（真实面料） |
+| --- | --- |
+| <img src="../../docs/material-enhancement/source-image.jpg" width="240"> | <img src="../../docs/material-enhancement/hires-product.jpg" width="240"> |
+| `source-image.jpg` — 军绿麻花毛衣上身图，1024×1536 | `hires-product.jpg` — 同款毛衣高清平铺图，800×800 |
+
+实际执行的命令：
+
+```bash
+dlazy gpt-image-2 \
+  --prompt 'Texture enhancement pass. Image 1 is the on-model photo to improve. Image 2 is the high-resolution product photo that defines the true fabric. Rebuild the sweater surface in image 1 using the real texture from image 2: crisp cable-braid relief, visible knit loops and yarn twist, natural wool loft, correct fold shadows and a matte fibre sheen. Do not change anything else — the model face, hair, hands, pose, brown trousers, background, framing and colour grading must stay identical to image 1. The garment silhouette and colour must not shift; only the material fidelity and micro-detail improve. Photorealistic, sharp, no text, no watermark.' \
+  --images docs/material-enhancement/source-image.jpg docs/material-enhancement/hires-product.jpg \
+  --size 1024x1536 --quality high --imageFormat jpeg \
+  --save docs/material-enhancement/example-output.jpg
+```
+
+**输出**
+
+<img src="../../docs/material-enhancement/example-output.jpg" width="320">
+
+`example-output.jpg` — 1024×1536，60 credits。麻花辫的立体起伏、菱形提花的凹凸、羊毛的绒毛感与褶皱处的暗部层次被重建；模特五官、发型、手部、姿势、棕色长裤、灰墙背景与整体色调保持不变，毛衣轮廓与军绿色未偏移。
+
+---
+
 ## 1、能力边界
 
 | 输入 | 作用 |
@@ -284,32 +309,7 @@ Photorealistic, sharp, no text, no watermark.
 
 ---
 
-## 7、生成效果示例
-
-| 输入：原图（待增强） | 输入：高清商品图（真实面料） |
-| --- | --- |
-| <img src="../../docs/material-enhancement/source-image.jpg" width="240"> | <img src="../../docs/material-enhancement/hires-product.jpg" width="240"> |
-| `source-image.jpg` — 军绿麻花毛衣上身图，1024×1536 | `hires-product.jpg` — 同款毛衣高清平铺图，800×800 |
-
-实际执行的命令：
-
-```bash
-dlazy gpt-image-2 \
-  --prompt 'Texture enhancement pass. Image 1 is the on-model photo to improve. Image 2 is the high-resolution product photo that defines the true fabric. Rebuild the sweater surface in image 1 using the real texture from image 2: crisp cable-braid relief, visible knit loops and yarn twist, natural wool loft, correct fold shadows and a matte fibre sheen. Do not change anything else — the model face, hair, hands, pose, brown trousers, background, framing and colour grading must stay identical to image 1. The garment silhouette and colour must not shift; only the material fidelity and micro-detail improve. Photorealistic, sharp, no text, no watermark.' \
-  --images docs/material-enhancement/source-image.jpg docs/material-enhancement/hires-product.jpg \
-  --size 1024x1536 --quality high --imageFormat jpeg \
-  --save docs/material-enhancement/example-output.jpg
-```
-
-**输出**
-
-<img src="../../docs/material-enhancement/example-output.jpg" width="320">
-
-`example-output.jpg` — 1024×1536，60 credits。麻花辫的立体起伏、菱形提花的凹凸、羊毛的绒毛感与褶皱处的暗部层次被重建；模特五官、发型、手部、姿势、棕色长裤、灰墙背景与整体色调保持不变，毛衣轮廓与军绿色未偏移。
-
----
-
-## 8、常见问题
+## 7、常见问题
 
 | 现象 | 原因 | 处理 |
 | --- | --- | --- |

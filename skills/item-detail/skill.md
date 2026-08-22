@@ -11,6 +11,30 @@ description: 一键生成全套商品详情图（商品详情页）。上传一�
 
 ---
 
+## 生成效果示例
+
+| 输入：商品图 |
+| --- |
+| <img src="../../docs/item-detail/product-flatlay.jpg" width="280"> |
+| `product-flatlay.jpg` — 军绿麻花针织毛衣平铺图，800×800 |
+
+实际执行的命令（首屏 banner 模块）：
+
+```bash
+dlazy seedream-5.0-pro \
+  --prompt '电商服饰详情页首屏 banner，竖版。左侧是图1 中的军绿色麻花针织圆领毛衣的模特上身图（青年男模特，半身，落肩宽松版型），毛衣颜色、麻花织法与菱形提花必须与图1一致。右上方留白区排版中文标题，大字「粗棒麻花 复古落肩」，副标题小字「羊毛混纺 · 加厚保暖 · 男女同款」。底部一行三个圆形图标配文字「亲肤不扎」「不易变形」「机洗不缩」。整体米灰色背景，暖色调，留白克制，字体为无衬线黑体，排版整齐对齐，商业电商详情页设计感，中文字必须清晰正确无乱码。' \
+  --images docs/item-detail/product-flatlay.jpg --size 3:4 \
+  --save docs/item-detail/example-output.jpg
+```
+
+**输出**
+
+<img src="../../docs/item-detail/example-output.jpg" width="320">
+
+`example-output.jpg` — 3:4 / 2K，5 credits。模特上身图占左侧，毛衣的军绿色、麻花与菱形提花保留；右上标题「粗棒麻花 复古落肩」与副标题「羊毛混纺 · 加厚保暖 · 男女同款」字形正确、层级分明；底部三个线描图标配「亲肤不扎」「不易变形」「机洗不缩」，米灰底暖调，排版对齐。
+
+---
+
 ## 1、能力边界
 
 | 产出模块 | 说明 |
@@ -293,31 +317,7 @@ dlazy seedream-5.0-pro --dry-run --prompt '...' --images a.jpg --size 3:4
 
 ---
 
-## 8、生成效果示例
-
-| 输入：商品图 |
-| --- |
-| <img src="../../docs/item-detail/product-flatlay.jpg" width="280"> |
-| `product-flatlay.jpg` — 军绿麻花针织毛衣平铺图，800×800 |
-
-实际执行的命令（首屏 banner 模块）：
-
-```bash
-dlazy seedream-5.0-pro \
-  --prompt '电商服饰详情页首屏 banner，竖版。左侧是图1 中的军绿色麻花针织圆领毛衣的模特上身图（青年男模特，半身，落肩宽松版型），毛衣颜色、麻花织法与菱形提花必须与图1一致。右上方留白区排版中文标题，大字「粗棒麻花 复古落肩」，副标题小字「羊毛混纺 · 加厚保暖 · 男女同款」。底部一行三个圆形图标配文字「亲肤不扎」「不易变形」「机洗不缩」。整体米灰色背景，暖色调，留白克制，字体为无衬线黑体，排版整齐对齐，商业电商详情页设计感，中文字必须清晰正确无乱码。' \
-  --images docs/item-detail/product-flatlay.jpg --size 3:4 \
-  --save docs/item-detail/example-output.jpg
-```
-
-**输出**
-
-<img src="../../docs/item-detail/example-output.jpg" width="320">
-
-`example-output.jpg` — 3:4 / 2K，5 credits。模特上身图占左侧，毛衣的军绿色、麻花与菱形提花保留；右上标题「粗棒麻花 复古落肩」与副标题「羊毛混纺 · 加厚保暖 · 男女同款」字形正确、层级分明；底部三个线描图标配「亲肤不扎」「不易变形」「机洗不缩」，米灰底暖调，排版对齐。
-
----
-
-## 9、常见问题
+## 8、常见问题
 
 | 现象 | 原因 | 处理 |
 | --- | --- | --- |

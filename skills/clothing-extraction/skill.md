@@ -11,6 +11,31 @@ description: 从任意图中提取商品平铺图。上传任意一张图（真�
 
 ---
 
+## 生成效果示例
+
+| 输入：任意图 |
+| --- |
+| <img src="../../docs/clothing-extraction/source-photo.jpg" width="260"> |
+| `source-photo.jpg` — 真人街拍图：浅灰针织连衣裙 + 珍珠项链 + 托特包 + 银色高跟鞋，480×640 |
+
+实际执行的命令：
+
+```bash
+dlazy gpt-image-2 \
+  --prompt 'Extract the garment worn by the model in this photo and render it as a clean e-commerce flat-lay. Output only the light-grey textured sleeveless knit mini dress with the mock neckline, laid flat and centred, front view, symmetric, fully unoccluded — remove the model, the pearl necklace, the tote bag, the shoes, the fountain and the whole background. Keep the garment 100% faithful: same light-grey colour, same knit texture, same neckline and armhole shape, same waist seam and hem length. Pure white seamless background, even soft studio light, subtle contact shadow. No person, no props, no text.' \
+  --images docs/clothing-extraction/source-photo.jpg \
+  --size 1024x1024 --quality medium --imageFormat jpeg \
+  --save docs/clothing-extraction/example-output.jpg
+```
+
+**输出**
+
+<img src="../../docs/clothing-extraction/example-output.jpg" width="320">
+
+`example-output.jpg` — 1024×1024。模特、项链、托特包、高跟鞋与喷泉背景全部清除，只留连衣裙；摊平居中、左右对称，立领罗纹、袖窿形状、腰线接缝与裙长按原图还原，浅灰针织纹理保留。
+
+---
+
 ## 1、能力边界
 
 | 模板 | 说明 |
@@ -271,32 +296,7 @@ No person, no props, no text.
 
 ---
 
-## 7、生成效果示例
-
-| 输入：任意图 |
-| --- |
-| <img src="../../docs/clothing-extraction/source-photo.jpg" width="260"> |
-| `source-photo.jpg` — 真人街拍图：浅灰针织连衣裙 + 珍珠项链 + 托特包 + 银色高跟鞋，480×640 |
-
-实际执行的命令：
-
-```bash
-dlazy gpt-image-2 \
-  --prompt 'Extract the garment worn by the model in this photo and render it as a clean e-commerce flat-lay. Output only the light-grey textured sleeveless knit mini dress with the mock neckline, laid flat and centred, front view, symmetric, fully unoccluded — remove the model, the pearl necklace, the tote bag, the shoes, the fountain and the whole background. Keep the garment 100% faithful: same light-grey colour, same knit texture, same neckline and armhole shape, same waist seam and hem length. Pure white seamless background, even soft studio light, subtle contact shadow. No person, no props, no text.' \
-  --images docs/clothing-extraction/source-photo.jpg \
-  --size 1024x1024 --quality medium --imageFormat jpeg \
-  --save docs/clothing-extraction/example-output.jpg
-```
-
-**输出**
-
-<img src="../../docs/clothing-extraction/example-output.jpg" width="320">
-
-`example-output.jpg` — 1024×1024。模特、项链、托特包、高跟鞋与喷泉背景全部清除，只留连衣裙；摊平居中、左右对称，立领罗纹、袖窿形状、腰线接缝与裙长按原图还原，浅灰针织纹理保留。
-
----
-
-## 8、常见问题
+## 7、常见问题
 
 | 现象 | 原因 | 处理 |
 | --- | --- | --- |

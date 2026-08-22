@@ -11,6 +11,30 @@ description: 商品图生成电商主图（商品卖点图）。上传一张商�
 
 ---
 
+## 生成效果示例
+
+| 输入：商品图 |
+| --- |
+| <img src="../../docs/item-selling-point/product-shoes.jpg" width="280"> |
+| `product-shoes.jpg` — 黑色鳄鱼纹亮面皮革布洛克德比鞋，白底，800×800 |
+
+实际执行的命令：
+
+```bash
+dlazy seedream-5.0-pro \
+  --prompt '电商正方形主图。主体是图1 中的黑色亮面皮革布洛克德比鞋，鞋型、雕花孔、鞋带与厚底必须与图1完全一致，商品去底后放在画面中央偏左，下方带柔和投影。背景为深灰到浅灰渐变，右侧竖排中文卖点文案：主标题大字「真皮软底 通勤久站不累」，下方两行小字卖点「牛皮鞋面 · 防滑厚底」「三防涂层 · 雨天不怕」。左上角一枚红色圆形促销角标写「满300减30」。无衬线黑体，字号层级分明，排版整齐，中文字清晰正确无乱码，商业电商主图设计。' \
+  --images docs/item-selling-point/product-shoes.jpg --size 1:1 \
+  --save docs/item-selling-point/example-output.jpg
+```
+
+**输出**
+
+<img src="../../docs/item-selling-point/example-output.jpg" width="320">
+
+`example-output.jpg` — 1:1 / 2048×2048，5 credits。鞋的鳄鱼纹压花、雕花孔、鞋带与厚齿底保持一致，去底后居中偏左带柔和投影；右侧主标题「真皮软底 通勤久站不累」与两行小字卖点字形正确、层级分明；左上红色圆形角标「满300减30」；深灰渐变背景。
+
+---
+
 ## 1、能力边界
 
 | 输入 | 说明 |
@@ -297,31 +321,7 @@ dlazy seedream-5.0-pro --dry-run --prompt '...' --images a.jpg --size 1:1
 
 ---
 
-## 8、生成效果示例
-
-| 输入：商品图 |
-| --- |
-| <img src="../../docs/item-selling-point/product-shoes.jpg" width="280"> |
-| `product-shoes.jpg` — 黑色鳄鱼纹亮面皮革布洛克德比鞋，白底，800×800 |
-
-实际执行的命令：
-
-```bash
-dlazy seedream-5.0-pro \
-  --prompt '电商正方形主图。主体是图1 中的黑色亮面皮革布洛克德比鞋，鞋型、雕花孔、鞋带与厚底必须与图1完全一致，商品去底后放在画面中央偏左，下方带柔和投影。背景为深灰到浅灰渐变，右侧竖排中文卖点文案：主标题大字「真皮软底 通勤久站不累」，下方两行小字卖点「牛皮鞋面 · 防滑厚底」「三防涂层 · 雨天不怕」。左上角一枚红色圆形促销角标写「满300减30」。无衬线黑体，字号层级分明，排版整齐，中文字清晰正确无乱码，商业电商主图设计。' \
-  --images docs/item-selling-point/product-shoes.jpg --size 1:1 \
-  --save docs/item-selling-point/example-output.jpg
-```
-
-**输出**
-
-<img src="../../docs/item-selling-point/example-output.jpg" width="320">
-
-`example-output.jpg` — 1:1 / 2048×2048，5 credits。鞋的鳄鱼纹压花、雕花孔、鞋带与厚齿底保持一致，去底后居中偏左带柔和投影；右侧主标题「真皮软底 通勤久站不累」与两行小字卖点字形正确、层级分明；左上红色圆形角标「满300减30」；深灰渐变背景。
-
----
-
-## 9、常见问题
+## 8、常见问题
 
 | 现象 | 原因 | 处理 |
 | --- | --- | --- |

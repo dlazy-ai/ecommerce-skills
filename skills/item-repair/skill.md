@@ -11,6 +11,31 @@ description: 一键提升商品图质感（商品精修）。一次上传同一�
 
 ---
 
+## 生成效果示例
+
+| 输入：原商品图 |
+| --- |
+| <img src="../../docs/item-repair/source-flatlay.jpg" width="280"> |
+| `source-flatlay.jpg` — 军绿麻花针织毛衣平铺图（袖身有随机褶皱、左右不完全对称），800×800 |
+
+实际执行的命令（平铺图精修 + 材质增强）：
+
+```bash
+dlazy gpt-image-2 \
+  --prompt 'Studio retouch of a flat-lay garment photo. Clean up this olive-green cable-knit sweater to catalog standard: press out the random wrinkles and creases in the body and sleeves, straighten and symmetrise the silhouette, square the shoulders, align both sleeves evenly, tidy the collar and hem, and even out the lighting so there is no hot spot or colour cast. Keep the cable-knit and diamond stitch pattern, the exact olive-green colour, the ribbed collar/cuffs/hem and the woven cuff label unchanged and sharper than before. Pure white seamless background with a subtle soft contact shadow. Photorealistic, print-ready, no text, no watermark.' \
+  --images docs/item-repair/source-flatlay.jpg \
+  --size 1024x1024 --quality high --imageFormat jpeg \
+  --save docs/item-repair/example-output.jpg
+```
+
+**输出**
+
+<img src="../../docs/item-repair/example-output.jpg" width="320">
+
+`example-output.jpg` — 1024×1024，60 credits。随机褶皱被压平、肩线方正、两只袖子长度与角度对齐、下摆罗纹平整、光照均匀无高光斑；麻花与菱形织法、军绿色、罗纹结构与右袖织标保留且比原图更清晰，背景提纯为白底带柔和接地投影。
+
+---
+
 ## 1、能力边界
 
 | 模板 | 做什么 |
@@ -277,32 +302,7 @@ Photorealistic, print-ready, no text, no watermark.
 
 ---
 
-## 7、生成效果示例
-
-| 输入：原商品图 |
-| --- |
-| <img src="../../docs/item-repair/source-flatlay.jpg" width="280"> |
-| `source-flatlay.jpg` — 军绿麻花针织毛衣平铺图（袖身有随机褶皱、左右不完全对称），800×800 |
-
-实际执行的命令（平铺图精修 + 材质增强）：
-
-```bash
-dlazy gpt-image-2 \
-  --prompt 'Studio retouch of a flat-lay garment photo. Clean up this olive-green cable-knit sweater to catalog standard: press out the random wrinkles and creases in the body and sleeves, straighten and symmetrise the silhouette, square the shoulders, align both sleeves evenly, tidy the collar and hem, and even out the lighting so there is no hot spot or colour cast. Keep the cable-knit and diamond stitch pattern, the exact olive-green colour, the ribbed collar/cuffs/hem and the woven cuff label unchanged and sharper than before. Pure white seamless background with a subtle soft contact shadow. Photorealistic, print-ready, no text, no watermark.' \
-  --images docs/item-repair/source-flatlay.jpg \
-  --size 1024x1024 --quality high --imageFormat jpeg \
-  --save docs/item-repair/example-output.jpg
-```
-
-**输出**
-
-<img src="../../docs/item-repair/example-output.jpg" width="320">
-
-`example-output.jpg` — 1024×1024，60 credits。随机褶皱被压平、肩线方正、两只袖子长度与角度对齐、下摆罗纹平整、光照均匀无高光斑；麻花与菱形织法、军绿色、罗纹结构与右袖织标保留且比原图更清晰，背景提纯为白底带柔和接地投影。
-
----
-
-## 8、常见问题
+## 7、常见问题
 
 | 现象 | 原因 | 处理 |
 | --- | --- | --- |

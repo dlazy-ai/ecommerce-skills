@@ -11,6 +11,43 @@ AI 生图上架前的**最后一道关**。判断这张图能不能直接投，�
 
 ---
 
+## 生成效果示例
+
+| 输入：待检图 |
+| --- |
+| <img src="../../docs/detect-task/candidate.jpg" width="280"> |
+| `candidate.jpg` — 由 [flat-lay](../flat-lay/skill.md) 生成的军绿毛衣模特上身图，1024×1536 |
+
+实际执行的命令：
+
+```bash
+dlazy claude-sonnet-5 \
+  --prompt '你是电商投放前的图片质检员。审查这张 AI 生成的服装商拍图能否直接用于电商投放。全部用中文作答（第 4 项的 prompt 修正句除外）。严格按以下结构输出：
+## 1. 风险等级
+低风险 / 中风险 / 高风险（三选一）
+## 2. 风险项逐条判定
+用表格输出，三列：风险项 / 结论（通过 或 命中）/ 证据。风险项固定为这 8 条：商品崩坏、人脸不自然、手部异常、肢体结构错误、文字乱码、光影矛盾、边缘融合痕迹、平台合规。
+## 3. 投放建议
+建议投放 / 建议重跑 / 建议人工修图
+## 4. 修正建议
+若建议重跑或人工修图，给出应追加到生成 prompt 的英文修正句 1-3 条；若建议投放，写「无需修正」。
+只输出报告，不要寒暄。' \
+  --images docs/detect-task/candidate.jpg \
+  | python3 -c 'import sys,json;print(json.load(sys.stdin)["result"]["data"]["texts"][0])' \
+  > docs/detect-task/example-report.md
+```
+
+**输出**：完整报告见 [`docs/detect-task/example-report.md`](../../docs/detect-task/example-report.md)，3 credits。摘要：
+
+- **风险等级**：低风险
+- **8 项判定**：7 项通过；`文字乱码` 命中（轻微）——左侧袖口的织标图案模糊不可辨
+- **投放建议**：建议人工修图（仅需局部处理袖口小标签）
+- **修正建议**：`clear and legible brand tag/logo embroidery on cuff, sharp fine detail, no blurry or garbled text`
+
+这条修正句可以直接追加到 flat-lay 的原 prompt 末尾重跑——这就是闭环。
+
+---
+
 ## 1、能力边界
 
 | 输出 | 说明 |
@@ -306,44 +343,7 @@ dlazy claude-sonnet-5 --dry-run --prompt '...' --images a.jpg
 
 ---
 
-## 7、生成效果示例
-
-| 输入：待检图 |
-| --- |
-| <img src="../../docs/detect-task/candidate.jpg" width="280"> |
-| `candidate.jpg` — 由 [flat-lay](../flat-lay/skill.md) 生成的军绿毛衣模特上身图，1024×1536 |
-
-实际执行的命令：
-
-```bash
-dlazy claude-sonnet-5 \
-  --prompt '你是电商投放前的图片质检员。审查这张 AI 生成的服装商拍图能否直接用于电商投放。全部用中文作答（第 4 项的 prompt 修正句除外）。严格按以下结构输出：
-## 1. 风险等级
-低风险 / 中风险 / 高风险（三选一）
-## 2. 风险项逐条判定
-用表格输出，三列：风险项 / 结论（通过 或 命中）/ 证据。风险项固定为这 8 条：商品崩坏、人脸不自然、手部异常、肢体结构错误、文字乱码、光影矛盾、边缘融合痕迹、平台合规。
-## 3. 投放建议
-建议投放 / 建议重跑 / 建议人工修图
-## 4. 修正建议
-若建议重跑或人工修图，给出应追加到生成 prompt 的英文修正句 1-3 条；若建议投放，写「无需修正」。
-只输出报告，不要寒暄。' \
-  --images docs/detect-task/candidate.jpg \
-  | python3 -c 'import sys,json;print(json.load(sys.stdin)["result"]["data"]["texts"][0])' \
-  > docs/detect-task/example-report.md
-```
-
-**输出**：完整报告见 [`docs/detect-task/example-report.md`](../../docs/detect-task/example-report.md)，3 credits。摘要：
-
-- **风险等级**：低风险
-- **8 项判定**：7 项通过；`文字乱码` 命中（轻微）——左侧袖口的织标图案模糊不可辨
-- **投放建议**：建议人工修图（仅需局部处理袖口小标签）
-- **修正建议**：`clear and legible brand tag/logo embroidery on cuff, sharp fine detail, no blurry or garbled text`
-
-这条修正句可以直接追加到 flat-lay 的原 prompt 末尾重跑——这就是闭环。
-
----
-
-## 8、常见问题
+## 7、常见问题
 
 | 现象 | 原因 | 处理 |
 | --- | --- | --- |

@@ -11,6 +11,39 @@ description: 创意生图：输入你想象中的画面，自由创作图片。�
 
 ---
 
+## 生成效果示例
+
+本技能不需要输入素材——只有一句描述。
+
+实际执行的命令：
+
+```bash
+dlazy banana-pro \
+  --prompt 'A long-haired young Asian woman wearing a white puff-sleeve lace midi dress, sitting at a marble table inside a French-style cafe, fresh flowers and pastries arranged on the table, warm white colour grading, soft window light, front three-quarter view, waist-up framing, atmospheric editorial portrait, photorealistic, shot on 85mm, shallow depth of field, no text, no watermark.' \
+  --aspectRatio 3:4 --imageSize 2K \
+  --save docs/creative-scene/example-output.jpg
+```
+
+对应的五槽位拆解：
+
+| 槽位 | 内容 |
+| --- | --- |
+| 人物 | `a long-haired young Asian woman` |
+| 穿着 | `white puff-sleeve lace midi dress` |
+| 场景 | `marble table inside a French-style cafe, fresh flowers and pastries` |
+| 视角/景别 | `front three-quarter view, waist-up framing` |
+| 氛围/影调 | `warm white colour grading, soft window light, atmospheric editorial` |
+
+**输出**
+
+<img src="../../docs/creative-scene/example-output.jpg" width="320">
+
+`example-output.jpg` — 3:4 / 2K，18 credits。人物、穿着、法式咖啡馆场景、三分之三正面半身景别与暖白影调全部按描述落位。
+
+这张图可以直接作为后续定向修改的输入——例如接 `把模特的上衣变成黑色高领修身打底衫，保持其他不变` 换搭配。
+
+---
+
 ## 1、能力边界
 
 | 模式 | 说明 |
@@ -300,40 +333,7 @@ photorealistic, [镜头语言：shot on 85mm, shallow depth of field], no text, 
 
 ---
 
-## 7、生成效果示例
-
-本技能不需要输入素材——只有一句描述。
-
-实际执行的命令：
-
-```bash
-dlazy banana-pro \
-  --prompt 'A long-haired young Asian woman wearing a white puff-sleeve lace midi dress, sitting at a marble table inside a French-style cafe, fresh flowers and pastries arranged on the table, warm white colour grading, soft window light, front three-quarter view, waist-up framing, atmospheric editorial portrait, photorealistic, shot on 85mm, shallow depth of field, no text, no watermark.' \
-  --aspectRatio 3:4 --imageSize 2K \
-  --save docs/creative-scene/example-output.jpg
-```
-
-对应的五槽位拆解：
-
-| 槽位 | 内容 |
-| --- | --- |
-| 人物 | `a long-haired young Asian woman` |
-| 穿着 | `white puff-sleeve lace midi dress` |
-| 场景 | `marble table inside a French-style cafe, fresh flowers and pastries` |
-| 视角/景别 | `front three-quarter view, waist-up framing` |
-| 氛围/影调 | `warm white colour grading, soft window light, atmospheric editorial` |
-
-**输出**
-
-<img src="../../docs/creative-scene/example-output.jpg" width="320">
-
-`example-output.jpg` — 3:4 / 2K，18 credits。人物、穿着、法式咖啡馆场景、三分之三正面半身景别与暖白影调全部按描述落位。
-
-这张图可以直接作为后续定向修改的输入——例如接 `把模特的上衣变成黑色高领修身打底衫，保持其他不变` 换搭配。
-
----
-
-## 8、常见问题
+## 7、常见问题
 
 | 现象 | 原因 | 处理 |
 | --- | --- | --- |

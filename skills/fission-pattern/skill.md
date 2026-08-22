@@ -11,6 +11,34 @@ description: 一张商品图生成完整套图。上传一张商品图并描述�
 
 ---
 
+## 生成效果示例
+
+| 输入：商品图 |
+| --- |
+| <img src="../../docs/fission-pattern/product-watch.jpg" width="280"> |
+| `product-watch.jpg` — 黑色鳄鱼纹皮带钢壳银色太阳纹表盘手表 |
+
+实际执行的命令（套图第 2 张，其余两张只换第三段镜位）：
+
+```bash
+dlazy gpt-image-2 \
+  --prompt 'E-commerce product photography, set image 2 of 3 — in-use lifestyle shot. The subject is the watch from the reference image: a polished stainless-steel watch with a silver sunburst dial, applied baton markers and a black crocodile-embossed leather strap. Keep the product 100% faithful: same case shape and polish, same dial colour and marker layout, same hand shapes, same crown, same strap embossing and stitching — it must be recognisably the identical watch as the reference. Show it worn on a man wrist resting on a wooden cafe table beside a white coffee cup, dark suit sleeve and white shirt cuff visible, warm window light, shallow depth of field with a blurred cafe background. Photorealistic, no text, no watermark.' \
+  --images docs/fission-pattern/product-watch.jpg \
+  --size 1024x1536 --quality medium --imageFormat jpeg \
+  --save docs/fission-pattern/example-output-2.jpg
+```
+
+**输出：一套三张**
+
+| 1 · 正面主图 | 2 · 场景使用图 | 3 · 细节微距图 |
+| --- | --- | --- |
+| <img src="../../docs/fission-pattern/example-output-1.jpg" width="230"> | <img src="../../docs/fission-pattern/example-output-2.jpg" width="230"> | <img src="../../docs/fission-pattern/example-output-3.jpg" width="230"> |
+| 蓝图纸 + 黄铜直尺，冷调侧光 | 手腕佩戴 + 咖啡桌，暖色窗光 | 表盘/刻度/表冠微距，硬光勾边 |
+
+三张的商品保真段逐字相同，只有镜位段在变。
+
+---
+
 ## 1、能力边界
 
 | 模式 | 说明 |
@@ -305,35 +333,7 @@ Photorealistic commercial product photography, no text, no watermark.
 
 ---
 
-## 8、生成效果示例
-
-| 输入：商品图 |
-| --- |
-| <img src="../../docs/fission-pattern/product-watch.jpg" width="280"> |
-| `product-watch.jpg` — 黑色鳄鱼纹皮带钢壳银色太阳纹表盘手表 |
-
-实际执行的命令（套图第 2 张，其余两张只换第三段镜位）：
-
-```bash
-dlazy gpt-image-2 \
-  --prompt 'E-commerce product photography, set image 2 of 3 — in-use lifestyle shot. The subject is the watch from the reference image: a polished stainless-steel watch with a silver sunburst dial, applied baton markers and a black crocodile-embossed leather strap. Keep the product 100% faithful: same case shape and polish, same dial colour and marker layout, same hand shapes, same crown, same strap embossing and stitching — it must be recognisably the identical watch as the reference. Show it worn on a man wrist resting on a wooden cafe table beside a white coffee cup, dark suit sleeve and white shirt cuff visible, warm window light, shallow depth of field with a blurred cafe background. Photorealistic, no text, no watermark.' \
-  --images docs/fission-pattern/product-watch.jpg \
-  --size 1024x1536 --quality medium --imageFormat jpeg \
-  --save docs/fission-pattern/example-output-2.jpg
-```
-
-**输出：一套三张**
-
-| 1 · 正面主图 | 2 · 场景使用图 | 3 · 细节微距图 |
-| --- | --- | --- |
-| <img src="../../docs/fission-pattern/example-output-1.jpg" width="230"> | <img src="../../docs/fission-pattern/example-output-2.jpg" width="230"> | <img src="../../docs/fission-pattern/example-output-3.jpg" width="230"> |
-| 蓝图纸 + 黄铜直尺，冷调侧光 | 手腕佩戴 + 咖啡桌，暖色窗光 | 表盘/刻度/表冠微距，硬光勾边 |
-
-三张的商品保真段逐字相同，只有镜位段在变。
-
----
-
-## 9、常见问题
+## 8、常见问题
 
 | 现象 | 原因 | 处理 |
 | --- | --- | --- |
