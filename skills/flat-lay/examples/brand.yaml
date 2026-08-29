@@ -1,0 +1,38 @@
+# ⚠️ 由 scripts/build-skills.mjs 从 shared/examples/brand.yaml 同步生成，不要直接改这里。
+# 店铺品牌视觉规范 —— 所有生图技能读这一份，保证几百个 SKU 看起来像同一家店。
+#   node scripts/brand.mjs --brand brand.yaml --for flat-lay
+#   node scripts/gen.mjs --task flat-lay --brand brand.yaml --prompt '...'
+
+brand:
+  name: 示例品牌
+  # 一句话概括调性，会原样进 prompt
+  tone: quiet minimalist, warm and lived-in, never glossy or commercial
+
+model:
+  # 锁模特：给一张脸的参考图，所有技能都会把它作为最后一张参考图传入
+  reference: assets/model/face-a.jpg
+  description: East Asian woman, late twenties, natural makeup, shoulder-length black hair
+  body: slim, height around 168cm
+
+photography:
+  background: seamless off-white studio backdrop, RGB 248 248 246
+  lighting: soft large softbox from camera left, gentle fill, no hard shadows
+  camera: 85mm equivalent, eye level, shallow depth of field
+  grade: neutral white balance around 5200K, low contrast, slightly lifted blacks
+  crop: full body with headroom, product centered
+
+layout:
+  # 给带排版的技能（主图 / 详情页）用
+  margin: at least 8% empty margin on all sides
+  typeface: clean sans-serif, no decorative fonts
+  text_color: near-black on light background
+
+forbid:
+  - no visible brand logos other than the product's own
+  - no text or watermark
+  - no exaggerated poses or dramatic wind effects
+  - no oversaturated colors
+
+# 可选：把这些直接写进合规目标，生成时就按平台要求出图
+compliance:
+  platform: amazon

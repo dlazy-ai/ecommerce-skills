@@ -1,0 +1,11 @@
+{
+  "cases": [
+    {
+      "id": "white-to-amazon-main",
+      "prompt": "E-commerce main image. Place the product on a pure seamless white background, RGB 255,255,255, no gradient, no vignette, no shadow cast on the backdrop. The product fills at least 88% of the frame, tight crop, centered. Keep the product identical: same shape, color, material and logo placement. No text, no watermark.",
+      "images": ["docs/item-change-background/product-shoes.jpg"],
+      "platform": "amazon",
+      "expect": ["纯白底达标", "占比达标", "商品保真"]
+    }
+  ]
+}

@@ -290,6 +290,18 @@ for (const slug of dirs) {
 	fs.rmSync(stageDir, { recursive: true, force: true });
 	fs.mkdirSync(stageDir, { recursive: true });
 
+	// 技能自带的 scripts/ references/ examples/ 必须一起发：
+	// skill.md 里的「延伸阅读」指向它们，文档里的命令也要它们才能跑。
+	// 只发 SKILL.md 的话，线上装到的是一个死链加空命令的壳子。
+	for (const entry of fs.readdirSync(path.join(SKILLS_DIR, slug), { withFileTypes: true })) {
+		if (entry.name === "skill.md") continue;
+		fs.cpSync(
+			path.join(SKILLS_DIR, slug, entry.name),
+			path.join(stageDir, entry.name),
+			{ recursive: true },
+		);
+	}
+
 	let published = false;
 	for (let attempt = 0; attempt < 6 && !published; attempt++) {
 		// 版本号写进 frontmatter，重试改版本号时要跟着重写

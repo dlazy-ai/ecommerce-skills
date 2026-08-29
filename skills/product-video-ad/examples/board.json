@@ -1,0 +1,17 @@
+{
+  "_note": "商品短视频广告的分镜示例。image 换成你自己的图，prompt 与 caption 按商品改。",
+  "shots": [
+    { "id": "s1", "seconds": 3, "image": "examples/shot-hero.jpg",
+      "prompt": "Slow push-in on the model wearing the product, cold morning light, breath faintly visible. Keep the product identical to the reference image. No text overlay, no watermark. Photorealistic, cinematic.",
+      "caption": "零下十度，只穿了这一件" },
+    { "id": "s2", "seconds": 3, "image": "examples/shot-detail.jpg",
+      "prompt": "Macro pan across the surface texture, fibers catch the light. Keep the product identical to the reference image. No text overlay, no watermark.",
+      "caption": "粗棒针织，三层锁温" },
+    { "id": "s3", "seconds": 4, "image": "examples/shot-hero.jpg",
+      "prompt": "The model walks through a city street, the garment moves naturally with the body. Keep the product identical to the reference image. No text overlay, no watermark.",
+      "caption": "通勤、约会、周末都能穿" },
+    { "id": "s4", "seconds": 3, "image": "examples/shot-detail.jpg",
+      "prompt": "Product laid flat on light wood, slow top-down pull-back, clean and calm. Keep the product identical to the reference image. No text overlay, no watermark.",
+      "caption": "现在下单立减 50" }
+  ]
+}

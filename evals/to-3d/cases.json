@@ -1,0 +1,10 @@
+{
+  "cases": [
+    {
+      "id": "flatlay-to-ghost-mannequin",
+      "prompt": "Ghost mannequin product photography. Turn the flat-lay garment into a three-dimensional shot as if worn by an invisible mannequin: natural volume at the shoulders and chest, correct drape at the hem and sleeves, visible interior at the collar. Keep the garment 100% faithful in color, texture and construction. Pure white background. No text, no watermark.",
+      "images": ["docs/to-3d/garment-flatlay.jpg"],
+      "expect": ["肩胸有体积", "领口见内里", "版型不失真"]
+    }
+  ]
+}

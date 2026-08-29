@@ -1,0 +1,52 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: 装 Pillow
+        run: pip install Pillow
+
+      # shared/ 是单一真相源，skills/ 里的副本必须与它一致。
+      # 忘了跑 build 就提交，是这套结构最容易犯的错。
+      - name: 共享文件已同步
+        run: node scripts/build-skills.mjs --check
+
+      - name: 单元测试
+        run: node --test tests/unit.test.mjs
+
+      - name: 合规脚本测试
+        run: python3 -m unittest discover -s tests
+
+      # 结构 + 文档里的命令真的能跑（自动加 --dry-run，不产生费用）
+      - name: 技能回归
+        run: node scripts/run-evals.mjs
+
+      # 每个技能装出去后必须能独立运行 —— 漏同步一个 import 就会在这里炸
+      - name: 技能自包含
+        run: |
+          fail=0
+          for d in skills/*/; do
+            n=$(basename "$d")
+            if ! (cd "$d" && node scripts/gen.mjs --doctor >/dev/null 2>&1); then
+              echo "✗ $n 的 gen.mjs 无法独立运行"
+              fail=1
+            fi
+          done
+          [ $fail -eq 0 ] && echo "✓ 全部技能自包含"
+          exit $fail

@@ -1,6 +1,6 @@
 ---
 name: fabric-on-body
-description: 一键替换服装面料。上传一张服装版式图（款式/版型参考）和一张面料图（面料小样、布料特写），在保留原版型的前提下把服装换成新面料，生成真实样衣效果图。可指定服装类型。版型、剪裁、领口袖口下摆结构、缝线位置与拍摄角度全部保持不变，只有材质与其对应的光泽、垂坠感、褶皱形态发生变化。适用于面料商与服装厂在打样之前预览样衣、一个版型快速铺出多种面料的 SKU、开发季前做面料选型对比，避免每种面料都实打一件样衣。当用户需要「换面料」「面料上身」「同一版型换布料」「面料替换样衣」「不打样先看效果」时使用本技能。
+description: 一键替换服装面料。版式图 + 面料图 → 换上新面料的样衣图，垂坠与光泽随材质变。当用户说「换面料」「换材质」「试布料」「面料上身」「同款不同料」时使用。
 ---
 
 # fabric-on-body — 一键替换服装面料
@@ -99,97 +99,24 @@ Replace only the material.
 
 ---
 
-## 4、dLazy 工具调用
+## 4、工具调用
 
 本技能使用 dLazy 的 **`gpt-image-2`**（图像编辑模型；面料替换要求「几何完全不动、材质完全改变」，是典型的定向属性替换任务）。
 
-### Authentication
+### 调用方式
 
-All requests require a dLazy API key. The recommended way to authenticate is:
-
-```bash
-dlazy login
-```
-
-This runs a device-code flow (also works in remote shells) and **automatically saves your API key** to the local CLI config — no manual copy/paste required.
-
-#### Alternative: Set the Key Manually
-
-If you already have an API key, you can save it directly:
+两种等价写法，选一种。统一入口会自动选后端、失败重试、建目录落盘、估算成本：
 
 ```bash
-dlazy auth set YOUR_API_KEY
+# A. 统一入口（推荐）：可切任意后端，加 --dry-run 不计费空跑
+node scripts/gen.mjs --task fabric-on-body \
+  --prompt '<见下方 Prompt 模板>' \
+  --images <按下表顺序> \
+  --save output/fabric-on-body-<sku>.jpg
+
+# B. 直接用 dLazy CLI（不想引入 Node 依赖时，效果等价）
+dlazy gpt-image-2 --prompt '...' --images ... --save output/fabric-on-body.jpg
 ```
-
-The CLI saves the key in your user config directory (`~/.dlazy/config.json` on macOS/Linux, `%USERPROFILE%\.dlazy\config.json` on Windows), with file permissions restricted to your OS user account. You can also supply the key per-invocation via the `DLAZY_API_KEY` environment variable.
-
-#### Getting Your API Key Manually
-
-1. Sign in or create an account at [dlazy.com](https://dlazy.com)
-2. Go to [dlazy.com/dashboard/organization/api-key](https://dlazy.com/dashboard/organization/api-key)
-3. Copy the key shown in the API Key section
-
-Each key is scoped to your dLazy organization and can be **rotated or revoked at any time** from the same dashboard.
-
-### About & Provenance
-
-- **CLI source code**: [github.com/dlazyai/cli](https://github.com/dlazyai/cli)
-- **Maintainer**: dlazyai
-- **npm package**: `@dlazy/cli` (pinned to `1.2.3` in this skill's install spec)
-- **Homepage**: [dlazy.com](https://dlazy.com)
-
-You can install on demand without persisting a global binary by running:
-
-```bash
-npx @dlazy/cli@1.2.3 <command>
-```
-
-Or, if you prefer a global install, the skill's `metadata.clawdbot.install` field declares the exact pinned version (`npm install -g @dlazy/cli@1.2.3`). Review the GitHub source before installing.
-
-### How It Works
-
-This skill is a thin client over the dLazy hosted API. When you invoke it:
-
-- Prompts and parameters you provide are sent to the dLazy API endpoint (`api.dlazy.com`) for inference.
-- Any local file paths you pass to image / video / audio fields are uploaded to dLazy's media storage (`files.dlazy.com`) so the model can read them — the same flow as any cloud-based generation API.
-- Generated output URLs returned by the API are hosted on `files.dlazy.com`.
-
-This is the standard SaaS pattern; the skill itself does not access network or filesystem resources beyond what the dLazy CLI already handles. See [dlazy.com](https://dlazy.com) for the full service terms.
-
-### Usage
-
-**CRITICAL INSTRUCTION FOR AGENT**:
-Run the `dlazy gpt-image-2` command to get results.
-
-```bash
-dlazy gpt-image-2 -h
-
-Options:
-  --prompt <prompt>            Prompt
-  --images [images...]         Images [image: url or local path] (max 5)
-  --size <size>                Size [default: auto] (choices: "1024x1024",
-                               "1536x1024", "1024x1536", "2048x2048",
-                               "2048x1152", "3840x2160", "2160x3840", "auto")
-  --imageFormat <imageFormat>  Image Format [default: jpeg] (choices: "jpeg",
-                               "png", "webp")
-  --quality <quality>          Quality [default: medium] (choices: "low",
-                               "medium", "high")
-  --dry-run                    Print payload without executing the tool
-  --no-wait                    Return generateId immediately for async tasks
-  --timeout <seconds>          Max seconds to wait for async completion
-                               (default: "1800")
-  --input <jsonOrFile>         Inline JSON or @path/to/file.json — merged under
-                               flag values (flags win)
-  --save <path>                Download the result asset to this local path
-                               (mkdir + retry handled for you). A destination
-                               path — NOT a response format; for stdout shape
-                               use --format
-  --batch <n>                  Fan-out N parallel runs (cloud tools only)
-                               (default: "1")
-  -h, --help                   display help for command
-```
-
-> Any flag also accepts pipe references — `-` (auto-pick from upstream stdin), `@N` (n-th output), `@N.path` (jsonpath into output), `@*` (all primary values), `@stdin` / `@stdin:path` (whole envelope). See `dlazy --help` for details.
 
 **参数约定（本技能固定用法）**
 
@@ -201,26 +128,6 @@ Options:
 | `--imageFormat` | `jpeg` | 通用格式 |
 | `--batch` | `2` ~ `3` | 垂坠形态有随机性 |
 | `--save` | `docs/fabric-on-body/output-<版型>-<面料>.jpg` | 版型 × 面料矩阵命名 |
-
-### Output Format
-
-```json
-{
-  "ok": true,
-  "result": {
-    "tool": "gpt-image-2",
-    "modelId": "gpt-image-2",
-    "data": {
-      "urls": [
-        "https://files.dlazy.com/data/ai/20260817092703-057827edb8aa.jpg"
-      ]
-    },
-    "savedPath": "docs/fabric-on-body/example-output.jpg"
-  }
-}
-```
-
-> Async tasks (when `--no-wait` is passed) omit `data` and return a `task: { generateId, status }` field instead. Use `dlazy status <generateId> --wait` to poll.
 
 ### Command Examples
 
@@ -252,22 +159,13 @@ done
 dlazy gpt-image-2 --dry-run --prompt '...' --images a.jpg b.jpg --size 1024x1024 --quality high
 ```
 
-### Error Handling
+### 延伸阅读
 
-| Code | Error Type                         | Example Message                                                                                                          |
-| ---- | ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
-| 401  | Unauthorized (No API Key)          | `ok: false, code: "unauthorized", message: "API key is missing or invalid"`                                              |
-| 501  | Missing required parameter         | `error: required option '--prompt <prompt>' not specified`                                                                |
-| 502  | Local file read error              | `Error: Image file/Video file not found: C:\path\to\your\file`                                                            |
-| 503  | API request failed (no balance)    | `ok: false, code: "insufficient_balance"`                                                                                |
-| 503  | API request failed (server error)  | `HTTP status code error (500 server crash)`                                                                              |
-| 504  | Asynchronous task execution failed | `=== Generation Failed ===` / `{Specific error reason returned by backend, for example "Prompt violates safety policy"}`  |
-
-> **AGENT CRITICAL INSTRUCTION**:
-> 1. If the execution result returns `code: "insufficient_balance"`, you MUST explicitly inform the user that their credits are insufficient and guide them to recharge: [https://dlazy.com/dashboard/organization/settings?tab=credits](https://dlazy.com/dashboard/organization/settings?tab=credits)
-> 2. If the execution result returns `code: "unauthorized"` or indicates missing API key, you MUST inform the user to get their API key from [https://dlazy.com/dashboard/organization/api-key](https://dlazy.com/dashboard/organization/api-key) and save it using `dlazy auth set <key>` and resume the task.
-
----
+| 要查什么 | 去哪 |
+| --- | --- |
+| 认证、多后端配置、输出结构、错误码 | [`references/provider-cli.md`](references/provider-cli.md) |
+| `gpt-image-2` 的全部可用参数 | [`references/model-flags.md`](references/model-flags.md) |
+| 统一入口的全部选项 | `node scripts/gen.mjs --help` |
 
 ## 5、Prompt 模板
 

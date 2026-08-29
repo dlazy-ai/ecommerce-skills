@@ -1,0 +1,133 @@
+{
+  "_note": "每个技能的短描述（决定触发准确率与常驻上下文开销）与需要同步的共享文件。build-skills.mjs 读这里。",
+  "sharedRoot": "shared",
+  "defaultAssets": [
+    "scripts/gen.mjs",
+    "scripts/brand.mjs",
+    "scripts/lib/providers.mjs",
+    "scripts/lib/miniyaml.mjs",
+    "scripts/lib/tasks.json",
+    "references/provider-cli.md",
+    "examples/brand.yaml"
+  ],
+  "skills": {
+    "flat-lay": {
+      "description": "服装平铺图一键上身试穿。服装平铺图 + 姿势参考图 → 模特上身商拍图，款式、颜色、织法、版型保持不变。当用户说「平铺图转模特图」「衣服上身」「虚拟试穿」「AI 试衣」「让模特穿上」时使用。"
+    },
+    "wear-everything": {
+      "description": "鞋包配饰真人穿戴图。商品图 + 模特参考图 → 真人佩戴图，落位、透视与阴影自然。当用户说「鞋包上脚」「配饰上身」「墨镜戴上」「首饰佩戴图」「包包上身」时使用。"
+    },
+    "image-fusion": {
+      "description": "多单品融合成一整套 Look。最多 8 张单品图 → 同一模特身上的完整搭配商拍图，每件单品保真。当用户说「多件搭配」「融图」「组一套 look」「搭配图」「几件衣服合成一张」时使用。"
+    },
+    "one-shot": {
+      "description": "已有模特图换模特、换背景。一张模特图 → 多人群多场景版本，商品本身不变。当用户说「换模特」「换背景」「换人种」「一图多版」「同一件衣服换个人」时使用。"
+    },
+    "fission-pattern": {
+      "description": "一张商品图裂变成整套素材。商品图 + 卖点 → 多角度多场景成套图，够铺满一屏。当用户说「裂变套图」「一张变一屏」「凑够详情页」「出一套图」时使用。"
+    },
+    "item-detail": {
+      "description": "生成带中文排版的详情页模块。商品图 + 卖点 → 可直接上架的详情页图文模块。当用户说「详情页」「做详情图」「商品描述图」「详情页模块」时使用。"
+    },
+    "creative-scene": {
+      "description": "从零创意生图，也可定向改模特、姿势、搭配。一句描述（可选参考图）→ 图。当用户说「创意生图」「生成一张」「改个姿势」「换模板」「随便来张图」时使用。"
+    },
+    "batch-image": {
+      "description": "多商品批量生图流水线。商品清单 CSV → 整批统一视觉的商拍图，带并发、重试、断点续跑、成本熔断与挑图联系表。当用户说「批量生图」「一批商品」「跑整个 SKU 表」「几百个商品出图」时使用。",
+      "assets": [
+        "scripts/batch.mjs",
+        "scripts/run_loop.mjs",
+        "scripts/check_listing.py",
+        "references/platform-specs.md"
+      ]
+    },
+    "detect-task": {
+      "description": "投前 AI 图真实性质检。待检图 → 风险等级 + 8 项逐条判定 + 可直接追加到 prompt 的修正句，可自动重跑直到达标。当用户说「投前检测」「图片质检」「检查有没有崩」「上架前把关」「这图能不能用」时使用。",
+      "assets": [
+        "scripts/run_loop.mjs",
+        "scripts/check_listing.py",
+        "references/platform-specs.md"
+      ]
+    },
+    "to-3d": {
+      "description": "平铺图转隐形模特立体图。平铺图 → 有体积感与版型的立体展示图。当用户说「转 3D」「立体图」「隐形模特」「把衣服撑起来」时使用。"
+    },
+    "clothing-extraction": {
+      "description": "从任意图提取干净商品平铺图。真人图 / 街拍图 → 白底平铺商品图。当用户说「提取衣服」「扒图」「转平铺」「抠成商品图」「从买家秀提取」时使用。"
+    },
+    "fabric-on-body": {
+      "description": "一键替换服装面料。版式图 + 面料图 → 换上新面料的样衣图，垂坠与光泽随材质变。当用户说「换面料」「换材质」「试布料」「面料上身」「同款不同料」时使用。"
+    },
+    "clothing-detail": {
+      "description": "服装工艺细节放大图。服装图 → 面料纹理、走线、织法的微距特写。当用户说「细节图」「特写」「面料放大」「工艺展示」「近景细节」时使用。"
+    },
+    "clothing-grass-planting": {
+      "description": "同款穿搭换模特换场景做种草图。穿搭图 → 社交平台风格的种草图。当用户说「种草图」「小红书风格」「换场景发帖」「达人图」时使用。"
+    },
+    "item-selling-point": {
+      "description": "商品图生成带文案排版的转化主图。商品图 + 卖点 → 带中文文案的电商主图。当用户说「主图」「加卖点文案」「转化图」「促销图」「主图文案」时使用。"
+    },
+    "item-change-background": {
+      "description": "商品换背景。白底商品图 → 逼真场景图，光影与投影匹配新环境。当用户说「换背景」「加场景」「白底转场景」「放到桌面上」时使用。"
+    },
+    "remove-watermark": {
+      "description": "去水印去文字。带水印 / 文字 / logo 的图 → 干净图，背景纹理自然补全。当用户说「去水印」「去文字」「擦掉 logo」「把字去了」时使用。"
+    },
+    "material-enhancement": {
+      "description": "材质质感增强与纹理重建。糊掉的图 + 高清商品图 → 纹理清晰可信的图。当用户说「增强质感」「图糊了」「补纹理」「提清晰度」时使用。"
+    },
+    "item-repair": {
+      "description": "商品精修、去褶皱。随手拍的商品图 → 可直接上架的精修图。当用户说「精修」「去褶皱」「修图」「拍得不好看」「整理一下」时使用。"
+    },
+    "platform-compliance": {
+      "description": "上架前平台合规校验与自动修复。待上架图 → Amazon / TikTok Shop / Temu / Shopee / 淘宝 各平台的通过或驳回风险报告，可一键修成合规图。当用户说「会不会被驳回」「合规检查」「白底不达标」「主图规格」「传上去被拒」时使用。",
+      "assets": [
+        "scripts/check_listing.py",
+        "references/platform-specs.md"
+      ]
+    },
+    "brand-kit": {
+      "description": "店铺品牌视觉锁定。一份 brand.yaml 定义模特、色温、构图、留白与文案语气，所有生图技能读它，保证跨 SKU 视觉统一。当用户说「统一风格」「同一个模特」「店铺调性」「品牌规范」「几百个 SKU 看起来像一家店」时使用。",
+      "assets": [
+        "references/brand-schema.md"
+      ]
+    },
+    "main-image-video": {
+      "description": "静态主图转主图视频。一张商品图 → 3–5 秒可上架的主图短视频。当用户说「主图视频」「图转视频」「让图动起来」「加个视频」时使用。",
+      "assets": [
+        "scripts/video.mjs",
+        "references/video-backends.md"
+      ]
+    },
+    "product-video-ad": {
+      "description": "商品短视频广告。卖点 → 分镜脚本 → 分段生成 → 拼接加字幕成片。当用户说「做条广告」「短视频」「投流素材」「分镜脚本」「带货视频」时使用。",
+      "assets": [
+        "scripts/video.mjs",
+        "references/video-backends.md",
+        "examples/board.json"
+      ]
+    },
+    "ugc-testimonial": {
+      "description": "UGC 口播种草视频。商品 + 人设 → 口播脚本与成片，达人自拍质感。当用户说「口播视频」「种草视频」「达人风格」「UGC」「真人推荐」时使用。",
+      "assets": [
+        "scripts/video.mjs",
+        "references/video-backends.md",
+        "examples/ugc-board.json"
+      ]
+    },
+    "listing-optimizer": {
+      "description": "主图 A/B 组与转化复盘。商品图 + 卖点 → 多组对照主图 + 每组的差异假设 + 复盘模板。当用户说「A/B 测试」「主图优化」「提点击率」「哪版更好」「换个版本试试」时使用。",
+      "assets": [
+        "scripts/check_listing.py",
+        "references/platform-specs.md"
+      ]
+    },
+    "cross-border-localize": {
+      "description": "跨境一套素材多区域本地化。一套素材 → 多语言文案、尺码换算表、区域合规标识。当用户说「跨境本地化」「多语言」「翻译上架」「海外版本」「英文版主图」时使用。",
+      "assets": [
+        "scripts/check_listing.py",
+        "references/platform-specs.md"
+      ]
+    }
+  }
+}

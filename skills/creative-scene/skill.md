@@ -1,6 +1,6 @@
 ---
 name: creative-scene
-description: 创意生图：输入你想象中的画面，自由创作图片。用一句自然语言描述（人物 + 穿着 + 场景氛围 + 图片视角）生成电商与种草风格的图片，也可带一张参考图做图像编辑。内置大型提示词词库，按 室内/室外/半身/全身/特写/居家/街道/场景图/改模特/改姿势/改搭配 分类，覆盖模特形象替换（年龄/种族/肤色/身材/发型/五官/眼神）、姿势替换（站姿/走姿/坐姿/背身/跑动）、穿搭替换（上衣/下装/鞋/配饰）三大类可复制的指令模板。适用于没有现成素材时凭空造图、给已有图换模特换姿势换搭配、探索一个款式在不同场景下的表现、批量产出种草配图。当用户需要「文生图」「凭空生成商品场景图」「改姿势」「改模特」「改搭配」「创意生图」时使用本技能。
+description: 从零创意生图，也可定向改模特、姿势、搭配。一句描述（可选参考图）→ 图。当用户说「创意生图」「生成一张」「改个姿势」「换模板」「随便来张图」时使用。
 ---
 
 # creative-scene — 输入想象中的画面自由创作图片
@@ -123,94 +123,24 @@ dlazy banana-pro \
 
 ---
 
-## 4、dLazy 工具调用
+## 4、工具调用
 
 本技能使用 dLazy 的 **`banana-pro`**（高质量文生图模型，可选带参考图；擅长细节主视觉、商品图与品牌风格图像，适合从零造图这一主场景）。
 
-### Authentication
+### 调用方式
 
-All requests require a dLazy API key. The recommended way to authenticate is:
-
-```bash
-dlazy login
-```
-
-This runs a device-code flow (also works in remote shells) and **automatically saves your API key** to the local CLI config — no manual copy/paste required.
-
-#### Alternative: Set the Key Manually
-
-If you already have an API key, you can save it directly:
+两种等价写法，选一种。统一入口会自动选后端、失败重试、建目录落盘、估算成本：
 
 ```bash
-dlazy auth set YOUR_API_KEY
+# A. 统一入口（推荐）：可切任意后端，加 --dry-run 不计费空跑
+node scripts/gen.mjs --task creative-scene \
+  --prompt '<见下方 Prompt 模板>' \
+  --images <按下表顺序> \
+  --save output/creative-scene-<sku>.jpg
+
+# B. 直接用 dLazy CLI（不想引入 Node 依赖时，效果等价）
+dlazy banana-pro --prompt '...' --images ... --save output/creative-scene.jpg
 ```
-
-The CLI saves the key in your user config directory (`~/.dlazy/config.json` on macOS/Linux, `%USERPROFILE%\.dlazy\config.json` on Windows), with file permissions restricted to your OS user account. You can also supply the key per-invocation via the `DLAZY_API_KEY` environment variable.
-
-#### Getting Your API Key Manually
-
-1. Sign in or create an account at [dlazy.com](https://dlazy.com)
-2. Go to [dlazy.com/dashboard/organization/api-key](https://dlazy.com/dashboard/organization/api-key)
-3. Copy the key shown in the API Key section
-
-Each key is scoped to your dLazy organization and can be **rotated or revoked at any time** from the same dashboard.
-
-### About & Provenance
-
-- **CLI source code**: [github.com/dlazyai/cli](https://github.com/dlazyai/cli)
-- **Maintainer**: dlazyai
-- **npm package**: `@dlazy/cli` (pinned to `1.2.3` in this skill's install spec)
-- **Homepage**: [dlazy.com](https://dlazy.com)
-
-You can install on demand without persisting a global binary by running:
-
-```bash
-npx @dlazy/cli@1.2.3 <command>
-```
-
-Or, if you prefer a global install, the skill's `metadata.clawdbot.install` field declares the exact pinned version (`npm install -g @dlazy/cli@1.2.3`). Review the GitHub source before installing.
-
-### How It Works
-
-This skill is a thin client over the dLazy hosted API. When you invoke it:
-
-- Prompts and parameters you provide are sent to the dLazy API endpoint (`api.dlazy.com`) for inference.
-- Any local file paths you pass to image / video / audio fields are uploaded to dLazy's media storage (`files.dlazy.com`) so the model can read them — the same flow as any cloud-based generation API.
-- Generated output URLs returned by the API are hosted on `files.dlazy.com`.
-
-This is the standard SaaS pattern; the skill itself does not access network or filesystem resources beyond what the dLazy CLI already handles. See [dlazy.com](https://dlazy.com) for the full service terms.
-
-### Usage
-
-**CRITICAL INSTRUCTION FOR AGENT**:
-Run the `dlazy banana-pro` command to get results.
-
-```bash
-dlazy banana-pro -h
-
-Options:
-  --prompt <prompt>            Prompt
-  --images [images...]         Images [image: url or local path] (max 14)
-  --aspectRatio <aspectRatio>  Aspect Ratio [default: auto] (choices: "auto",
-                               "1:1", "4:3", "3:4", "16:9", "9:16", "21:9")
-  --imageSize <imageSize>      Image Size [default: 1K] (choices: "1K", "2K",
-                               "4K")
-  --dry-run                    Print payload without executing the tool
-  --no-wait                    Return generateId immediately for async tasks
-  --timeout <seconds>          Max seconds to wait for async completion
-                               (default: "1800")
-  --input <jsonOrFile>         Inline JSON or @path/to/file.json — merged under
-                               flag values (flags win)
-  --save <path>                Download the result asset to this local path
-                               (mkdir + retry handled for you). A destination
-                               path — NOT a response format; for stdout shape
-                               use --format
-  --batch <n>                  Fan-out N parallel runs (cloud tools only)
-                               (default: "1")
-  -h, --help                   display help for command
-```
-
-> Any flag also accepts pipe references — `-` (auto-pick from upstream stdin), `@N` (n-th output), `@N.path` (jsonpath into output), `@*` (all primary values), `@stdin` / `@stdin:path` (whole envelope). See `dlazy --help` for details.
 
 **参数约定（本技能固定用法）**
 
@@ -223,26 +153,6 @@ Options:
 | `--save` | `docs/creative-scene/output-<主题>.jpg` | 按主题归档 |
 
 > **英文 vs 中文 prompt**：场景与氛围类描述中英文都可以；但**服装的材质与工艺细节用英文更稳定**。定向修改模板用中文即可（第四节的句式实测有效）。
-
-### Output Format
-
-```json
-{
-  "ok": true,
-  "result": {
-    "tool": "banana-pro",
-    "modelId": "banana-pro",
-    "data": {
-      "urls": [
-        "https://files.dlazy.com/data/ai/20260817092703-057827edb8aa.jpg"
-      ]
-    },
-    "savedPath": "docs/creative-scene/example-output.jpg"
-  }
-}
-```
-
-> Async tasks (when `--no-wait` is passed) omit `data` and return a `task: { generateId, status }` field instead. Use `dlazy status <generateId> --wait` to poll.
 
 ### Command Examples
 
@@ -276,22 +186,13 @@ dlazy banana-pro \
 dlazy banana-pro --dry-run --prompt '...' --aspectRatio 3:4 --imageSize 2K
 ```
 
-### Error Handling
+### 延伸阅读
 
-| Code | Error Type                         | Example Message                                                                                                          |
-| ---- | ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
-| 401  | Unauthorized (No API Key)          | `ok: false, code: "unauthorized", message: "API key is missing or invalid"`                                              |
-| 501  | Missing required parameter         | `error: required option '--prompt <prompt>' not specified`                                                                |
-| 502  | Local file read error              | `Error: Image file/Video file not found: C:\path\to\your\file`                                                            |
-| 503  | API request failed (no balance)    | `ok: false, code: "insufficient_balance"`                                                                                |
-| 503  | API request failed (server error)  | `HTTP status code error (500 server crash)`                                                                              |
-| 504  | Asynchronous task execution failed | `=== Generation Failed ===` / `{Specific error reason returned by backend, for example "Prompt violates safety policy"}`  |
-
-> **AGENT CRITICAL INSTRUCTION**:
-> 1. If the execution result returns `code: "insufficient_balance"`, you MUST explicitly inform the user that their credits are insufficient and guide them to recharge: [https://dlazy.com/dashboard/organization/settings?tab=credits](https://dlazy.com/dashboard/organization/settings?tab=credits)
-> 2. If the execution result returns `code: "unauthorized"` or indicates missing API key, you MUST inform the user to get their API key from [https://dlazy.com/dashboard/organization/api-key](https://dlazy.com/dashboard/organization/api-key) and save it using `dlazy auth set <key>` and resume the task.
-
----
+| 要查什么 | 去哪 |
+| --- | --- |
+| 认证、多后端配置、输出结构、错误码 | [`references/provider-cli.md`](references/provider-cli.md) |
+| `banana-pro` 的全部可用参数 | [`references/model-flags.md`](references/model-flags.md) |
+| 统一入口的全部选项 | `node scripts/gen.mjs --help` |
 
 ## 5、Prompt 模板
 

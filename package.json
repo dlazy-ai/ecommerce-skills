@@ -1,8 +1,8 @@
 {
   "name": "ecommerce-skills",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "private": true,
-  "description": "面向电商视觉生产的 Agent 技能库",
+  "description": "面向电商视觉生产的 Agent 技能库：静态图、视频、批量流水线与上架合规校验，支持多后端",
   "type": "module",
   "license": "MIT",
   "repository": {
@@ -13,6 +13,13 @@
     "node": ">=20"
   },
   "scripts": {
+    "build": "node scripts/build-skills.mjs",
+    "build:check": "node scripts/build-skills.mjs --check",
+    "test": "node --test tests/unit.test.mjs && python3 -m unittest discover -s tests",
+    "eval": "node scripts/run-evals.mjs",
+    "eval:live": "node scripts/run-evals.mjs --live",
+    "doctor": "node shared/scripts/gen.mjs --doctor",
+    "mcp": "node mcp/server.mjs",
     "publish:skills": "node scripts/publish-skills.mjs",
     "publish:dry": "node scripts/publish-skills.mjs --dry-run",
     "publish:force": "node scripts/publish-skills.mjs --force",

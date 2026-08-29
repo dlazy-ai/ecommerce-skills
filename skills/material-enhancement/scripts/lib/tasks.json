@@ -1,0 +1,32 @@
+{
+  "_note": "技能 → 默认模型与参数。dlazy 列为默认后端的模型名；其他后端走 providers.mjs 的通用映射，可用 GEN_MODEL_<PROVIDER> 覆盖。",
+  "_credits": { "gpt-image-2": 60, "seedream-5.0": 30, "seedream-5.0-pro": 45, "banana-pro": 25, "claude-sonnet-5": 3 },
+  "tasks": {
+    "flat-lay":                { "model": "gpt-image-2",      "size": "1024x1536", "quality": "high",   "format": "jpeg" },
+    "wear-everything":         { "model": "gpt-image-2",      "size": "1024x1536", "quality": "medium", "format": "jpeg" },
+    "image-fusion":            { "model": "seedream-5.0",     "size": "3:4",       "resolution": "2k" },
+    "one-shot":                { "model": "gpt-image-2",      "size": "1024x1536", "quality": "medium", "format": "jpeg" },
+    "fission-pattern":         { "model": "gpt-image-2",      "size": "1024x1536", "quality": "medium", "format": "jpeg" },
+    "item-detail":             { "model": "seedream-5.0-pro", "size": "3:4",       "resolution": "2k" },
+    "creative-scene":          { "model": "banana-pro",       "size": "1024x1536", "format": "jpeg" },
+    "batch-image":             { "model": "seedream-5.0",     "size": "3:4",       "resolution": "2k" },
+    "to-3d":                   { "model": "gpt-image-2",      "size": "1024x1024", "quality": "high",   "format": "jpeg" },
+    "clothing-extraction":     { "model": "gpt-image-2",      "size": "1024x1024", "quality": "high",   "format": "jpeg" },
+    "fabric-on-body":          { "model": "gpt-image-2",      "size": "1024x1536", "quality": "high",   "format": "jpeg" },
+    "clothing-detail":         { "model": "gpt-image-2",      "size": "1024x1024", "quality": "high",   "format": "jpeg" },
+    "clothing-grass-planting": { "model": "gpt-image-2",      "size": "1024x1536", "quality": "medium", "format": "jpeg" },
+    "item-selling-point":      { "model": "seedream-5.0-pro", "size": "1:1",       "resolution": "2k" },
+    "item-change-background":  { "model": "gpt-image-2",      "size": "1024x1024", "quality": "high",   "format": "jpeg" },
+    "remove-watermark":        { "model": "gpt-image-2",      "size": "1024x1024", "quality": "high",   "format": "jpeg" },
+    "material-enhancement":    { "model": "gpt-image-2",      "size": "1024x1024", "quality": "high",   "format": "jpeg" },
+    "item-repair":             { "model": "gpt-image-2",      "size": "1024x1024", "quality": "high",   "format": "jpeg" },
+    "detect-task":             { "model": "claude-sonnet-5",  "text": true },
+    "listing-optimizer":       { "model": "gpt-image-2",      "size": "1024x1024", "quality": "high",   "format": "jpeg" },
+    "cross-border-localize":   { "model": "seedream-5.0-pro", "size": "1:1",       "resolution": "2k" },
+    "brand-kit":               { "model": "gpt-image-2",      "size": "1024x1536", "quality": "high",   "format": "jpeg" },
+    "platform-compliance":     { "model": "claude-sonnet-5",  "text": true },
+    "main-image-video":        { "model": "$DLAZY_VIDEO_MODEL", "video": true },
+    "product-video-ad":        { "model": "$DLAZY_VIDEO_MODEL", "video": true },
+    "ugc-testimonial":         { "model": "$DLAZY_VIDEO_MODEL", "video": true }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "_note": "UGC 口播分镜示例。口播镜头与商品镜头交替，口播镜头必须用同一张脸的参考图。",
+  "shots": [
+    { "id": "talk1", "seconds": 4, "image": "examples/face.jpg",
+      "prompt": "Handheld selfie-style shot, young woman talking to camera in a bright apartment, slight natural camera shake, warm window light, casual home background. She is wearing the product. Phone-camera look, not cinematic.",
+      "caption": "零下五度，我就穿了这一件" },
+    { "id": "detail1", "seconds": 3, "image": "examples/shot-detail.jpg",
+      "prompt": "Handheld close-up of the product texture, phone-camera look, natural indoor light, slight shake.",
+      "caption": "粗棒针织，比看起来厚" },
+    { "id": "talk2", "seconds": 4, "image": "examples/face.jpg",
+      "prompt": "Handheld selfie-style shot, same woman, same apartment, she pulls the collar up and smiles. Phone-camera look, not cinematic.",
+      "caption": "洗了三次也没变形" }
+  ]
+}

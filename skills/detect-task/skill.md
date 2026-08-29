@@ -1,6 +1,6 @@
 ---
 name: detect-task
-description: 投前检测（企业功能）。在图片投放上架之前做自动质检：检测 AI 生成图的真实性与崩坏风险，输出风险等级（低/中/高风险）与命中的具体风险项（商品崩坏、人脸不自然、手部异常、肢体结构错误、文字乱码、光影矛盾、边缘融合痕迹、平台合规），平均每张约 1 秒完成，用于提升投放成功率、降低因图片问题被平台驳回或影响转化的风险。本技能把它落地为一条命令行质检环节：用视觉模型逐项判定并输出结构化中文报告，同时给出可直接追加到生成 prompt 的英文修正句，形成「生成 → 检测 → 重跑」闭环。适用于 AI 生图上架前的把关、批量出图后的抽样质检、把不合格图自动打回重跑。当用户需要「投前检测」「图片质检」「检查 AI 图有没有崩」「上架前把关」「AI 图真实性检测」时使用本技能。
+description: 投前 AI 图真实性质检。待检图 → 风险等级 + 8 项逐条判定 + 可直接追加到 prompt 的修正句，可自动重跑直到达标。当用户说「投前检测」「图片质检」「检查有没有崩」「上架前把关」「这图能不能用」时使用。
 ---
 
 # detect-task — 投放前 AI 图真实性检测
@@ -114,90 +114,24 @@ dlazy claude-sonnet-5 \
 
 ---
 
-## 4、dLazy 工具调用
+## 4、工具调用
 
 本技能使用 dLazy 的 **`claude-sonnet-5`**（具备图像理解能力的文本模型；本技能要的是**判断与结构化报告**而不是图片，需要能逐项审查画面并写出可执行的修正建议——单张约 3 credits）。
 
-### Authentication
+### 调用方式
 
-All requests require a dLazy API key. The recommended way to authenticate is:
-
-```bash
-dlazy login
-```
-
-This runs a device-code flow (also works in remote shells) and **automatically saves your API key** to the local CLI config — no manual copy/paste required.
-
-#### Alternative: Set the Key Manually
-
-If you already have an API key, you can save it directly:
+两种等价写法，选一种。统一入口会自动选后端、失败重试、建目录落盘、估算成本：
 
 ```bash
-dlazy auth set YOUR_API_KEY
+# A. 统一入口（推荐）：可切任意后端，加 --dry-run 不计费空跑
+node scripts/gen.mjs --task detect-task \
+  --prompt '<见下方 Prompt 模板>' \
+  --images <按下表顺序> \
+  --save output/detect-task-<sku>.jpg
+
+# B. 直接用 dLazy CLI（不想引入 Node 依赖时，效果等价）
+dlazy claude-sonnet-5 --prompt '...' --images ... --save output/detect-task.jpg
 ```
-
-The CLI saves the key in your user config directory (`~/.dlazy/config.json` on macOS/Linux, `%USERPROFILE%\.dlazy\config.json` on Windows), with file permissions restricted to your OS user account. You can also supply the key per-invocation via the `DLAZY_API_KEY` environment variable.
-
-#### Getting Your API Key Manually
-
-1. Sign in or create an account at [dlazy.com](https://dlazy.com)
-2. Go to [dlazy.com/dashboard/organization/api-key](https://dlazy.com/dashboard/organization/api-key)
-3. Copy the key shown in the API Key section
-
-Each key is scoped to your dLazy organization and can be **rotated or revoked at any time** from the same dashboard.
-
-### About & Provenance
-
-- **CLI source code**: [github.com/dlazyai/cli](https://github.com/dlazyai/cli)
-- **Maintainer**: dlazyai
-- **npm package**: `@dlazy/cli` (pinned to `1.2.3` in this skill's install spec)
-- **Homepage**: [dlazy.com](https://dlazy.com)
-
-You can install on demand without persisting a global binary by running:
-
-```bash
-npx @dlazy/cli@1.2.3 <command>
-```
-
-Or, if you prefer a global install, the skill's `metadata.clawdbot.install` field declares the exact pinned version (`npm install -g @dlazy/cli@1.2.3`). Review the GitHub source before installing.
-
-### How It Works
-
-This skill is a thin client over the dLazy hosted API. When you invoke it:
-
-- Prompts and parameters you provide are sent to the dLazy API endpoint (`api.dlazy.com`) for inference.
-- Any local file paths you pass to image / video / audio fields are uploaded to dLazy's media storage (`files.dlazy.com`) so the model can read them — the same flow as any cloud-based generation API.
-- Generated output URLs returned by the API are hosted on `files.dlazy.com`.
-
-This is the standard SaaS pattern; the skill itself does not access network or filesystem resources beyond what the dLazy CLI already handles. See [dlazy.com](https://dlazy.com) for the full service terms.
-
-### Usage
-
-**CRITICAL INSTRUCTION FOR AGENT**:
-Run the `dlazy claude-sonnet-5` command to get results.
-
-```bash
-dlazy claude-sonnet-5 -h
-
-Options:
-  --prompt <prompt>     Prompt
-  --images [images...]  Images [image: url or local path] (max 10)
-  --videos [videos...]  Videos [video: url or local path] (max 8)
-  --dry-run             Print payload without executing the tool
-  --no-wait             Return generateId immediately for async tasks
-  --timeout <seconds>   Max seconds to wait for async completion (default:
-                        "1800")
-  --input <jsonOrFile>  Inline JSON or @path/to/file.json — merged under flag
-                        values (flags win)
-  --save <path>         Download the result asset to this local path (mkdir +
-                        retry handled for you). A destination path — NOT a
-                        response format; for stdout shape use --format
-  --batch <n>           Fan-out N parallel runs (cloud tools only) (default:
-                        "1")
-  -h, --help            display help for command
-```
-
-> Any flag also accepts pipe references — `-` (auto-pick from upstream stdin), `@N` (n-th output), `@N.path` (jsonpath into output), `@*` (all primary values), `@stdin` / `@stdin:path` (whole envelope). See `dlazy --help` for details.
 
 **参数约定（本技能固定用法）**
 
@@ -217,26 +151,6 @@ dlazy claude-sonnet-5 --prompt '...' --images a.jpg \
 
 > `dlazy --format text <tool>` 也可以把纯文本打到 stdout，注意 `--format` 是**全局**选项，必须写在子命令**之前**。
 
-### Output Format
-
-```json
-{
-  "ok": true,
-  "result": {
-    "tool": "claude-sonnet-5",
-    "modelId": "claude-sonnet-5",
-    "data": {
-      "urls": [
-        "https://files.dlazy.com/data/ai/20260817092703-057827edb8aa.jpg"
-      ]
-    },
-    "savedPath": "docs/detect-task/example-output.jpg"
-  }
-}
-```
-
-> Async tasks (when `--no-wait` is passed) omit `data` and return a `task: { generateId, status }` field instead. Use `dlazy status <generateId> --wait` to poll.
-
 ### Command Examples
 
 ```bash
@@ -248,6 +162,15 @@ dlazy claude-sonnet-5 \
 
 # complex call: 固定质检 prompt + 批量抽检 + 高风险自动打回
 QC='你是电商投放前的图片质检员。审查这张 AI 生成的服装商拍图能否直接用于电商投放。全部用中文作答（第 4 项的 prompt 修正句除外）。严格按以下结构输出：
+
+### 延伸阅读
+
+| 要查什么 | 去哪 |
+| --- | --- |
+| 认证、多后端配置、输出结构、错误码 | [`references/provider-cli.md`](references/provider-cli.md) |
+| `claude-sonnet-5` 的全部可用参数 | [`references/model-flags.md`](references/model-flags.md) |
+| 统一入口的全部选项 | `node scripts/gen.mjs --help` |
+
 ## 1. 风险等级
 低风险 / 中风险 / 高风险（三选一）
 ## 2. 风险项逐条判定

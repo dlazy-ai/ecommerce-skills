@@ -147,3 +147,9 @@ samples/
 .publish-tmp/
 scripts/.publish-skills.done
 .DS_Store
+
+# 生成产物
+output/
+evals/*/out/
+__pycache__/
+*.pyc

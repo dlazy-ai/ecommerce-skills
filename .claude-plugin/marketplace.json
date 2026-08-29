@@ -1,0 +1,22 @@
+{
+  "name": "ecommerce-skills",
+  "owner": { "name": "dlazyai", "url": "https://github.com/dlazyai" },
+  "metadata": {
+    "description": "电商视觉生产技能库：平铺图 → 上身图 → 裂变套图 → 详情页 → 视频 → 投前质检 → 平台合规",
+    "version": "2.0.0"
+  },
+  "plugins": [
+    {
+      "name": "ecommerce-skills",
+      "source": "./",
+      "description": "26 个可组合的电商视觉生产技能，覆盖静态图、视频、批量流水线与上架合规校验。支持 dLazy / OpenAI / Gemini / fal / Replicate / 火山方舟 多后端。",
+      "version": "2.0.0",
+      "author": { "name": "dlazyai" },
+      "homepage": "https://github.com/dlazyai/ecommerce-skills",
+      "license": "MIT",
+      "keywords": ["ecommerce", "product-photography", "image-generation", "virtual-try-on",
+                   "amazon", "tiktok-shop", "compliance", "电商", "商拍", "AI生图"],
+      "skills": "./skills"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "_note": "golden case：改了 prompt 模板之后跑一遍，确认没把原来能出的效果改坏。加 --live 才会真生成。",
+  "cases": [
+    {
+      "id": "knit-sweater-on-model",
+      "prompt": "E-commerce on-model product photography. Image 1 is the garment flat-lay: an olive-green cable-knit crewneck sweater. Image 2 is the pose/scene reference. Dress the model from image 2 in the garment from image 1. Keep the garment 100% faithful: identical olive-green color, cable-knit and diamond texture, oversized drop-shoulder fit, ribbed collar and cuffs. Reproduce the reference exactly for pose, camera angle, crop, lighting and background. Photorealistic full-frame catalog shot, no text or watermark.",
+      "images": ["docs/flat-lay/garment-flatlay.jpg", "docs/flat-lay/pose-reference.jpg"],
+      "expect": ["麻花织法保留", "落肩版型保留", "姿势与背景照抄参考图"]
+    },
+    {
+      "id": "knit-sweater-amazon-ready",
+      "prompt": "E-commerce main image. Image 1 is the garment flat-lay, image 2 is the pose reference. Dress the model from image 2 in the garment from image 1, keeping the garment 100% faithful. Pure seamless white background, RGB 255,255,255, no gradient. The subject fills at least 88% of the frame. No text, no logo, no watermark.",
+      "images": ["docs/flat-lay/garment-flatlay.jpg", "docs/flat-lay/pose-reference.jpg"],
+      "platform": "amazon",
+      "expect": ["白底达标", "主体占比 ≥85%"]
+    }
+  ]
+}

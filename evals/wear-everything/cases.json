@@ -1,0 +1,10 @@
+{
+  "cases": [
+    {
+      "id": "sunglasses-on-face",
+      "prompt": "On-model accessory product photography. Image 1 is the product: tortoise-brown rectangular sunglasses with dark grey lenses. Image 2 is the model/scene reference. Put the sunglasses from image 1 onto the face of the model in image 2, correctly seated on the nose bridge and ears with natural perspective and a soft shadow on the cheekbones. Keep the product 100% faithful. Change nothing else. Photorealistic, no text, no watermark.",
+      "images": ["docs/wear-everything/product-sunglasses.jpg", "docs/wear-everything/model-reference.jpg"],
+      "expect": ["鼻梁耳挂关系正确", "玳瑁纹理保留", "模特其余部分不变"]
+    }
+  ]
+}

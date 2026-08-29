@@ -1,6 +1,6 @@
 ---
 name: image-fusion
-description: 自由搭配组合生成模特图。一次上传最多 8 张单品图（上装、下装、外套、鞋、包、帽子、围巾、首饰等任意组合），把它们融合到同一个模特身上，得到一张完整 Look 的模特商拍图；可另外提供参考图（决定姿势、场景、光线）与模特图（锁定人脸与身材）。每件单品的颜色、材质纹理、图案、版型与五金细节保持不变，缺失的部位由模型按整体风格自动补齐。适用于服饰店铺出搭配图、套装组合主图、买手店 Look Book、跨类目联合营销图。当用户需要「多件商品拼成一套」「搭配图」「Look 合成」「一套穿搭生成模特图」「上衣配裤子配鞋一起出图」时使用本技能。
+description: 多单品融合成一整套 Look。最多 8 张单品图 → 同一模特身上的完整搭配商拍图，每件单品保真。当用户说「多件搭配」「融图」「组一套 look」「搭配图」「几件衣服合成一张」时使用。
 ---
 
 # image-fusion — 多单品自由搭配融图
@@ -117,94 +117,24 @@ dlazy seedream-5.0 \
 
 ---
 
-## 5、dLazy 工具调用
+## 5、工具调用
 
 本技能使用 dLazy 的 **`seedream-5.0`**（支持最多 10 张参考图 + 2K/3K/4K 输出，多单品约束场景下性价比最高：单张 5 credits，适合一个店铺跑几十套 Look）。
 
-### Authentication
+### 调用方式
 
-All requests require a dLazy API key. The recommended way to authenticate is:
-
-```bash
-dlazy login
-```
-
-This runs a device-code flow (also works in remote shells) and **automatically saves your API key** to the local CLI config — no manual copy/paste required.
-
-#### Alternative: Set the Key Manually
-
-If you already have an API key, you can save it directly:
+两种等价写法，选一种。统一入口会自动选后端、失败重试、建目录落盘、估算成本：
 
 ```bash
-dlazy auth set YOUR_API_KEY
+# A. 统一入口（推荐）：可切任意后端，加 --dry-run 不计费空跑
+node scripts/gen.mjs --task image-fusion \
+  --prompt '<见下方 Prompt 模板>' \
+  --images <按下表顺序> \
+  --save output/image-fusion-<sku>.jpg
+
+# B. 直接用 dLazy CLI（不想引入 Node 依赖时，效果等价）
+dlazy seedream-5.0 --prompt '...' --images ... --save output/image-fusion.jpg
 ```
-
-The CLI saves the key in your user config directory (`~/.dlazy/config.json` on macOS/Linux, `%USERPROFILE%\.dlazy\config.json` on Windows), with file permissions restricted to your OS user account. You can also supply the key per-invocation via the `DLAZY_API_KEY` environment variable.
-
-#### Getting Your API Key Manually
-
-1. Sign in or create an account at [dlazy.com](https://dlazy.com)
-2. Go to [dlazy.com/dashboard/organization/api-key](https://dlazy.com/dashboard/organization/api-key)
-3. Copy the key shown in the API Key section
-
-Each key is scoped to your dLazy organization and can be **rotated or revoked at any time** from the same dashboard.
-
-### About & Provenance
-
-- **CLI source code**: [github.com/dlazyai/cli](https://github.com/dlazyai/cli)
-- **Maintainer**: dlazyai
-- **npm package**: `@dlazy/cli` (pinned to `1.2.3` in this skill's install spec)
-- **Homepage**: [dlazy.com](https://dlazy.com)
-
-You can install on demand without persisting a global binary by running:
-
-```bash
-npx @dlazy/cli@1.2.3 <command>
-```
-
-Or, if you prefer a global install, the skill's `metadata.clawdbot.install` field declares the exact pinned version (`npm install -g @dlazy/cli@1.2.3`). Review the GitHub source before installing.
-
-### How It Works
-
-This skill is a thin client over the dLazy hosted API. When you invoke it:
-
-- Prompts and parameters you provide are sent to the dLazy API endpoint (`api.dlazy.com`) for inference.
-- Any local file paths you pass to image / video / audio fields are uploaded to dLazy's media storage (`files.dlazy.com`) so the model can read them — the same flow as any cloud-based generation API.
-- Generated output URLs returned by the API are hosted on `files.dlazy.com`.
-
-This is the standard SaaS pattern; the skill itself does not access network or filesystem resources beyond what the dLazy CLI already handles. See [dlazy.com](https://dlazy.com) for the full service terms.
-
-### Usage
-
-**CRITICAL INSTRUCTION FOR AGENT**:
-Run the `dlazy seedream-5.0` command to get results.
-
-```bash
-dlazy seedream-5.0 -h
-
-Options:
-  --prompt <prompt>          Prompt
-  --images [images...]       Images [image: url or local path] (max 10)
-  --resolution <resolution>  Resolution [default: 2k] (choices: "2k", "3k",
-                             "4k")
-  --size <size>              Size [default: 16:9] (choices: "1:1", "4:3",
-                             "3:4", "16:9", "9:16", "3:2", "2:3", "21:9")
-  --dry-run                  Print payload without executing the tool
-  --no-wait                  Return generateId immediately for async tasks
-  --timeout <seconds>        Max seconds to wait for async completion (default:
-                             "1800")
-  --input <jsonOrFile>       Inline JSON or @path/to/file.json — merged under
-                             flag values (flags win)
-  --save <path>              Download the result asset to this local path
-                             (mkdir + retry handled for you). A destination
-                             path — NOT a response format; for stdout shape use
-                             --format
-  --batch <n>                Fan-out N parallel runs (cloud tools only)
-                             (default: "1")
-  -h, --help                 display help for command
-```
-
-> Any flag also accepts pipe references — `-` (auto-pick from upstream stdin), `@N` (n-th output), `@N.path` (jsonpath into output), `@*` (all primary values), `@stdin` / `@stdin:path` (whole envelope). See `dlazy --help` for details.
 
 **参数约定（本技能固定用法）**
 
@@ -215,26 +145,6 @@ Options:
 | `--resolution` | `2k` 日常；`3k`/`4k` 印刷或大图详情 | 2K 已够上架 |
 | `--batch` | `2` ~ `4` | 多单品组合随机性大，多出几张挑图 |
 | `--save` | `docs/image-fusion/output-look<N>.jpg` | 直接落盘 |
-
-### Output Format
-
-```json
-{
-  "ok": true,
-  "result": {
-    "tool": "seedream-5.0",
-    "modelId": "seedream-5.0",
-    "data": {
-      "urls": [
-        "https://files.dlazy.com/data/ai/20260817092703-057827edb8aa.jpg"
-      ]
-    },
-    "savedPath": "docs/image-fusion/example-output.jpg"
-  }
-}
-```
-
-> Async tasks (when `--no-wait` is passed) omit `data` and return a `task: { generateId, status }` field instead. Use `dlazy status <generateId> --wait` to poll.
 
 ### Command Examples
 
@@ -256,22 +166,13 @@ dlazy seedream-5.0 \
 dlazy seedream-5.0 --dry-run --prompt '...' --images a.jpg b.jpg --size 3:4
 ```
 
-### Error Handling
+### 延伸阅读
 
-| Code | Error Type                         | Example Message                                                                                                          |
-| ---- | ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
-| 401  | Unauthorized (No API Key)          | `ok: false, code: "unauthorized", message: "API key is missing or invalid"`                                              |
-| 501  | Missing required parameter         | `error: required option '--prompt <prompt>' not specified`                                                                |
-| 502  | Local file read error              | `Error: Image file/Video file not found: C:\path\to\your\file`                                                            |
-| 503  | API request failed (no balance)    | `ok: false, code: "insufficient_balance"`                                                                                |
-| 503  | API request failed (server error)  | `HTTP status code error (500 server crash)`                                                                              |
-| 504  | Asynchronous task execution failed | `=== Generation Failed ===` / `{Specific error reason returned by backend, for example "Prompt violates safety policy"}`  |
-
-> **AGENT CRITICAL INSTRUCTION**:
-> 1. If the execution result returns `code: "insufficient_balance"`, you MUST explicitly inform the user that their credits are insufficient and guide them to recharge: [https://dlazy.com/dashboard/organization/settings?tab=credits](https://dlazy.com/dashboard/organization/settings?tab=credits)
-> 2. If the execution result returns `code: "unauthorized"` or indicates missing API key, you MUST inform the user to get their API key from [https://dlazy.com/dashboard/organization/api-key](https://dlazy.com/dashboard/organization/api-key) and save it using `dlazy auth set <key>` and resume the task.
-
----
+| 要查什么 | 去哪 |
+| --- | --- |
+| 认证、多后端配置、输出结构、错误码 | [`references/provider-cli.md`](references/provider-cli.md) |
+| `seedream-5.0` 的全部可用参数 | [`references/model-flags.md`](references/model-flags.md) |
+| 统一入口的全部选项 | `node scripts/gen.mjs --help` |
 
 ## 6、Prompt 模板
 
