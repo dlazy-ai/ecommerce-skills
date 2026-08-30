@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="466" viewBox="0 0 880 466" lang="zh-CN" role="img" aria-label="自定义功能 — 单点能力 — table">
+  <defs>
+    <linearGradient id="brand" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7d56f4"/>
+      <stop offset="0.55" stop-color="#ff5fd1"/>
+      <stop offset="1" stop-color="#43e5d0"/>
+    </linearGradient>
+  </defs>
+  <style>
+    .t { font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", "Noto Sans Mono CJK SC", "Noto Sans Mono CJK JP", "Microsoft YaHei", "Hiragino Sans", "Yu Gothic", monospace; }
+  </style>
+  <rect x="0" y="0" width="880" height="466" rx="18.0" fill="#1a1a24"/>
+  <rect x="0.5" y="0.5" width="879" height="465" rx="17.5" fill="none" stroke="#35334a"/>
+  <text class="t" x="28" y="38" font-size="11" fill="#8b87a3" text-anchor="start" letter-spacing="1.4">自定义功能 — 单点能力</text>
+  <text class="t" x="28" y="68" font-size="11" fill="#8b87a3" text-anchor="start" letter-spacing="1.4">技能</text>
+  <text class="t" x="235" y="68" font-size="11" fill="#8b87a3" text-anchor="start" letter-spacing="1.4">做什么</text>
+  <text class="t" x="435" y="68" font-size="11" fill="#8b87a3" text-anchor="start" letter-spacing="1.4">输入 → 输出</text>
+  <text class="t" x="717" y="68" font-size="11" fill="#8b87a3" text-anchor="start" letter-spacing="1.4">模型</text>
+  <rect x="28" y="78" width="824" height="1" fill="#35334a"/>
+  <text class="t" x="28" y="102" font-size="13" fill="#edebfa" text-anchor="start">to-3d</text>
+  <text class="t" x="235" y="102" font-size="13" fill="#edebfa" text-anchor="start">平铺图转 3D 立体图</text>
+  <text class="t" x="435" y="102" font-size="13" fill="#edebfa" text-anchor="start">平铺图 → 隐形模特立体图</text>
+  <rect x="717" y="89" width="91" height="19" rx="4.0" fill="#222130"/>
+  <text class="t" x="723" y="102" font-size="12" fill="#edebfa" text-anchor="start">gpt-image-2</text>
+  <rect x="20" y="113" width="840" height="35" rx="5.0" fill="#222130"/>
+  <text class="t" x="28" y="137" font-size="13" fill="#edebfa" text-anchor="start">clothing-extraction</text>
+  <text class="t" x="235" y="137" font-size="13" fill="#edebfa" text-anchor="start">从任意图提取商品平铺图</text>
+  <text class="t" x="435" y="137" font-size="13" fill="#edebfa" text-anchor="start">真人图/街拍图 → 干净平铺图</text>
+  <rect x="717" y="124" width="91" height="19" rx="4.0" fill="#222130"/>
+  <text class="t" x="723" y="137" font-size="12" fill="#edebfa" text-anchor="start">gpt-image-2</text>
+  <text class="t" x="28" y="172" font-size="13" fill="#edebfa" text-anchor="start">fabric-on-body</text>
+  <text class="t" x="235" y="172" font-size="13" fill="#edebfa" text-anchor="start">一键替换服装面料</text>
+  <text class="t" x="435" y="172" font-size="13" fill="#edebfa" text-anchor="start">版式图 + 面料图 → 新面料样衣</text>
+  <rect x="717" y="159" width="91" height="19" rx="4.0" fill="#222130"/>
+  <text class="t" x="723" y="172" font-size="12" fill="#edebfa" text-anchor="start">gpt-image-2</text>
+  <rect x="20" y="183" width="840" height="35" rx="5.0" fill="#222130"/>
+  <text class="t" x="28" y="207" font-size="13" fill="#edebfa" text-anchor="start">clothing-detail</text>
+  <text class="t" x="235" y="207" font-size="13" fill="#edebfa" text-anchor="start">服装细节放大图</text>
+  <text class="t" x="435" y="207" font-size="13" fill="#edebfa" text-anchor="start">服装图 → 工艺/面料微距特写</text>
+  <rect x="717" y="194" width="91" height="19" rx="4.0" fill="#222130"/>
+  <text class="t" x="723" y="207" font-size="12" fill="#edebfa" text-anchor="start">gpt-image-2</text>
+  <text class="t" x="28" y="242" font-size="13" fill="#edebfa" text-anchor="start">clothing-grass-planting</text>
+  <text class="t" x="235" y="242" font-size="13" fill="#edebfa" text-anchor="start">相同穿搭改模特场景姿势</text>
+  <text class="t" x="435" y="242" font-size="13" fill="#edebfa" text-anchor="start">穿搭图 → 社交平台种草图</text>
+  <rect x="717" y="229" width="91" height="19" rx="4.0" fill="#222130"/>
+  <text class="t" x="723" y="242" font-size="12" fill="#edebfa" text-anchor="start">gpt-image-2</text>
+  <rect x="20" y="253" width="840" height="35" rx="5.0" fill="#222130"/>
+  <text class="t" x="28" y="277" font-size="13" fill="#edebfa" text-anchor="start">item-selling-point</text>
+  <text class="t" x="235" y="277" font-size="13" fill="#edebfa" text-anchor="start">商品图生成电商主图</text>
+  <text class="t" x="435" y="277" font-size="13" fill="#edebfa" text-anchor="start">商品图 + 卖点 → 带文案的转化主图</text>
+  <rect x="717" y="264" width="127" height="19" rx="4.0" fill="#222130"/>
+  <text class="t" x="723" y="277" font-size="12" fill="#edebfa" text-anchor="start">seedream-5.0-pro</text>
+  <text class="t" x="28" y="312" font-size="13" fill="#edebfa" text-anchor="start">item-change-background</text>
+  <text class="t" x="235" y="312" font-size="13" fill="#edebfa" text-anchor="start">商品换背景</text>
+  <text class="t" x="435" y="312" font-size="13" fill="#edebfa" text-anchor="start">白底商品图 → 逼真场景图</text>
+  <rect x="717" y="299" width="91" height="19" rx="4.0" fill="#222130"/>
+  <text class="t" x="723" y="312" font-size="12" fill="#edebfa" text-anchor="start">gpt-image-2</text>
+  <rect x="20" y="323" width="840" height="35" rx="5.0" fill="#222130"/>
+  <text class="t" x="28" y="347" font-size="13" fill="#edebfa" text-anchor="start">remove-watermark</text>
+  <text class="t" x="235" y="347" font-size="13" fill="#edebfa" text-anchor="start">去水印去文字</text>
+  <text class="t" x="435" y="347" font-size="13" fill="#edebfa" text-anchor="start">带文字/水印的图 → 干净图</text>
+  <rect x="717" y="334" width="91" height="19" rx="4.0" fill="#222130"/>
+  <text class="t" x="723" y="347" font-size="12" fill="#edebfa" text-anchor="start">gpt-image-2</text>
+  <text class="t" x="28" y="382" font-size="13" fill="#edebfa" text-anchor="start">material-enhancement</text>
+  <text class="t" x="235" y="382" font-size="13" fill="#edebfa" text-anchor="start">材质质感增强</text>
+  <text class="t" x="435" y="382" font-size="13" fill="#edebfa" text-anchor="start">糊掉的图 + 高清商品图 → 纹理重建</text>
+  <rect x="717" y="369" width="91" height="19" rx="4.0" fill="#222130"/>
+  <text class="t" x="723" y="382" font-size="12" fill="#edebfa" text-anchor="start">gpt-image-2</text>
+  <rect x="20" y="393" width="840" height="35" rx="5.0" fill="#222130"/>
+  <text class="t" x="28" y="417" font-size="13" fill="#edebfa" text-anchor="start">item-repair</text>
+  <text class="t" x="235" y="417" font-size="13" fill="#edebfa" text-anchor="start">商品精修 / 去褶皱</text>
+  <text class="t" x="435" y="417" font-size="13" fill="#edebfa" text-anchor="start">随手拍商品图 → 精修可上架图</text>
+  <rect x="717" y="404" width="91" height="19" rx="4.0" fill="#222130"/>
+  <text class="t" x="723" y="417" font-size="12" fill="#edebfa" text-anchor="start">gpt-image-2</text>
+  <rect x="28" y="428" width="824" height="1" fill="#35334a"/>
+</svg>

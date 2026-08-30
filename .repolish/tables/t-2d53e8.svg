@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="344" viewBox="0 0 880 344" lang="zh-CN" role="img" aria-label="工程化：脚本干了什么 — table">
+  <defs>
+    <linearGradient id="brand" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7d56f4"/>
+      <stop offset="0.55" stop-color="#ff5fd1"/>
+      <stop offset="1" stop-color="#43e5d0"/>
+    </linearGradient>
+  </defs>
+  <style>
+    .t { font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", "Noto Sans Mono CJK SC", "Noto Sans Mono CJK JP", "Microsoft YaHei", "Hiragino Sans", "Yu Gothic", monospace; }
+  </style>
+  <rect x="0" y="0" width="880" height="344" rx="18.0" fill="#1a1a24"/>
+  <rect x="0.5" y="0.5" width="879" height="343" rx="17.5" fill="none" stroke="#35334a"/>
+  <text class="t" x="28" y="38" font-size="11" fill="#8b87a3" text-anchor="start" letter-spacing="1.4">工程化：脚本干了什么</text>
+  <text class="t" x="28" y="68" font-size="11" fill="#8b87a3" text-anchor="start" letter-spacing="1.4">脚本</text>
+  <text class="t" x="183" y="68" font-size="11" fill="#8b87a3" text-anchor="start" letter-spacing="1.4">干什么</text>
+  <rect x="28" y="78" width="824" height="1" fill="#35334a"/>
+  <rect x="28" y="89" width="62" height="19" rx="4.0" fill="#222130"/>
+  <text class="t" x="34" y="102" font-size="12" fill="#edebfa" text-anchor="start">gen.mjs</text>
+  <text class="t" x="183" y="102" font-size="13" fill="#edebfa" text-anchor="start">统一生成入口：后端选路、默认参数、429/5xx 指数退避重试、建目录落盘、成本估算</text>
+  <rect x="20" y="113" width="840" height="53" rx="5.0" fill="#222130"/>
+  <rect x="28" y="124" width="98" height="19" rx="4.0" fill="#222130"/>
+  <text class="t" x="34" y="137" font-size="12" fill="#edebfa" text-anchor="start">run_loop.mjs</text>
+  <text class="t" x="183" y="137" font-size="13" fill="#edebfa" text-anchor="start">真闭环：生成 → 质检 → 自动把修正句追加回 prompt → 重跑，直到达标或到轮次上限，产出</text>
+  <text class="t" x="183" y="155" font-size="13" fill="#edebfa" text-anchor="start">manifest</text>
+  <rect x="28" y="177" width="77" height="19" rx="4.0" fill="#222130"/>
+  <text class="t" x="34" y="190" font-size="12" fill="#edebfa" text-anchor="start">batch.mjs</text>
+  <text class="t" x="183" y="190" font-size="13" fill="#edebfa" text-anchor="start">批量流水线：CSV 驱动、并发池、失败重试、断点续跑、成本熔断、挑图联系表</text>
+  <rect x="20" y="201" width="840" height="35" rx="5.0" fill="#222130"/>
+  <rect x="28" y="212" width="127" height="19" rx="4.0" fill="#222130"/>
+  <text class="t" x="34" y="225" font-size="12" fill="#edebfa" text-anchor="start">check_listing.py</text>
+  <text class="t" x="183" y="225" font-size="13" fill="#edebfa" text-anchor="start">平台合规客观校验与自动修复（背景纯度、主体占比、分辨率、比例、alpha、体积）</text>
+  <rect x="28" y="247" width="77" height="19" rx="4.0" fill="#222130"/>
+  <text class="t" x="34" y="260" font-size="12" fill="#edebfa" text-anchor="start">brand.mjs</text>
+  <text class="t" x="183" y="260" font-size="13" fill="#edebfa" text-anchor="start">把 brand.yaml 翻成画面约束，按技能自动过滤该给哪几段</text>
+  <rect x="20" y="271" width="840" height="35" rx="5.0" fill="#222130"/>
+  <rect x="28" y="282" width="77" height="19" rx="4.0" fill="#222130"/>
+  <text class="t" x="34" y="295" font-size="12" fill="#edebfa" text-anchor="start">video.mjs</text>
+  <text class="t" x="183" y="295" font-size="13" fill="#edebfa" text-anchor="start">分镜编排、片段拼接、字幕（烧录 → 软字幕 → 留 srt 三级降级）</text>
+  <rect x="28" y="306" width="824" height="1" fill="#35334a"/>
+</svg>

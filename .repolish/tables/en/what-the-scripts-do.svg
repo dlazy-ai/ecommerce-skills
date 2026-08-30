@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="380" viewBox="0 0 880 380" lang="en" role="img" aria-label="What the scripts do — table">
+  <defs>
+    <linearGradient id="brand" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7d56f4"/>
+      <stop offset="0.55" stop-color="#ff5fd1"/>
+      <stop offset="1" stop-color="#43e5d0"/>
+    </linearGradient>
+  </defs>
+  <style>
+    .t { font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", "Noto Sans Mono CJK SC", "Noto Sans Mono CJK JP", "Microsoft YaHei", "Hiragino Sans", "Yu Gothic", monospace; }
+  </style>
+  <rect x="0" y="0" width="880" height="380" rx="18.0" fill="#1a1a24"/>
+  <rect x="0.5" y="0.5" width="879" height="379" rx="17.5" fill="none" stroke="#35334a"/>
+  <text class="t" x="28" y="38" font-size="11" fill="#8b87a3" text-anchor="start" letter-spacing="1.4">WHAT THE SCRIPTS DO</text>
+  <text class="t" x="28" y="68" font-size="11" fill="#8b87a3" text-anchor="start" letter-spacing="1.4">SCRIPT</text>
+  <text class="t" x="183" y="68" font-size="11" fill="#8b87a3" text-anchor="start" letter-spacing="1.4">RESPONSIBILITY</text>
+  <rect x="28" y="78" width="824" height="1" fill="#35334a"/>
+  <rect x="28" y="89" width="62" height="19" rx="4.0" fill="#222130"/>
+  <text class="t" x="34" y="102" font-size="12" fill="#edebfa" text-anchor="start">gen.mjs</text>
+  <text class="t" x="183" y="102" font-size="13" fill="#edebfa" text-anchor="start">Unified entry: backend routing, defaults, exponential backoff on 429/5xx, saving,</text>
+  <text class="t" x="183" y="120" font-size="13" fill="#edebfa" text-anchor="start">cost estimate</text>
+  <rect x="20" y="131" width="840" height="53" rx="5.0" fill="#222130"/>
+  <rect x="28" y="142" width="98" height="19" rx="4.0" fill="#222130"/>
+  <text class="t" x="34" y="155" font-size="12" fill="#edebfa" text-anchor="start">run_loop.mjs</text>
+  <text class="t" x="183" y="155" font-size="13" fill="#edebfa" text-anchor="start">The real loop: generate → QC → append the fix sentences back into the prompt → rerun,</text>
+  <text class="t" x="183" y="173" font-size="13" fill="#edebfa" text-anchor="start">until it passes or hits the round cap; writes a manifest</text>
+  <rect x="28" y="195" width="77" height="19" rx="4.0" fill="#222130"/>
+  <text class="t" x="34" y="208" font-size="12" fill="#edebfa" text-anchor="start">batch.mjs</text>
+  <text class="t" x="183" y="208" font-size="13" fill="#edebfa" text-anchor="start">Batch pipeline: CSV input, concurrency pool, retries, resume, cost circuit breaker,</text>
+  <text class="t" x="183" y="226" font-size="13" fill="#edebfa" text-anchor="start">contact sheet</text>
+  <rect x="20" y="237" width="840" height="35" rx="5.0" fill="#222130"/>
+  <rect x="28" y="248" width="127" height="19" rx="4.0" fill="#222130"/>
+  <text class="t" x="34" y="261" font-size="12" fill="#edebfa" text-anchor="start">check_listing.py</text>
+  <text class="t" x="183" y="261" font-size="13" fill="#edebfa" text-anchor="start">Objective compliance check and auto-fix</text>
+  <rect x="28" y="283" width="77" height="19" rx="4.0" fill="#222130"/>
+  <text class="t" x="34" y="296" font-size="12" fill="#edebfa" text-anchor="start">brand.mjs</text>
+  <text class="t" x="183" y="296" font-size="13" fill="#edebfa" text-anchor="start">Turns brand.yaml into prompt constraints, filtered per skill</text>
+  <rect x="20" y="307" width="840" height="35" rx="5.0" fill="#222130"/>
+  <rect x="28" y="318" width="77" height="19" rx="4.0" fill="#222130"/>
+  <text class="t" x="34" y="331" font-size="12" fill="#edebfa" text-anchor="start">video.mjs</text>
+  <text class="t" x="183" y="331" font-size="13" fill="#edebfa" text-anchor="start">Storyboarding, clip concat, subtitles (burn-in → soft track → leave the .srt)</text>
+  <rect x="28" y="342" width="824" height="1" fill="#35334a"/>
+</svg>

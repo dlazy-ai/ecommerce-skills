@@ -1,8 +1,13 @@
+<img src=".repolish/hero.svg" alt="" width="100%">
+
 # ecommerce-skills
 
 [![ci](https://github.com/dlazy-ai/ecommerce-skills/actions/workflows/ci.yml/badge.svg)](https://github.com/dlazy-ai/ecommerce-skills/actions/workflows/ci.yml)
 [![license: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![repolish](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/dlazy-ai/ecommerce-skills/main/.repolish/badge.json)](https://github.com/asale-ai/repolish)
+
+<img src=".repolish/overview.svg" alt="ecommerce-skills at a glance" width="880">
+
 
 中文 · [English](README.en.md)
 
@@ -56,12 +61,19 @@ npx skills add https://github.com/dlazy-ai/ecommerce-skills --list
 
 ### 依赖
 
+<img src=".repolish/tables/t-0744f9.svg" alt="依赖" width="880">
+
+<details>
+<summary>依赖（表格原文）</summary>
+
 | 依赖 | 何时需要 | 装法 |
 | --- | --- | --- |
 | Node ≥ 20 | 用统一入口 `gen.mjs`、批量、闭环、视频合成 | 已有即可 |
 | 任一后端的 key | 真正出图 | `dlazy login`，或设 `OPENAI_API_KEY` 等，见下 |
 | Python + Pillow | 平台合规校验 | `pip install Pillow` |
 | ffmpeg | 视频拼接与字幕 | `brew install ffmpeg` |
+
+</details>
 
 都没有也能跑通 `--dry-run`，看清每一步要发什么、花多少。
 
@@ -71,6 +83,11 @@ npx skills add https://github.com/dlazy-ai/ecommerce-skills --list
 node shared/scripts/gen.mjs --doctor      # 看当前哪个后端可用
 ```
 
+<img src=".repolish/tables/t-d63743.svg" alt="选后端" width="880">
+
+<details>
+<summary>选后端（表格原文）</summary>
+
 | 后端 | 环境变量 |
 | --- | --- |
 | `dlazy`（默认） | `dlazy login` 或 `DLAZY_API_KEY` |
@@ -79,6 +96,8 @@ node shared/scripts/gen.mjs --doctor      # 看当前哪个后端可用
 | `fal` | `FAL_KEY` |
 | `replicate` | `REPLICATE_API_TOKEN` |
 | `ark`（火山方舟） | `ARK_API_KEY` + `ARK_MODEL` |
+
+</details>
 
 优先级：`--provider` 参数 > `PROVIDER` 环境变量 > 第一个配了 key 的 > `dlazy`。
 
@@ -114,19 +133,33 @@ MCP 配置：
 
 ### 商品上身 — 让商品出现在人身上
 
+<img src=".repolish/tables/t-b843e0.svg" alt="商品上身 — 让商品出现在人身上" width="880">
+
+<details>
+<summary>商品上身 — 让商品出现在人身上（表格原文）</summary>
+
 | 技能 | 做什么 | 输入 → 输出 | 模型 |
 | --- | --- | --- | --- |
 | [flat-lay](skills/flat-lay/skill.md) | 服装图一键上身试穿 | 服装平铺图 + 参考图 → 模特上身商拍图 | `gpt-image-2` |
 | [wear-everything](skills/wear-everything/skill.md) | 鞋包配饰真人穿戴 | 商品图 + 参考图 → 真人佩戴图 | `gpt-image-2` |
 | [image-fusion](skills/image-fusion/skill.md) | 多单品自由搭配融图 | 最多 8 张单品 → 一整套 Look 模特图 | `seedream-5.0` |
 
+</details>
+
 ### 单图变多图 — 一张图裂变成一屏
+
+<img src=".repolish/tables/t-d00410.svg" alt="单图变多图 — 一张图裂变成一屏" width="880">
+
+<details>
+<summary>单图变多图 — 一张图裂变成一屏（表格原文）</summary>
 
 | 技能 | 做什么 | 输入 → 输出 | 模型 |
 | --- | --- | --- | --- |
 | [one-shot](skills/one-shot/skill.md) | 换模特 / 换背景 | 已有模特图 → 多人群多场景版本 | `gpt-image-2` |
 | [fission-pattern](skills/fission-pattern/skill.md) | 一张图裂变完整套图 | 商品图 + 卖点 → 多角度多场景套图 | `gpt-image-2` |
 | [item-detail](skills/item-detail/skill.md) | 一键生成全套详情图 | 商品图 + 卖点 → 带中文排版的详情页模块 | `seedream-5.0-pro` |
+
+</details>
 
 ### 图片创作 — 从零造图
 
@@ -136,13 +169,25 @@ MCP 配置：
 
 ### 视频 — 静态素材之外的另一半
 
+<img src=".repolish/tables/t-fc8aae.svg" alt="视频 — 静态素材之外的另一半" width="880">
+
+<details>
+<summary>视频 — 静态素材之外的另一半（表格原文）</summary>
+
 | 技能 | 做什么 | 输入 → 输出 | 需要 |
 | --- | --- | --- | --- |
 | [main-image-video](skills/main-image-video/skill.md) | 静态主图转主图视频 | 一张商品图 → 3–5 秒短视频 | 视频模型 |
 | [product-video-ad](skills/product-video-ad/skill.md) | 商品短视频广告 | 卖点 → 分镜 → 成片带字幕 | 视频模型 + ffmpeg |
 | [ugc-testimonial](skills/ugc-testimonial/skill.md) | UGC 口播种草视频 | 商品 + 人设 → 口播脚本与成片 | 视频模型 + ffmpeg |
 
+</details>
+
 ### 企业功能 — 规模化与质量把关
+
+<img src=".repolish/tables/t-c2b901.svg" alt="企业功能 — 规模化与质量把关" width="880">
+
+<details>
+<summary>企业功能 — 规模化与质量把关（表格原文）</summary>
 
 | 技能 | 做什么 | 输入 → 输出 | 模型 |
 | --- | --- | --- | --- |
@@ -151,14 +196,28 @@ MCP 配置：
 | [platform-compliance](skills/platform-compliance/skill.md) | 上架前合规校验与自动修复 | 待上架图 → 各平台通过/驳回报告 + 合规图 | 无（读像素） |
 | [brand-kit](skills/brand-kit/skill.md) | 店铺视觉统一 | brand.yaml → 全技能共用的画面约束 | 无（纯规范） |
 
+</details>
+
 ### 上架与投放 — 交付指标而不只是图
+
+<img src=".repolish/tables/t-778aef.svg" alt="上架与投放 — 交付指标而不只是图" width="880">
+
+<details>
+<summary>上架与投放 — 交付指标而不只是图（表格原文）</summary>
 
 | 技能 | 做什么 | 输入 → 输出 | 模型 |
 | --- | --- | --- | --- |
 | [listing-optimizer](skills/listing-optimizer/skill.md) | 主图 A/B 组与转化复盘 | 商品图 + 卖点 → 对照组 + 假设 + 复盘表 | `gpt-image-2` |
 | [cross-border-localize](skills/cross-border-localize/skill.md) | 跨境多区域本地化 | 一套素材 → 多语言文案、尺码表、区域版主图 | `seedream-5.0-pro` |
 
+</details>
+
 ### 自定义功能 — 单点能力
+
+<img src=".repolish/tables/t-f493ea.svg" alt="自定义功能 — 单点能力" width="880">
+
+<details>
+<summary>自定义功能 — 单点能力（表格原文）</summary>
 
 | 技能 | 做什么 | 输入 → 输出 | 模型 |
 | --- | --- | --- | --- |
@@ -173,11 +232,18 @@ MCP 配置：
 | [material-enhancement](skills/material-enhancement/skill.md) | 材质质感增强 | 糊掉的图 + 高清商品图 → 纹理重建 | `gpt-image-2` |
 | [item-repair](skills/item-repair/skill.md) | 商品精修 / 去褶皱 | 随手拍商品图 → 精修可上架图 | `gpt-image-2` |
 
+</details>
+
 ---
 
 ## 工程化：脚本干了什么
 
 技能正文只写「要生成什么」，其余交给脚本。全部支持 `--dry-run`。
+
+<img src=".repolish/tables/t-2d53e8.svg" alt="工程化：脚本干了什么" width="880">
+
+<details>
+<summary>工程化：脚本干了什么（表格原文）</summary>
 
 | 脚本 | 干什么 |
 | --- | --- |
@@ -187,6 +253,8 @@ MCP 配置：
 | `check_listing.py` | 平台合规客观校验与自动修复（背景纯度、主体占比、分辨率、比例、alpha、体积） |
 | `brand.mjs` | 把 brand.yaml 翻成画面约束，按技能自动过滤该给哪几段 |
 | `video.mjs` | 分镜编排、片段拼接、字幕（烧录 → 软字幕 → 留 srt 三级降级） |
+
+</details>
 
 一条命令看懂闭环：
 
@@ -311,6 +379,11 @@ listing-optimizer    单变量对照组 + 假设 + 复盘模板
 
 每个技能都支持 `--dry-run`：只打印参数与算力估价、不真正生成。下表是各模型的实测估价（credits / 张）：
 
+<img src=".repolish/tables/t-fd8e10.svg" alt="算力成本参考" width="880">
+
+<details>
+<summary>算力成本参考（表格原文）</summary>
+
 | 模型 | 单价 | 用在哪 |
 | --- | --- | --- |
 | `claude-sonnet-5` | **3** | 投前检测（输出报告，不出图） |
@@ -319,6 +392,8 @@ listing-optimizer    单变量对照组 + 假设 + 复盘模板
 | `banana-pro` | **18** | 文生图创作 |
 | `gpt-image-2` `--quality medium` | **33** | 大多数定向编辑（换背景、换模特、提取、去印） |
 | `gpt-image-2` `--quality high` | **60** | 材质与细节优先（细节图、材质增强、精修） |
+
+</details>
 
 省钱的三条经验：
 
@@ -386,6 +461,11 @@ npm run publish:dry        # 只打印 slug / 版本 / 显示名，不发布
 npm run publish:skills     # 正式发布（跳过 .publish-skills.done 里已发成功的）
 ```
 
+<img src=".repolish/tables/clawhub.svg" alt="发布到 ClawHub（维护者）" width="880">
+
+<details>
+<summary>发布到 ClawHub（维护者）（表格原文）</summary>
+
 | 命令 | 作用 |
 | --- | --- |
 | `npm run publish:dry` | `--dry-run`，预览将要发布的技能与版本 |
@@ -393,6 +473,8 @@ npm run publish:skills     # 正式发布（跳过 .publish-skills.done 里已�
 | `npm run publish:force` | `--force`，忽略断点记录，全部重发 |
 | `npm run publish:reset` | 清掉断点记录与 `.publish-tmp/` 暂存目录 |
 | `npm run clawhub:whoami` | 校验登录状态 |
+
+</details>
 
 追加参数用 `--` 透传给脚本：
 
@@ -414,3 +496,10 @@ npm run publish:skills -- --changelog "修正尺寸参数"    # 自定义 change
 ## License
 
 见 [LICENSE](LICENSE)。
+
+## 用 repolish 打磨
+
+<img src=".repolish/card.svg" alt="repolish report card" width="880">
+
+这张卡片由 [repolish](https://github.com/asale-ai/repolish) 生成，是仓库里的一个普通文件——没有外部字体、没有脚本、不由任何第三方托管。想给自己的仓库打一次分：`npx @asale/repolish`。
+

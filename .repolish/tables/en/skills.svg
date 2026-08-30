@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="221" viewBox="0 0 880 221" lang="en" role="img" aria-label="Skills — table">
+  <defs>
+    <linearGradient id="brand" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7d56f4"/>
+      <stop offset="0.55" stop-color="#ff5fd1"/>
+      <stop offset="1" stop-color="#43e5d0"/>
+    </linearGradient>
+  </defs>
+  <style>
+    .t { font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", "Noto Sans Mono CJK SC", "Noto Sans Mono CJK JP", "Microsoft YaHei", "Hiragino Sans", "Yu Gothic", monospace; }
+  </style>
+  <rect x="0" y="0" width="880" height="221" rx="18.0" fill="#1a1a24"/>
+  <rect x="0.5" y="0.5" width="879" height="220" rx="17.5" fill="none" stroke="#35334a"/>
+  <text class="t" x="28" y="38" font-size="11" fill="#8b87a3" text-anchor="start" letter-spacing="1.4">SKILLS</text>
+  <text class="t" x="28" y="68" font-size="11" fill="#8b87a3" text-anchor="start" letter-spacing="1.4">SKILL</text>
+  <text class="t" x="176" y="68" font-size="11" fill="#8b87a3" text-anchor="start" letter-spacing="1.4">WHAT IT DOES</text>
+  <rect x="28" y="78" width="824" height="1" fill="#35334a"/>
+  <rect x="28" y="89" width="70" height="19" rx="4.0" fill="#222130"/>
+  <text class="t" x="34" y="102" font-size="12" fill="#edebfa" text-anchor="start">flat-lay</text>
+  <text class="t" x="176" y="102" font-size="13" fill="#edebfa" text-anchor="start">Garment flat-lay + pose reference → on-model catalog shot</text>
+  <rect x="20" y="113" width="840" height="35" rx="5.0" fill="#222130"/>
+  <rect x="28" y="124" width="120" height="19" rx="4.0" fill="#222130"/>
+  <text class="t" x="34" y="137" font-size="12" fill="#edebfa" text-anchor="start">wear-everything</text>
+  <text class="t" x="176" y="137" font-size="13" fill="#edebfa" text-anchor="start">Shoes / bags / accessories worn by a real model</text>
+  <rect x="28" y="159" width="98" height="19" rx="4.0" fill="#222130"/>
+  <text class="t" x="34" y="172" font-size="12" fill="#edebfa" text-anchor="start">image-fusion</text>
+  <text class="t" x="176" y="172" font-size="13" fill="#edebfa" text-anchor="start">Up to 8 separate items → one complete styled look</text>
+  <rect x="28" y="183" width="824" height="1" fill="#35334a"/>
+</svg>

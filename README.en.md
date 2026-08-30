@@ -45,12 +45,19 @@ manual path.
 
 ### Dependencies
 
+<img src=".repolish/tables/en/dependencies.svg" alt="Dependencies" width="880">
+
+<details>
+<summary>Dependencies as a table</summary>
+
 | Dependency | Needed for | Install |
 | --- | --- | --- |
 | Node ≥ 20 | unified entry point, batching, QC loop, video assembly | — |
 | A backend key | actually generating | see below |
 | Python + Pillow | compliance checking | `pip install Pillow` |
 | ffmpeg | video concat and subtitles | `brew install ffmpeg` |
+
+</details>
 
 Without any of them you can still run `--dry-run` end to end.
 
@@ -60,6 +67,11 @@ Without any of them you can still run `--dry-run` end to end.
 node shared/scripts/gen.mjs --doctor      # which backend is usable right now
 ```
 
+<img src=".repolish/tables/en/backends.svg" alt="Backends" width="880">
+
+<details>
+<summary>Backends as a table</summary>
+
 | Backend | Env |
 | --- | --- |
 | `dlazy` (default) | `dlazy login` or `DLAZY_API_KEY` |
@@ -68,6 +80,8 @@ node shared/scripts/gen.mjs --doctor      # which backend is usable right now
 | `fal` | `FAL_KEY` |
 | `replicate` | `REPLICATE_API_TOKEN` |
 | `ark` | `ARK_API_KEY` + `ARK_MODEL` |
+
+</details>
 
 Resolution order: `--provider` flag > `PROVIDER` env > first backend with credentials > `dlazy`.
 Model IDs per backend can be overridden with `GEN_MODEL_<PROVIDER>` — vendor catalogs
@@ -103,19 +117,33 @@ MCP config:
 
 **On-model** — put the product on a person
 
+<img src=".repolish/tables/en/skills.svg" alt="Skills" width="880">
+
+<details>
+<summary>Skills as a table</summary>
+
 | Skill | What it does |
 | --- | --- |
 | `flat-lay` | Garment flat-lay + pose reference → on-model catalog shot |
 | `wear-everything` | Shoes / bags / accessories worn by a real model |
 | `image-fusion` | Up to 8 separate items → one complete styled look |
 
+</details>
+
 **One image into many**
+
+<img src=".repolish/tables/en/skills-2.svg" alt="Skills" width="880">
+
+<details>
+<summary>Skills as a table</summary>
 
 | Skill | What it does |
 | --- | --- |
 | `one-shot` | Swap model / background on an existing on-model shot |
 | `fission-pattern` | One product image + selling points → a full variant set |
 | `item-detail` | Detail-page modules with typeset copy |
+
+</details>
 
 **From scratch**
 
@@ -125,13 +153,25 @@ MCP config:
 
 **Video**
 
+<img src=".repolish/tables/en/skills-3.svg" alt="Skills" width="880">
+
+<details>
+<summary>Skills as a table</summary>
+
 | Skill | What it does |
 | --- | --- |
 | `main-image-video` | One product image → 3–5s main-image video |
 | `product-video-ad` | Selling points → storyboard → clips → cut with subtitles |
 | `ugc-testimonial` | Product + persona → talking-head UGC-style video |
 
+</details>
+
 **Scale and quality control**
+
+<img src=".repolish/tables/en/skills-4.svg" alt="Skills" width="880">
+
+<details>
+<summary>Skills as a table</summary>
 
 | Skill | What it does |
 | --- | --- |
@@ -140,12 +180,21 @@ MCP config:
 | `platform-compliance` | Objective marketplace spec check + auto-fix (no model calls) |
 | `brand-kit` | One `brand.yaml` locks model, lighting, grade and layout across every SKU |
 
+</details>
+
 **Listing and performance**
+
+<img src=".repolish/tables/en/skills-5.svg" alt="Skills" width="880">
+
+<details>
+<summary>Skills as a table</summary>
 
 | Skill | What it does |
 | --- | --- |
 | `listing-optimizer` | Single-variable A/B main image sets with hypotheses and a review template |
 | `cross-border-localize` | One asset set → multi-locale copy, size charts, region-specific mains |
+
+</details>
 
 **Single-purpose edits**
 
@@ -159,6 +208,11 @@ MCP config:
 
 Skill bodies describe *what to generate*. Everything else is code. All support `--dry-run`.
 
+<img src=".repolish/tables/en/what-the-scripts-do.svg" alt="What the scripts do" width="880">
+
+<details>
+<summary>What the scripts do as a table</summary>
+
 | Script | Responsibility |
 | --- | --- |
 | `gen.mjs` | Unified entry: backend routing, defaults, exponential backoff on 429/5xx, saving, cost estimate |
@@ -167,6 +221,8 @@ Skill bodies describe *what to generate*. Everything else is code. All support `
 | `check_listing.py` | Objective compliance check and auto-fix |
 | `brand.mjs` | Turns `brand.yaml` into prompt constraints, filtered per skill |
 | `video.mjs` | Storyboarding, clip concat, subtitles (burn-in → soft track → leave the .srt) |
+
+</details>
 
 ### The compliance check, on this repo's own example
 

@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="291" viewBox="0 0 880 291" lang="zh-CN" role="img" aria-label="发布到 ClawHub（维护者） — table">
+  <defs>
+    <linearGradient id="brand" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7d56f4"/>
+      <stop offset="0.55" stop-color="#ff5fd1"/>
+      <stop offset="1" stop-color="#43e5d0"/>
+    </linearGradient>
+  </defs>
+  <style>
+    .t { font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", "Noto Sans Mono CJK SC", "Noto Sans Mono CJK JP", "Microsoft YaHei", "Hiragino Sans", "Yu Gothic", monospace; }
+  </style>
+  <rect x="0" y="0" width="880" height="291" rx="18.0" fill="#1a1a24"/>
+  <rect x="0.5" y="0.5" width="879" height="290" rx="17.5" fill="none" stroke="#35334a"/>
+  <text class="t" x="28" y="38" font-size="11" fill="#8b87a3" text-anchor="start" letter-spacing="1.4">发布到 CLAWHUB（维护者）</text>
+  <text class="t" x="28" y="68" font-size="11" fill="#8b87a3" text-anchor="start" letter-spacing="1.4">命令</text>
+  <text class="t" x="226" y="68" font-size="11" fill="#8b87a3" text-anchor="start" letter-spacing="1.4">作用</text>
+  <rect x="28" y="78" width="824" height="1" fill="#35334a"/>
+  <rect x="28" y="89" width="149" height="19" rx="4.0" fill="#222130"/>
+  <text class="t" x="34" y="102" font-size="12" fill="#edebfa" text-anchor="start">npm run publish:dry</text>
+  <text class="t" x="226" y="102" font-size="13" fill="#edebfa" text-anchor="start">--dry-run，预览将要发布的技能与版本</text>
+  <rect x="20" y="113" width="840" height="35" rx="5.0" fill="#222130"/>
+  <rect x="28" y="124" width="170" height="19" rx="4.0" fill="#222130"/>
+  <text class="t" x="34" y="137" font-size="12" fill="#edebfa" text-anchor="start">npm run publish:skills</text>
+  <text class="t" x="226" y="137" font-size="13" fill="#edebfa" text-anchor="start">发布，断点续传：已成功的技能记在 scripts/.publish-skills.done</text>
+  <rect x="28" y="159" width="163" height="19" rx="4.0" fill="#222130"/>
+  <text class="t" x="34" y="172" font-size="12" fill="#edebfa" text-anchor="start">npm run publish:force</text>
+  <text class="t" x="226" y="172" font-size="13" fill="#edebfa" text-anchor="start">--force，忽略断点记录，全部重发</text>
+  <rect x="20" y="183" width="840" height="35" rx="5.0" fill="#222130"/>
+  <rect x="28" y="194" width="163" height="19" rx="4.0" fill="#222130"/>
+  <text class="t" x="34" y="207" font-size="12" fill="#edebfa" text-anchor="start">npm run publish:reset</text>
+  <text class="t" x="226" y="207" font-size="13" fill="#edebfa" text-anchor="start">清掉断点记录与 .publish-tmp/ 暂存目录</text>
+  <rect x="28" y="229" width="170" height="19" rx="4.0" fill="#222130"/>
+  <text class="t" x="34" y="242" font-size="12" fill="#edebfa" text-anchor="start">npm run clawhub:whoami</text>
+  <text class="t" x="226" y="242" font-size="13" fill="#edebfa" text-anchor="start">校验登录状态</text>
+  <rect x="28" y="253" width="824" height="1" fill="#35334a"/>
+</svg>
