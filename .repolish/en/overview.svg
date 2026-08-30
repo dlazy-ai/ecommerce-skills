@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="880" height="645" viewBox="0 0 880 645" lang="zh-CN" role="img" aria-label="dlazy-ai/ecommerce-skills — repository overview">
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="645" viewBox="0 0 880 645" lang="en" role="img" aria-label="dlazy-ai/ecommerce-skills — repository overview">
   <defs>
     <linearGradient id="brand" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="#7d56f4"/>
@@ -94,25 +94,25 @@
   <g fill="#4bdfd0"><rect x="350" y="37" width="3" height="3" rx="1"/><rect x="350" y="46" width="3" height="3" rx="1"/><rect x="350" y="55" width="3" height="3" rx="1"/></g>
   <g fill="#47e2d0"><rect x="353" y="37" width="3" height="3" rx="1"/><rect x="353" y="46" width="3" height="3" rx="1"/><rect x="353" y="55" width="3" height="3" rx="1"/></g>
   <g fill="#43e5d0"><rect x="356" y="37" width="3" height="3" rx="1"/><rect x="356" y="49" width="3" height="3" rx="1"/><rect x="356" y="52" width="3" height="3" rx="1"/></g>
-  <text class="t" x="844" y="46" font-size="11" fill="#8b87a3" text-anchor="end" letter-spacing="1.4">类型</text>
+  <text class="t" x="844" y="46" font-size="11" fill="#8b87a3" text-anchor="end" letter-spacing="1.4">PROFILE</text>
   <text class="t" x="844" y="62" font-size="14" fill="#edebfa" text-anchor="end" font-weight="700">library</text>
   <text class="t" x="844" y="101" font-size="13" fill="#8b87a3" text-anchor="end">v2.0.0</text>
-  <text class="t" x="36" y="121" font-size="13" fill="#8b87a3" text-anchor="start">一套面向电商视觉生产的 Agent 技能库：把「拍商品图」这件事拆成 26 个可组合的技能， 每个技能是一份可直接…</text>
+  <text class="t" x="36" y="121" font-size="13" fill="#8b87a3" text-anchor="start">An agent skill library for e-commerce visual production. It breaks &quot;shooting product photos&quot; into 26 c…</text>
   <text class="t" x="36" y="147" font-size="14" fill="#edebfa" text-anchor="start" font-weight="700">339</text>
-  <text class="t" x="67" y="147" font-size="12" fill="#8b87a3" text-anchor="start">个文件</text>
-  <text class="t" x="122" y="147" font-size="13" fill="#35334a" text-anchor="start">·</text>
-  <text class="t" x="136" y="147" font-size="14" fill="#edebfa" text-anchor="start" font-weight="700">2</text>
-  <text class="t" x="150" y="147" font-size="12" fill="#8b87a3" text-anchor="start">门语言</text>
-  <text class="t" x="205" y="147" font-size="13" fill="#35334a" text-anchor="start">·</text>
-  <text class="t" x="219" y="147" font-size="14" fill="#edebfa" text-anchor="start" font-weight="700">14</text>
-  <text class="t" x="242" y="147" font-size="12" fill="#8b87a3" text-anchor="start">次提交</text>
-  <text class="t" x="297" y="147" font-size="13" fill="#35334a" text-anchor="start">·</text>
-  <text class="t" x="311" y="147" font-size="14" fill="#edebfa" text-anchor="start" font-weight="700">1</text>
-  <text class="t" x="325" y="147" font-size="12" fill="#8b87a3" text-anchor="start">个标签</text>
-  <text class="t" x="844" y="147" font-size="13" fill="#edebfa" text-anchor="end" font-weight="700">许可证</text>
+  <text class="t" x="67" y="147" font-size="12" fill="#8b87a3" text-anchor="start">files</text>
+  <text class="t" x="115" y="147" font-size="13" fill="#35334a" text-anchor="start">·</text>
+  <text class="t" x="129" y="147" font-size="14" fill="#edebfa" text-anchor="start" font-weight="700">2</text>
+  <text class="t" x="143" y="147" font-size="12" fill="#8b87a3" text-anchor="start">languages</text>
+  <text class="t" x="220" y="147" font-size="13" fill="#35334a" text-anchor="start">·</text>
+  <text class="t" x="234" y="147" font-size="14" fill="#edebfa" text-anchor="start" font-weight="700">13</text>
+  <text class="t" x="257" y="147" font-size="12" fill="#8b87a3" text-anchor="start">commits</text>
+  <text class="t" x="319" y="147" font-size="13" fill="#35334a" text-anchor="start">·</text>
+  <text class="t" x="333" y="147" font-size="14" fill="#edebfa" text-anchor="start" font-weight="700">1</text>
+  <text class="t" x="347" y="147" font-size="12" fill="#8b87a3" text-anchor="start">tags</text>
+  <text class="t" x="844" y="147" font-size="13" fill="#edebfa" text-anchor="end" font-weight="700">license</text>
   <rect x="36" y="163" width="808" height="1" fill="#35334a"/>
-  <text class="t" x="36" y="193" font-size="11" fill="#8b87a3" text-anchor="start" letter-spacing="1.4">语言构成 · 按文件数</text>
-  <text class="t" x="844" y="193" font-size="12" fill="#8b87a3" text-anchor="end">339 个文件 · 7 类</text>
+  <text class="t" x="36" y="193" font-size="11" fill="#8b87a3" text-anchor="start" letter-spacing="1.4">LANGUAGES · BY FILE</text>
+  <text class="t" x="844" y="193" font-size="12" fill="#8b87a3" text-anchor="end">339 files · 7 kinds</text>
   <rect x="36" y="210" width="3" height="12" rx="1.5" fill="#7d56f4"/>
   <text class="t" x="48" y="219" font-size="13" fill="#edebfa" text-anchor="start">JavaScript</text>
   <rect x="204" y="211" width="300" height="10" rx="2.0" fill="#3e3b58"/>
@@ -144,37 +144,37 @@
   <text class="t" x="560" y="323" font-size="13" fill="#edebfa" text-anchor="end" font-weight="700">9%</text>
   <text class="t" x="844" y="323" font-size="13" fill="#8b87a3" text-anchor="end">29</text>
   <rect x="36" y="340" width="3" height="12" rx="1.5" fill="#7d56f4"/>
-  <text class="t" x="48" y="349" font-size="13" fill="#edebfa" text-anchor="start">其他 2 项</text>
+  <text class="t" x="48" y="349" font-size="13" fill="#edebfa" text-anchor="start">+2 more</text>
   <rect x="204" y="341" width="300" height="10" rx="2.0" fill="#3e3b58"/>
   <rect x="204" y="341" width="7" height="10" rx="2.0" fill="#7d56f4"/>
   <text class="t" x="560" y="349" font-size="13" fill="#edebfa" text-anchor="end" font-weight="700">2%</text>
   <text class="t" x="844" y="349" font-size="13" fill="#8b87a3" text-anchor="end">8</text>
-  <text class="t" x="36" y="375" font-size="11" fill="#8b87a3" text-anchor="start" letter-spacing="1.4">文件用途</text>
+  <text class="t" x="36" y="375" font-size="11" fill="#8b87a3" text-anchor="start" letter-spacing="1.4">COMPOSITION</text>
   <rect x="36" y="387" width="310" height="12" rx="2.0" fill="#7d56f4"/>
   <rect x="346" y="387" width="222" height="12" rx="2.0" fill="#ff5fd1"/>
   <rect x="568" y="387" width="162" height="12" rx="2.0" fill="#43e5d0"/>
   <rect x="730" y="387" width="114" height="12" rx="2.0" fill="#a9f05f"/>
   <rect x="36" y="413" width="9" height="9" rx="2.0" fill="#7d56f4"/>
-  <text class="t" x="50" y="421" font-size="12" fill="#8b87a3" text-anchor="start">代码</text>
+  <text class="t" x="50" y="421" font-size="12" fill="#8b87a3" text-anchor="start">code</text>
   <text class="t" x="85" y="421" font-size="12" fill="#edebfa" text-anchor="start">38%</text>
   <rect x="127" y="413" width="9" height="9" rx="2.0" fill="#ff5fd1"/>
-  <text class="t" x="141" y="421" font-size="12" fill="#8b87a3" text-anchor="start">文档</text>
+  <text class="t" x="141" y="421" font-size="12" fill="#8b87a3" text-anchor="start">docs</text>
   <text class="t" x="176" y="421" font-size="12" fill="#edebfa" text-anchor="start">27%</text>
   <rect x="218" y="413" width="9" height="9" rx="2.0" fill="#43e5d0"/>
-  <text class="t" x="232" y="421" font-size="12" fill="#8b87a3" text-anchor="start">配置</text>
-  <text class="t" x="267" y="421" font-size="12" fill="#edebfa" text-anchor="start">20%</text>
-  <rect x="309" y="413" width="9" height="9" rx="2.0" fill="#a9f05f"/>
-  <text class="t" x="323" y="421" font-size="12" fill="#8b87a3" text-anchor="start">其他</text>
-  <text class="t" x="358" y="421" font-size="12" fill="#edebfa" text-anchor="start">14%</text>
-  <text class="t" x="36" y="449" font-size="11" fill="#8b87a3" text-anchor="start" letter-spacing="1.4">提交活跃度 · 52 周</text>
-  <text class="t" x="844" y="449" font-size="12" fill="#8b87a3" text-anchor="end">7 峰值</text>
+  <text class="t" x="232" y="421" font-size="12" fill="#8b87a3" text-anchor="start">config</text>
+  <text class="t" x="281" y="421" font-size="12" fill="#edebfa" text-anchor="start">20%</text>
+  <rect x="323" y="413" width="9" height="9" rx="2.0" fill="#a9f05f"/>
+  <text class="t" x="337" y="421" font-size="12" fill="#8b87a3" text-anchor="start">other</text>
+  <text class="t" x="379" y="421" font-size="12" fill="#edebfa" text-anchor="start">14%</text>
+  <text class="t" x="36" y="449" font-size="11" fill="#8b87a3" text-anchor="start" letter-spacing="1.4">COMMIT ACTIVITY · 52w</text>
+  <text class="t" x="844" y="449" font-size="12" fill="#8b87a3" text-anchor="end">6 PEAK</text>
   <rect x="36" y="463" width="808" height="66" rx="6.0" fill="#222130"/>
   <line x1="44" y1="471" x2="836" y2="471" stroke="#35334a" stroke-width="1" stroke-dasharray="3 5"/>
-  <path d="M44.0 521.0 L59.5 521.0 L75.1 521.0 L90.6 521.0 L106.1 521.0 L121.6 521.0 L137.2 521.0 L152.7 521.0 L168.2 521.0 L183.8 521.0 L199.3 521.0 L214.8 521.0 L230.4 521.0 L245.9 521.0 L261.4 521.0 L276.9 521.0 L292.5 521.0 L308.0 521.0 L323.5 521.0 L339.1 521.0 L354.6 521.0 L370.1 521.0 L385.6 521.0 L401.2 521.0 L416.7 521.0 L432.2 521.0 L447.8 521.0 L463.3 521.0 L478.8 521.0 L494.4 521.0 L509.9 521.0 L525.4 521.0 L540.9 521.0 L556.5 521.0 L572.0 521.0 L587.5 521.0 L603.1 521.0 L618.6 521.0 L634.1 521.0 L649.6 521.0 L665.2 521.0 L680.7 521.0 L696.2 521.0 L711.8 521.0 L727.3 521.0 L742.8 521.0 L758.4 521.0 L773.9 521.0 L789.4 521.0 L804.9 478.1 L820.5 471.0 L836.0 513.9 L836.0 521 L44 521 Z" fill="#43e5d0" fill-opacity="0.35"/>
-  <path d="M44.0 521.0 L59.5 521.0 L75.1 521.0 L90.6 521.0 L106.1 521.0 L121.6 521.0 L137.2 521.0 L152.7 521.0 L168.2 521.0 L183.8 521.0 L199.3 521.0 L214.8 521.0 L230.4 521.0 L245.9 521.0 L261.4 521.0 L276.9 521.0 L292.5 521.0 L308.0 521.0 L323.5 521.0 L339.1 521.0 L354.6 521.0 L370.1 521.0 L385.6 521.0 L401.2 521.0 L416.7 521.0 L432.2 521.0 L447.8 521.0 L463.3 521.0 L478.8 521.0 L494.4 521.0 L509.9 521.0 L525.4 521.0 L540.9 521.0 L556.5 521.0 L572.0 521.0 L587.5 521.0 L603.1 521.0 L618.6 521.0 L634.1 521.0 L649.6 521.0 L665.2 521.0 L680.7 521.0 L696.2 521.0 L711.8 521.0 L727.3 521.0 L742.8 521.0 L758.4 521.0 L773.9 521.0 L789.4 521.0 L804.9 478.1 L820.5 471.0 L836.0 513.9" fill="none" stroke="#43e5d0" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
-  <text class="t" x="36" y="543" font-size="11" fill="#8b87a3" text-anchor="start">52 周前</text>
-  <text class="t" x="844" y="543" font-size="11" fill="#8b87a3" text-anchor="end">今天</text>
+  <path d="M44.0 521.0 L59.5 521.0 L75.1 521.0 L90.6 521.0 L106.1 521.0 L121.6 521.0 L137.2 521.0 L152.7 521.0 L168.2 521.0 L183.8 521.0 L199.3 521.0 L214.8 521.0 L230.4 521.0 L245.9 521.0 L261.4 521.0 L276.9 521.0 L292.5 521.0 L308.0 521.0 L323.5 521.0 L339.1 521.0 L354.6 521.0 L370.1 521.0 L385.6 521.0 L401.2 521.0 L416.7 521.0 L432.2 521.0 L447.8 521.0 L463.3 521.0 L478.8 521.0 L494.4 521.0 L509.9 521.0 L525.4 521.0 L540.9 521.0 L556.5 521.0 L572.0 521.0 L587.5 521.0 L603.1 521.0 L618.6 521.0 L634.1 521.0 L649.6 521.0 L665.2 521.0 L680.7 521.0 L696.2 521.0 L711.8 521.0 L727.3 521.0 L742.8 521.0 L758.4 521.0 L773.9 521.0 L789.4 521.0 L804.9 471.0 L820.5 471.0 L836.0 512.7 L836.0 521 L44 521 Z" fill="#43e5d0" fill-opacity="0.35"/>
+  <path d="M44.0 521.0 L59.5 521.0 L75.1 521.0 L90.6 521.0 L106.1 521.0 L121.6 521.0 L137.2 521.0 L152.7 521.0 L168.2 521.0 L183.8 521.0 L199.3 521.0 L214.8 521.0 L230.4 521.0 L245.9 521.0 L261.4 521.0 L276.9 521.0 L292.5 521.0 L308.0 521.0 L323.5 521.0 L339.1 521.0 L354.6 521.0 L370.1 521.0 L385.6 521.0 L401.2 521.0 L416.7 521.0 L432.2 521.0 L447.8 521.0 L463.3 521.0 L478.8 521.0 L494.4 521.0 L509.9 521.0 L525.4 521.0 L540.9 521.0 L556.5 521.0 L572.0 521.0 L587.5 521.0 L603.1 521.0 L618.6 521.0 L634.1 521.0 L649.6 521.0 L665.2 521.0 L680.7 521.0 L696.2 521.0 L711.8 521.0 L727.3 521.0 L742.8 521.0 L758.4 521.0 L773.9 521.0 L789.4 521.0 L804.9 471.0 L820.5 471.0 L836.0 512.7" fill="none" stroke="#43e5d0" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+  <text class="t" x="36" y="543" font-size="11" fill="#8b87a3" text-anchor="start">-52w</text>
+  <text class="t" x="844" y="543" font-size="11" fill="#8b87a3" text-anchor="end">today</text>
   <rect x="36" y="593" width="808" height="1" fill="#35334a"/>
-  <text class="t" x="36" y="617" font-size="12" fill="#8b87a3" text-anchor="start">dlazy-ai/ecommerce-skills · npm</text>
-  <text class="t" x="844" y="617" font-size="12" fill="#8b87a3" text-anchor="end">生成于 repolish v0.5.0</text>
+  <text class="t" x="36" y="617" font-size="12" fill="#8b87a3" text-anchor="start">dlazy-ai/ecommerce-skills · main · npm</text>
+  <text class="t" x="844" y="617" font-size="12" fill="#8b87a3" text-anchor="end">generated by repolish v0.5.0</text>
 </svg>

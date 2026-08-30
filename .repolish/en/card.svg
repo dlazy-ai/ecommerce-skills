@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="880" height="536" viewBox="0 0 880 536" lang="zh-CN" role="img" aria-label="repolish report card — 94 out of 100">
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="536" viewBox="0 0 880 536" lang="en" role="img" aria-label="repolish report card — 94 out of 100">
   <defs>
     <linearGradient id="brand" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="#7d56f4"/>
@@ -57,8 +57,8 @@
   <text class="t" x="844" y="56" font-size="13" fill="#8b87a3" text-anchor="end">library · local</text>
   <rect x="36" y="84" width="808" height="1" fill="#35334a"/>
   <text class="t" x="36" y="170" font-size="64" fill="#43e5d0" text-anchor="start" font-weight="700">94</text>
-  <text class="t" x="36" y="196" font-size="13" fill="#8b87a3" text-anchor="start">/ 100  ·  优秀</text>
-  <text class="t" x="236" y="140" font-size="11" fill="#8b87a3" text-anchor="start" letter-spacing="1.4">可发现性</text>
+  <text class="t" x="36" y="196" font-size="13" fill="#8b87a3" text-anchor="start">/ 100  ·  excellent</text>
+  <text class="t" x="236" y="140" font-size="11" fill="#8b87a3" text-anchor="start" letter-spacing="1.4">DISCOVERABILITY</text>
   <rect x="472" y="131" width="22" height="9" rx="2.0" fill="#43e5d0"/>
   <rect x="500" y="131" width="22" height="9" rx="2.0" fill="#43e5d0"/>
   <rect x="528" y="131" width="22" height="9" rx="2.0" fill="#43e5d0"/>
@@ -72,7 +72,7 @@
   <rect x="752" y="131" width="22" height="9" rx="2.0" fill="#43e5d0"/>
   <rect x="780" y="131" width="22" height="9" rx="2.0" fill="#3e3b58"/>
   <text class="t" x="844" y="140" font-size="13" fill="#43e5d0" text-anchor="end" font-weight="700">96</text>
-  <text class="t" x="236" y="168" font-size="11" fill="#8b87a3" text-anchor="start" letter-spacing="1.4">可理解性</text>
+  <text class="t" x="236" y="168" font-size="11" fill="#8b87a3" text-anchor="start" letter-spacing="1.4">COMPREHENSIBILITY</text>
   <rect x="472" y="159" width="22" height="9" rx="2.0" fill="#43e5d0"/>
   <rect x="500" y="159" width="22" height="9" rx="2.0" fill="#43e5d0"/>
   <rect x="528" y="159" width="22" height="9" rx="2.0" fill="#43e5d0"/>
@@ -86,7 +86,7 @@
   <rect x="752" y="159" width="22" height="9" rx="2.0" fill="#3e3b58"/>
   <rect x="780" y="159" width="22" height="9" rx="2.0" fill="#3e3b58"/>
   <text class="t" x="844" y="168" font-size="13" fill="#43e5d0" text-anchor="end" font-weight="700">91</text>
-  <text class="t" x="236" y="196" font-size="11" fill="#8b87a3" text-anchor="start" letter-spacing="1.4">可信度</text>
+  <text class="t" x="236" y="196" font-size="11" fill="#8b87a3" text-anchor="start" letter-spacing="1.4">CREDIBILITY</text>
   <rect x="472" y="187" width="22" height="9" rx="2.0" fill="#43e5d0"/>
   <rect x="500" y="187" width="22" height="9" rx="2.0" fill="#43e5d0"/>
   <rect x="528" y="187" width="22" height="9" rx="2.0" fill="#43e5d0"/>
@@ -100,7 +100,7 @@
   <rect x="752" y="187" width="22" height="9" rx="2.0" fill="#43e5d0"/>
   <rect x="780" y="187" width="22" height="9" rx="2.0" fill="#3e3b58"/>
   <text class="t" x="844" y="196" font-size="13" fill="#43e5d0" text-anchor="end" font-weight="700">95</text>
-  <text class="t" x="36" y="240" font-size="11" fill="#8b87a3" text-anchor="start" letter-spacing="1.4">检查项</text>
+  <text class="t" x="36" y="240" font-size="11" fill="#8b87a3" text-anchor="start" letter-spacing="1.4">CHECKS</text>
   <circle cx="118" cy="236" r="5" fill="#43e5d0"/>
   <circle cx="134" cy="236" r="5" fill="#8b87a3"/>
   <circle cx="150" cy="236" r="5" fill="#8b87a3"/>
@@ -123,9 +123,9 @@
   <circle cx="422" cy="236" r="5" fill="#43e5d0"/>
   <circle cx="438" cy="236" r="5" fill="#43e5d0"/>
   <circle cx="454" cy="236" r="5" fill="#43e5d0"/>
-  <text class="t" x="844" y="240" font-size="12" fill="#8b87a3" text-anchor="end">18 项已评分 · 4 项未验证</text>
+  <text class="t" x="844" y="240" font-size="12" fill="#8b87a3" text-anchor="end">18 scored · 4 not verified</text>
   <rect x="36" y="276" width="808" height="1" fill="#35334a"/>
-  <text class="t" x="36" y="298" font-size="11" fill="#ff5fd1" text-anchor="start" letter-spacing="1.4">待修复</text>
+  <text class="t" x="36" y="298" font-size="11" fill="#ff5fd1" text-anchor="start" letter-spacing="1.4">TO FIX</text>
   <rect x="36" y="309" width="26" height="18" rx="5.0" fill="#ffc53d"/>
   <text class="t" x="49" y="322" font-size="11" fill="#1a1a24" text-anchor="middle" font-weight="700">P2</text>
   <text class="t" x="74" y="322" font-size="13" fill="#edebfa" text-anchor="start" font-weight="700">readme-length</text>
@@ -138,9 +138,9 @@
   <text class="t" x="49" y="414" font-size="11" fill="#1a1a24" text-anchor="middle" font-weight="700">P3</text>
   <text class="t" x="74" y="414" font-size="13" fill="#edebfa" text-anchor="start" font-weight="700">readme-badges</text>
   <text class="t" x="74" y="432" font-size="12" fill="#8b87a3" text-anchor="start">Add the missing one of build / version / license</text>
-  <text class="t" x="74" y="452" font-size="12" fill="#8b87a3" text-anchor="start">+1 条未列出——运行 repolish -v</text>
+  <text class="t" x="74" y="452" font-size="12" fill="#8b87a3" text-anchor="start">+1 more — run repolish -v</text>
   <rect x="36" y="472" width="808" height="1" fill="#35334a"/>
   <text class="t" x="36" y="496" font-size="12" fill="#8b87a3" text-anchor="start">dlazy-ai/ecommerce-skills · 940f6057</text>
   <text class="t" x="844" y="496" font-size="12" fill="#8b87a3" text-anchor="end">repolish v0.5.0</text>
-  <text class="t" x="36" y="514" font-size="11" fill="#8b87a3" text-anchor="start">评分过程确定，不涉及任何模型。</text>
+  <text class="t" x="36" y="514" font-size="11" fill="#8b87a3" text-anchor="start">Scoring is deterministic. No model is involved.</text>
 </svg>

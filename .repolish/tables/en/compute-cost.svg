@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="326" viewBox="0 0 880 326" lang="en" role="img" aria-label="Compute cost — table">
+  <defs>
+    <linearGradient id="brand" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7d56f4"/>
+      <stop offset="0.55" stop-color="#ff5fd1"/>
+      <stop offset="1" stop-color="#43e5d0"/>
+    </linearGradient>
+  </defs>
+  <style>
+    .t { font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", "Noto Sans Mono CJK SC", "Noto Sans Mono CJK JP", "Microsoft YaHei", "Hiragino Sans", "Yu Gothic", monospace; }
+  </style>
+  <rect x="0" y="0" width="880" height="326" rx="18.0" fill="#1a1a24"/>
+  <rect x="0.5" y="0.5" width="879" height="325" rx="17.5" fill="none" stroke="#35334a"/>
+  <text class="t" x="28" y="38" font-size="11" fill="#8b87a3" text-anchor="start" letter-spacing="1.4">COMPUTE COST</text>
+  <text class="t" x="28" y="68" font-size="11" fill="#8b87a3" text-anchor="start" letter-spacing="1.4">MODEL</text>
+  <text class="t" x="315" y="68" font-size="11" fill="#8b87a3" text-anchor="end" letter-spacing="1.4">PRICE</text>
+  <text class="t" x="335" y="68" font-size="11" fill="#8b87a3" text-anchor="start" letter-spacing="1.4">USED FOR</text>
+  <rect x="28" y="78" width="824" height="1" fill="#35334a"/>
+  <rect x="28" y="89" width="120" height="19" rx="4.0" fill="#222130"/>
+  <text class="t" x="34" y="102" font-size="12" fill="#edebfa" text-anchor="start">claude-sonnet-5</text>
+  <text class="t" x="315" y="102" font-size="13" fill="#edebfa" text-anchor="end" font-weight="700">3</text>
+  <text class="t" x="335" y="102" font-size="13" fill="#edebfa" text-anchor="start">pre-launch QC (writes a report, generates no image)</text>
+  <rect x="20" y="113" width="840" height="35" rx="5.0" fill="#222130"/>
+  <rect x="28" y="124" width="98" height="19" rx="4.0" fill="#222130"/>
+  <text class="t" x="34" y="137" font-size="12" fill="#edebfa" text-anchor="start">seedream-5.0</text>
+  <text class="t" x="315" y="137" font-size="13" fill="#edebfa" text-anchor="end" font-weight="700">5</text>
+  <text class="t" x="335" y="137" font-size="13" fill="#edebfa" text-anchor="start">batch generation, multi-item fusion (value first)</text>
+  <rect x="28" y="159" width="127" height="19" rx="4.0" fill="#222130"/>
+  <text class="t" x="34" y="172" font-size="12" fill="#edebfa" text-anchor="start">seedream-5.0-pro</text>
+  <text class="t" x="315" y="172" font-size="13" fill="#edebfa" text-anchor="end" font-weight="700">7</text>
+  <text class="t" x="335" y="172" font-size="13" fill="#edebfa" text-anchor="start">Chinese typesetting (detail pages, selling-point mains)</text>
+  <rect x="20" y="183" width="840" height="35" rx="5.0" fill="#222130"/>
+  <rect x="28" y="194" width="84" height="19" rx="4.0" fill="#222130"/>
+  <text class="t" x="34" y="207" font-size="12" fill="#edebfa" text-anchor="start">banana-pro</text>
+  <text class="t" x="315" y="207" font-size="13" fill="#edebfa" text-anchor="end" font-weight="700">18</text>
+  <text class="t" x="335" y="207" font-size="13" fill="#edebfa" text-anchor="start">text-to-image creation</text>
+  <text class="t" x="28" y="242" font-size="13" fill="#edebfa" text-anchor="start">gpt-image-2 --quality medium</text>
+  <text class="t" x="315" y="242" font-size="13" fill="#edebfa" text-anchor="end" font-weight="700">33</text>
+  <text class="t" x="335" y="242" font-size="13" fill="#edebfa" text-anchor="start">most targeted edits (background, model, extraction, cleanup)</text>
+  <rect x="20" y="253" width="840" height="35" rx="5.0" fill="#222130"/>
+  <text class="t" x="28" y="277" font-size="13" fill="#edebfa" text-anchor="start">gpt-image-2 --quality high</text>
+  <text class="t" x="315" y="277" font-size="13" fill="#edebfa" text-anchor="end" font-weight="700">60</text>
+  <text class="t" x="335" y="277" font-size="13" fill="#edebfa" text-anchor="start">texture and detail first (close-ups, enhancement, retouching)</text>
+  <rect x="28" y="288" width="824" height="1" fill="#35334a"/>
+</svg>

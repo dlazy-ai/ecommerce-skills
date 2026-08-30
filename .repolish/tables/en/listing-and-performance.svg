@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="258" viewBox="0 0 880 258" lang="en" role="img" aria-label="Listing and performance — table">
+  <defs>
+    <linearGradient id="brand" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7d56f4"/>
+      <stop offset="0.55" stop-color="#ff5fd1"/>
+      <stop offset="1" stop-color="#43e5d0"/>
+    </linearGradient>
+  </defs>
+  <style>
+    .t { font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", "Noto Sans Mono CJK SC", "Noto Sans Mono CJK JP", "Microsoft YaHei", "Hiragino Sans", "Yu Gothic", monospace; }
+  </style>
+  <rect x="0" y="0" width="880" height="258" rx="18.0" fill="#1a1a24"/>
+  <rect x="0.5" y="0.5" width="879" height="257" rx="17.5" fill="none" stroke="#35334a"/>
+  <text class="t" x="28" y="38" font-size="11" fill="#8b87a3" text-anchor="start" letter-spacing="1.4">LISTING AND PERFORMANCE</text>
+  <text class="t" x="28" y="68" font-size="11" fill="#8b87a3" text-anchor="start" letter-spacing="1.4">SKILL</text>
+  <text class="t" x="220" y="68" font-size="11" fill="#8b87a3" text-anchor="start" letter-spacing="1.4">WHAT IT DOES</text>
+  <text class="t" x="469" y="68" font-size="11" fill="#8b87a3" text-anchor="start" letter-spacing="1.4">IN → OUT</text>
+  <text class="t" x="717" y="68" font-size="11" fill="#8b87a3" text-anchor="start" letter-spacing="1.4">MODEL</text>
+  <rect x="28" y="78" width="824" height="1" fill="#35334a"/>
+  <text class="t" x="28" y="102" font-size="13" fill="#edebfa" text-anchor="start">listing-optimizer</text>
+  <text class="t" x="220" y="102" font-size="13" fill="#edebfa" text-anchor="start">Main-image A/B sets and</text>
+  <text class="t" x="220" y="120" font-size="13" fill="#edebfa" text-anchor="start">review</text>
+  <text class="t" x="469" y="102" font-size="13" fill="#edebfa" text-anchor="start">product image + selling</text>
+  <text class="t" x="469" y="120" font-size="13" fill="#edebfa" text-anchor="start">points → arms + hypotheses +</text>
+  <text class="t" x="469" y="138" font-size="13" fill="#edebfa" text-anchor="start">review table</text>
+  <rect x="717" y="89" width="91" height="19" rx="4.0" fill="#222130"/>
+  <text class="t" x="723" y="102" font-size="12" fill="#edebfa" text-anchor="start">gpt-image-2</text>
+  <rect x="20" y="149" width="840" height="71" rx="5.0" fill="#222130"/>
+  <text class="t" x="28" y="173" font-size="13" fill="#edebfa" text-anchor="start">cross-border-localize</text>
+  <text class="t" x="220" y="173" font-size="13" fill="#edebfa" text-anchor="start">Multi-region localization</text>
+  <text class="t" x="469" y="173" font-size="13" fill="#edebfa" text-anchor="start">one asset set → multi-locale</text>
+  <text class="t" x="469" y="191" font-size="13" fill="#edebfa" text-anchor="start">copy, size charts, regional</text>
+  <text class="t" x="469" y="209" font-size="13" fill="#edebfa" text-anchor="start">mains</text>
+  <rect x="717" y="160" width="127" height="19" rx="4.0" fill="#222130"/>
+  <text class="t" x="723" y="173" font-size="12" fill="#edebfa" text-anchor="start">seedream-5.0-pro</text>
+  <rect x="28" y="220" width="824" height="1" fill="#35334a"/>
+</svg>

@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="364" viewBox="0 0 880 364" lang="en" role="img" aria-label="Scale and quality control — table">
+  <defs>
+    <linearGradient id="brand" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7d56f4"/>
+      <stop offset="0.55" stop-color="#ff5fd1"/>
+      <stop offset="1" stop-color="#43e5d0"/>
+    </linearGradient>
+  </defs>
+  <style>
+    .t { font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", "Noto Sans Mono CJK SC", "Noto Sans Mono CJK JP", "Microsoft YaHei", "Hiragino Sans", "Yu Gothic", monospace; }
+  </style>
+  <rect x="0" y="0" width="880" height="364" rx="18.0" fill="#1a1a24"/>
+  <rect x="0.5" y="0.5" width="879" height="363" rx="17.5" fill="none" stroke="#35334a"/>
+  <text class="t" x="28" y="38" font-size="11" fill="#8b87a3" text-anchor="start" letter-spacing="1.4">SCALE AND QUALITY CONTROL</text>
+  <text class="t" x="28" y="68" font-size="11" fill="#8b87a3" text-anchor="start" letter-spacing="1.4">SKILL</text>
+  <text class="t" x="204" y="68" font-size="11" fill="#8b87a3" text-anchor="start" letter-spacing="1.4">WHAT IT DOES</text>
+  <text class="t" x="450" y="68" font-size="11" fill="#8b87a3" text-anchor="start" letter-spacing="1.4">IN → OUT</text>
+  <text class="t" x="696" y="68" font-size="11" fill="#8b87a3" text-anchor="start" letter-spacing="1.4">MODEL</text>
+  <rect x="28" y="78" width="824" height="1" fill="#35334a"/>
+  <text class="t" x="28" y="102" font-size="13" fill="#edebfa" text-anchor="start">batch-image</text>
+  <text class="t" x="204" y="102" font-size="13" fill="#edebfa" text-anchor="start">Multi-product batch pipeline</text>
+  <text class="t" x="450" y="102" font-size="13" fill="#edebfa" text-anchor="start">product list CSV → a whole</text>
+  <text class="t" x="450" y="120" font-size="13" fill="#edebfa" text-anchor="start">batch on one visual system</text>
+  <rect x="696" y="89" width="98" height="19" rx="4.0" fill="#222130"/>
+  <text class="t" x="702" y="102" font-size="12" fill="#edebfa" text-anchor="start">seedream-5.0</text>
+  <rect x="20" y="131" width="840" height="71" rx="5.0" fill="#222130"/>
+  <text class="t" x="28" y="155" font-size="13" fill="#edebfa" text-anchor="start">detect-task</text>
+  <text class="t" x="204" y="155" font-size="13" fill="#edebfa" text-anchor="start">Pre-launch AI-image QC</text>
+  <text class="t" x="450" y="155" font-size="13" fill="#edebfa" text-anchor="start">candidate image → risk</text>
+  <text class="t" x="450" y="173" font-size="13" fill="#edebfa" text-anchor="start">report + prompt fix</text>
+  <text class="t" x="450" y="191" font-size="13" fill="#edebfa" text-anchor="start">sentences</text>
+  <rect x="696" y="142" width="120" height="19" rx="4.0" fill="#222130"/>
+  <text class="t" x="702" y="155" font-size="12" fill="#edebfa" text-anchor="start">claude-sonnet-5</text>
+  <text class="t" x="28" y="226" font-size="13" fill="#edebfa" text-anchor="start">platform-compliance</text>
+  <text class="t" x="204" y="226" font-size="13" fill="#edebfa" text-anchor="start">Marketplace spec check and</text>
+  <text class="t" x="204" y="244" font-size="13" fill="#edebfa" text-anchor="start">auto-fix</text>
+  <text class="t" x="450" y="226" font-size="13" fill="#edebfa" text-anchor="start">candidate image →</text>
+  <text class="t" x="450" y="244" font-size="13" fill="#edebfa" text-anchor="start">per-marketplace pass/reject</text>
+  <text class="t" x="450" y="262" font-size="13" fill="#edebfa" text-anchor="start">report + fixed image</text>
+  <text class="t" x="696" y="226" font-size="13" fill="#edebfa" text-anchor="start">none (reads pixels)</text>
+  <rect x="20" y="273" width="840" height="53" rx="5.0" fill="#222130"/>
+  <text class="t" x="28" y="297" font-size="13" fill="#edebfa" text-anchor="start">brand-kit</text>
+  <text class="t" x="204" y="297" font-size="13" fill="#edebfa" text-anchor="start">One visual system for the</text>
+  <text class="t" x="204" y="315" font-size="13" fill="#edebfa" text-anchor="start">store</text>
+  <text class="t" x="450" y="297" font-size="13" fill="#edebfa" text-anchor="start">brand.yaml → constraints</text>
+  <text class="t" x="450" y="315" font-size="13" fill="#edebfa" text-anchor="start">shared by every skill</text>
+  <text class="t" x="696" y="297" font-size="13" fill="#edebfa" text-anchor="start">none (spec only)</text>
+  <rect x="28" y="326" width="824" height="1" fill="#35334a"/>
+</svg>

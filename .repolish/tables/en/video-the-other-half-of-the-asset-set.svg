@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="257" viewBox="0 0 880 257" lang="en" role="img" aria-label="Video — the other half of the asset set — table">
+  <defs>
+    <linearGradient id="brand" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7d56f4"/>
+      <stop offset="0.55" stop-color="#ff5fd1"/>
+      <stop offset="1" stop-color="#43e5d0"/>
+    </linearGradient>
+  </defs>
+  <style>
+    .t { font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", "Noto Sans Mono CJK SC", "Noto Sans Mono CJK JP", "Microsoft YaHei", "Hiragino Sans", "Yu Gothic", monospace; }
+  </style>
+  <rect x="0" y="0" width="880" height="257" rx="18.0" fill="#1a1a24"/>
+  <rect x="0.5" y="0.5" width="879" height="256" rx="17.5" fill="none" stroke="#35334a"/>
+  <text class="t" x="28" y="38" font-size="11" fill="#8b87a3" text-anchor="start" letter-spacing="1.4">VIDEO — THE OTHER HALF OF THE ASSET SET</text>
+  <text class="t" x="28" y="68" font-size="11" fill="#8b87a3" text-anchor="start" letter-spacing="1.4">SKILL</text>
+  <text class="t" x="181" y="68" font-size="11" fill="#8b87a3" text-anchor="start" letter-spacing="1.4">WHAT IT DOES</text>
+  <text class="t" x="420" y="68" font-size="11" fill="#8b87a3" text-anchor="start" letter-spacing="1.4">IN → OUT</text>
+  <text class="t" x="688" y="68" font-size="11" fill="#8b87a3" text-anchor="start" letter-spacing="1.4">NEEDS</text>
+  <rect x="28" y="78" width="824" height="1" fill="#35334a"/>
+  <text class="t" x="28" y="102" font-size="13" fill="#edebfa" text-anchor="start">main-image-video</text>
+  <text class="t" x="181" y="102" font-size="13" fill="#edebfa" text-anchor="start">Still main image into video</text>
+  <text class="t" x="420" y="102" font-size="13" fill="#edebfa" text-anchor="start">one product image → 3–5s clip</text>
+  <text class="t" x="688" y="102" font-size="13" fill="#edebfa" text-anchor="start">a video model</text>
+  <rect x="20" y="113" width="840" height="53" rx="5.0" fill="#222130"/>
+  <text class="t" x="28" y="137" font-size="13" fill="#edebfa" text-anchor="start">product-video-ad</text>
+  <text class="t" x="181" y="137" font-size="13" fill="#edebfa" text-anchor="start">Short-form video ad</text>
+  <text class="t" x="420" y="137" font-size="13" fill="#edebfa" text-anchor="start">selling points → storyboard →</text>
+  <text class="t" x="420" y="155" font-size="13" fill="#edebfa" text-anchor="start">cut with subtitles</text>
+  <text class="t" x="688" y="137" font-size="13" fill="#edebfa" text-anchor="start">video model + ffmpeg</text>
+  <text class="t" x="28" y="190" font-size="13" fill="#edebfa" text-anchor="start">ugc-testimonial</text>
+  <text class="t" x="181" y="190" font-size="13" fill="#edebfa" text-anchor="start">Talking-head UGC video</text>
+  <text class="t" x="420" y="190" font-size="13" fill="#edebfa" text-anchor="start">product + persona → script and</text>
+  <text class="t" x="420" y="208" font-size="13" fill="#edebfa" text-anchor="start">finished cut</text>
+  <text class="t" x="688" y="190" font-size="13" fill="#edebfa" text-anchor="start">video model + ffmpeg</text>
+  <rect x="28" y="219" width="824" height="1" fill="#35334a"/>
+</svg>

@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="700" viewBox="0 0 880 700" lang="en" role="img" aria-label="Single-purpose edits — table">
+  <defs>
+    <linearGradient id="brand" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7d56f4"/>
+      <stop offset="0.55" stop-color="#ff5fd1"/>
+      <stop offset="1" stop-color="#43e5d0"/>
+    </linearGradient>
+  </defs>
+  <style>
+    .t { font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", "Noto Sans Mono CJK SC", "Noto Sans Mono CJK JP", "Microsoft YaHei", "Hiragino Sans", "Yu Gothic", monospace; }
+  </style>
+  <rect x="0" y="0" width="880" height="700" rx="18.0" fill="#1a1a24"/>
+  <rect x="0.5" y="0.5" width="879" height="699" rx="17.5" fill="none" stroke="#35334a"/>
+  <text class="t" x="28" y="38" font-size="11" fill="#8b87a3" text-anchor="start" letter-spacing="1.4">SINGLE-PURPOSE EDITS</text>
+  <text class="t" x="28" y="68" font-size="11" fill="#8b87a3" text-anchor="start" letter-spacing="1.4">SKILL</text>
+  <text class="t" x="235" y="68" font-size="11" fill="#8b87a3" text-anchor="start" letter-spacing="1.4">WHAT IT DOES</text>
+  <text class="t" x="476" y="68" font-size="11" fill="#8b87a3" text-anchor="start" letter-spacing="1.4">IN → OUT</text>
+  <text class="t" x="717" y="68" font-size="11" fill="#8b87a3" text-anchor="start" letter-spacing="1.4">MODEL</text>
+  <rect x="28" y="78" width="824" height="1" fill="#35334a"/>
+  <text class="t" x="28" y="102" font-size="13" fill="#edebfa" text-anchor="start">to-3d</text>
+  <text class="t" x="235" y="102" font-size="13" fill="#edebfa" text-anchor="start">Flat-lay into a 3D shot</text>
+  <text class="t" x="476" y="102" font-size="13" fill="#edebfa" text-anchor="start">flat-lay → ghost-mannequin</text>
+  <text class="t" x="476" y="120" font-size="13" fill="#edebfa" text-anchor="start">dimensional shot</text>
+  <rect x="717" y="89" width="91" height="19" rx="4.0" fill="#222130"/>
+  <text class="t" x="723" y="102" font-size="12" fill="#edebfa" text-anchor="start">gpt-image-2</text>
+  <rect x="20" y="131" width="840" height="53" rx="5.0" fill="#222130"/>
+  <text class="t" x="28" y="155" font-size="13" fill="#edebfa" text-anchor="start">clothing-extraction</text>
+  <text class="t" x="235" y="155" font-size="13" fill="#edebfa" text-anchor="start">Extract the product from any</text>
+  <text class="t" x="235" y="173" font-size="13" fill="#edebfa" text-anchor="start">photo</text>
+  <text class="t" x="476" y="155" font-size="13" fill="#edebfa" text-anchor="start">model or street photo →</text>
+  <text class="t" x="476" y="173" font-size="13" fill="#edebfa" text-anchor="start">clean flat-lay</text>
+  <rect x="717" y="142" width="91" height="19" rx="4.0" fill="#222130"/>
+  <text class="t" x="723" y="155" font-size="12" fill="#edebfa" text-anchor="start">gpt-image-2</text>
+  <text class="t" x="28" y="208" font-size="13" fill="#edebfa" text-anchor="start">fabric-on-body</text>
+  <text class="t" x="235" y="208" font-size="13" fill="#edebfa" text-anchor="start">Swap the fabric</text>
+  <text class="t" x="476" y="208" font-size="13" fill="#edebfa" text-anchor="start">style sheet + fabric swatch</text>
+  <text class="t" x="476" y="226" font-size="13" fill="#edebfa" text-anchor="start">→ the same garment in a new</text>
+  <text class="t" x="476" y="244" font-size="13" fill="#edebfa" text-anchor="start">material</text>
+  <rect x="717" y="195" width="91" height="19" rx="4.0" fill="#222130"/>
+  <text class="t" x="723" y="208" font-size="12" fill="#edebfa" text-anchor="start">gpt-image-2</text>
+  <rect x="20" y="255" width="840" height="53" rx="5.0" fill="#222130"/>
+  <text class="t" x="28" y="279" font-size="13" fill="#edebfa" text-anchor="start">clothing-detail</text>
+  <text class="t" x="235" y="279" font-size="13" fill="#edebfa" text-anchor="start">Craftsmanship close-up</text>
+  <text class="t" x="476" y="279" font-size="13" fill="#edebfa" text-anchor="start">garment image → macro shot</text>
+  <text class="t" x="476" y="297" font-size="13" fill="#edebfa" text-anchor="start">of the weave or construction</text>
+  <rect x="717" y="266" width="91" height="19" rx="4.0" fill="#222130"/>
+  <text class="t" x="723" y="279" font-size="12" fill="#edebfa" text-anchor="start">gpt-image-2</text>
+  <text class="t" x="28" y="332" font-size="13" fill="#edebfa" text-anchor="start">clothing-grass-planting</text>
+  <text class="t" x="235" y="332" font-size="13" fill="#edebfa" text-anchor="start">Same outfit, new model /</text>
+  <text class="t" x="235" y="350" font-size="13" fill="#edebfa" text-anchor="start">scene / pose</text>
+  <text class="t" x="476" y="332" font-size="13" fill="#edebfa" text-anchor="start">outfit photo →</text>
+  <text class="t" x="476" y="350" font-size="13" fill="#edebfa" text-anchor="start">social-commerce lifestyle</text>
+  <text class="t" x="476" y="368" font-size="13" fill="#edebfa" text-anchor="start">shot</text>
+  <rect x="717" y="319" width="91" height="19" rx="4.0" fill="#222130"/>
+  <text class="t" x="723" y="332" font-size="12" fill="#edebfa" text-anchor="start">gpt-image-2</text>
+  <rect x="20" y="379" width="840" height="71" rx="5.0" fill="#222130"/>
+  <text class="t" x="28" y="403" font-size="13" fill="#edebfa" text-anchor="start">item-selling-point</text>
+  <text class="t" x="235" y="403" font-size="13" fill="#edebfa" text-anchor="start">Product shot into a main</text>
+  <text class="t" x="235" y="421" font-size="13" fill="#edebfa" text-anchor="start">image</text>
+  <text class="t" x="476" y="403" font-size="13" fill="#edebfa" text-anchor="start">product image + selling</text>
+  <text class="t" x="476" y="421" font-size="13" fill="#edebfa" text-anchor="start">points → converting main</text>
+  <text class="t" x="476" y="439" font-size="13" fill="#edebfa" text-anchor="start">image with copy</text>
+  <rect x="717" y="390" width="127" height="19" rx="4.0" fill="#222130"/>
+  <text class="t" x="723" y="403" font-size="12" fill="#edebfa" text-anchor="start">seedream-5.0-pro</text>
+  <text class="t" x="28" y="474" font-size="13" fill="#edebfa" text-anchor="start">item-change-background</text>
+  <text class="t" x="235" y="474" font-size="13" fill="#edebfa" text-anchor="start">Change the background</text>
+  <text class="t" x="476" y="474" font-size="13" fill="#edebfa" text-anchor="start">white-background product</text>
+  <text class="t" x="476" y="492" font-size="13" fill="#edebfa" text-anchor="start">shot → photorealistic scene</text>
+  <rect x="717" y="461" width="91" height="19" rx="4.0" fill="#222130"/>
+  <text class="t" x="723" y="474" font-size="12" fill="#edebfa" text-anchor="start">gpt-image-2</text>
+  <rect x="20" y="503" width="840" height="53" rx="5.0" fill="#222130"/>
+  <text class="t" x="28" y="527" font-size="13" fill="#edebfa" text-anchor="start">remove-watermark</text>
+  <text class="t" x="235" y="527" font-size="13" fill="#edebfa" text-anchor="start">Remove watermarks and text</text>
+  <text class="t" x="476" y="527" font-size="13" fill="#edebfa" text-anchor="start">image with text or</text>
+  <text class="t" x="476" y="545" font-size="13" fill="#edebfa" text-anchor="start">watermarks → clean image</text>
+  <rect x="717" y="514" width="91" height="19" rx="4.0" fill="#222130"/>
+  <text class="t" x="723" y="527" font-size="12" fill="#edebfa" text-anchor="start">gpt-image-2</text>
+  <text class="t" x="28" y="580" font-size="13" fill="#edebfa" text-anchor="start">material-enhancement</text>
+  <text class="t" x="235" y="580" font-size="13" fill="#edebfa" text-anchor="start">Texture enhancement</text>
+  <text class="t" x="476" y="580" font-size="13" fill="#edebfa" text-anchor="start">soft image + hi-res product</text>
+  <text class="t" x="476" y="598" font-size="13" fill="#edebfa" text-anchor="start">shot → rebuilt texture</text>
+  <rect x="717" y="567" width="91" height="19" rx="4.0" fill="#222130"/>
+  <text class="t" x="723" y="580" font-size="12" fill="#edebfa" text-anchor="start">gpt-image-2</text>
+  <rect x="20" y="609" width="840" height="53" rx="5.0" fill="#222130"/>
+  <text class="t" x="28" y="633" font-size="13" fill="#edebfa" text-anchor="start">item-repair</text>
+  <text class="t" x="235" y="633" font-size="13" fill="#edebfa" text-anchor="start">Retouch and de-wrinkle</text>
+  <text class="t" x="476" y="633" font-size="13" fill="#edebfa" text-anchor="start">phone snapshot →</text>
+  <text class="t" x="476" y="651" font-size="13" fill="#edebfa" text-anchor="start">listing-ready retouch</text>
+  <rect x="717" y="620" width="91" height="19" rx="4.0" fill="#222130"/>
+  <text class="t" x="723" y="633" font-size="12" fill="#edebfa" text-anchor="start">gpt-image-2</text>
+  <rect x="28" y="662" width="824" height="1" fill="#35334a"/>
+</svg>
