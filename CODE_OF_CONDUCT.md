@@ -38,7 +38,7 @@
 
 ## 监督
 
-辱骂、骚扰或其他不可接受的行为可通过 仓库 **Security → Report a vulnerability** 的私密报告入口，或私信维护者 [@dlazyai](https://github.com/dlazyai)（若举报涉及维护者本人，请使用 GitHub 官方举报入口 <https://github.com/contact/report-abuse>） 向负责监督的社区领袖报告。 所有投诉都将得到及时和公平的审查和调查。
+辱骂、骚扰或其他不可接受的行为可通过 仓库 **Security → Report a vulnerability** 的私密报告入口，或私信维护者 [@dlazy-ai](https://github.com/dlazy-ai)（若举报涉及维护者本人，请使用 GitHub 官方举报入口 <https://github.com/contact/report-abuse>） 向负责监督的社区领袖报告。 所有投诉都将得到及时和公平的审查和调查。
 
 所有社区领袖都有义务尊重任何事件报告者的隐私和安全。
 

@@ -1,8 +1,8 @@
 # ecommerce-skills
 
-[![ci](https://github.com/dlazyai/ecommerce-skills/actions/workflows/ci.yml/badge.svg)](https://github.com/dlazyai/ecommerce-skills/actions/workflows/ci.yml)
+[![ci](https://github.com/dlazy-ai/ecommerce-skills/actions/workflows/ci.yml/badge.svg)](https://github.com/dlazy-ai/ecommerce-skills/actions/workflows/ci.yml)
 [![license: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![repolish](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/dlazyai/ecommerce-skills/main/.repolish/badge.json)](https://github.com/asale-ai/repolish)
+[![repolish](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/dlazy-ai/ecommerce-skills/main/.repolish/badge.json)](https://github.com/asale-ai/repolish)
 
 [中文](README.md) · English
 
@@ -30,13 +30,13 @@ What makes this different from a pile of prompts:
 Skills install with [`npx skills`](https://github.com/vercel-labs/skills):
 
 ```bash
-npx skills add https://github.com/dlazyai/ecommerce-skills --all
+npx skills add https://github.com/dlazy-ai/ecommerce-skills --all
 ```
 
 Install a subset:
 
 ```bash
-npx skills add https://github.com/dlazyai/ecommerce-skills \
+npx skills add https://github.com/dlazy-ai/ecommerce-skills \
   --skill flat-lay --skill platform-compliance --skill batch-image
 ```
 
@@ -79,7 +79,7 @@ change, so check their current docs.
 
 ```bash
 # 1. As agent skills (Claude Code / Cursor / Codex)
-npx skills add https://github.com/dlazyai/ecommerce-skills --all
+npx skills add https://github.com/dlazy-ai/ecommerce-skills --all
 
 # 2. As a command-line pipeline
 node shared/scripts/batch.mjs --input skus.csv --task flat-lay \

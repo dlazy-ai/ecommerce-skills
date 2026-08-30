@@ -1,8 +1,8 @@
 # ecommerce-skills
 
-[![ci](https://github.com/dlazyai/ecommerce-skills/actions/workflows/ci.yml/badge.svg)](https://github.com/dlazyai/ecommerce-skills/actions/workflows/ci.yml)
+[![ci](https://github.com/dlazy-ai/ecommerce-skills/actions/workflows/ci.yml/badge.svg)](https://github.com/dlazy-ai/ecommerce-skills/actions/workflows/ci.yml)
 [![license: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![repolish](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/dlazyai/ecommerce-skills/main/.repolish/badge.json)](https://github.com/asale-ai/repolish)
+[![repolish](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/dlazy-ai/ecommerce-skills/main/.repolish/badge.json)](https://github.com/asale-ai/repolish)
 
 中文 · [English](README.en.md)
 
@@ -27,26 +27,26 @@
 一次装全部 26 个：
 
 ```bash
-npx skills add https://github.com/dlazyai/ecommerce-skills --all
+npx skills add https://github.com/dlazy-ai/ecommerce-skills --all
 ```
 
 `--all` 等价于 `--skill '*' --agent '*' -y`：装全部技能、装到所有检测到的 agent、跳过确认。只想装给某一个 agent：
 
 ```bash
-npx skills add https://github.com/dlazyai/ecommerce-skills --skill '*' --agent claude-code
+npx skills add https://github.com/dlazy-ai/ecommerce-skills --skill '*' --agent claude-code
 ```
 
 只装用得上的几个（技能名就是下面索引表第一列，一个技能一个 `--skill`）：
 
 ```bash
-npx skills add https://github.com/dlazyai/ecommerce-skills \
+npx skills add https://github.com/dlazy-ai/ecommerce-skills \
   --skill flat-lay --skill fission-pattern --skill detect-task
 ```
 
 先看看有哪些：
 
 ```bash
-npx skills add https://github.com/dlazyai/ecommerce-skills --list
+npx skills add https://github.com/dlazy-ai/ecommerce-skills --list
 ```
 
 默认装到当前项目（`.claude/skills/<name>/`），加 `-g` 装到用户级、所有项目共用。后续 `npx skills update` 更新、`npx skills remove` 卸载。
@@ -90,7 +90,7 @@ node shared/scripts/gen.mjs --doctor      # 看当前哪个后端可用
 
 ```bash
 # 1. 作为 Agent 技能（Claude Code / Cursor / Codex）
-npx skills add https://github.com/dlazyai/ecommerce-skills --all
+npx skills add https://github.com/dlazy-ai/ecommerce-skills --all
 
 # 2. 作为命令行流水线
 node shared/scripts/batch.mjs --input skus.csv --task flat-lay \
