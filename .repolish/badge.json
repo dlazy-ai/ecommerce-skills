@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "label": "repolish",
-  "message": "82/100",
+  "message": "85/100",
   "color": "green",
-  "repolishVersion": "0.4.1",
+  "repolishVersion": "0.5.0",
   "mode": "remote"
 }
