@@ -53,7 +53,7 @@ Without any of them you can still run `--dry-run` end to end.
 ### Backends
 
 ```bash
-node scripts/gen.mjs --doctor      # which backend is usable right now
+node shared/scripts/gen.mjs --doctor      # which backend is usable right now
 ```
 
 | Backend | Env |

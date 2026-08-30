@@ -64,7 +64,7 @@ npx skills add https://github.com/dlazyai/ecommerce-skills --list
 ### 选后端
 
 ```bash
-node scripts/gen.mjs --doctor      # 看当前哪个后端可用
+node shared/scripts/gen.mjs --doctor      # 看当前哪个后端可用
 ```
 
 | 后端 | 环境变量 |

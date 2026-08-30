@@ -153,3 +153,8 @@ output/
 evals/*/out/
 __pycache__/
 *.pyc
+
+# npx skills 安装产物（本机 agent 技能目录与锁文件）
+.agents/
+.claude/
+skills-lock.json
