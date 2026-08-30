@@ -1,5 +1,9 @@
 # ecommerce-skills
 
+[![ci](https://github.com/dlazyai/ecommerce-skills/actions/workflows/ci.yml/badge.svg)](https://github.com/dlazyai/ecommerce-skills/actions/workflows/ci.yml)
+[![license: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![repolish](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/dlazyai/ecommerce-skills/main/.repolish/badge.json)](https://github.com/asale-ai/repolish)
+
 中文 · [English](README.en.md)
 
 一套面向**电商视觉生产**的 Agent 技能库：把「拍商品图」这件事拆成 26 个可组合的技能，

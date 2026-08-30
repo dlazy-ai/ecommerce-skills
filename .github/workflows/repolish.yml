@@ -1,0 +1,76 @@
+name: repolish
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  schedule:
+    # Weekly: activity and link rot get worse on their own, with no commits involved
+    - cron: '0 0 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  # The badge only makes sense on the default branch: this job commits it back,
+  # and a fork's pull request has neither the permission nor any business
+  # pushing to your repository.
+  score:
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # Must be 0: the default fetch-depth of 1 brings down no tags at all,
+          # which leaves release-hygiene unable to judge the release cadence
+          fetch-depth: 0
+
+      # remote and badge are on by default, so they need no declaration here
+      # The score is recorded, not enforced. To gate on it, add a `with:` block
+      # holding `min-score: 60`.
+      - uses: asale-ai/repolish@v0.4.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Commit badge
+        run: |
+          git config user.name  github-actions
+          git config user.email github-actions@github.com
+          git add .repolish
+          git diff --staged --quiet || git commit -m "chore: update repolish score"
+          git push
+
+  # What this pull request did to the score, rather than what the score is.
+  # An absolute number tells a reviewer nothing; "this dropped it 4 points,
+  # because the link on line 42 stopped resolving" tells them what to do.
+  review:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write     # to post the comment
+      security-events: write   # to upload the SARIF
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # Must be 0 here too: the baseline commit is not in a shallow clone,
+          # so there would be nothing to compare against
+          fetch-depth: 0
+
+      - uses: asale-ai/repolish@v0.4.1
+        with:
+          base: ${{ github.event.pull_request.base.sha }}
+          sarif: repolish.sarif
+          comment: true
+          badge: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # Puts every finding on its own line in the diff. always(), so the
+      # annotations still show up on the run that failed the gate — which is
+      # the run where they matter most.
+      - uses: github/codeql-action/upload-sarif@v3
+        if: always()
+        with:
+          sarif_file: repolish.sarif
