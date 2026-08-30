@@ -29,7 +29,7 @@ jobs:
       # remote and badge are on by default, so they need no declaration here
       # The score is recorded, not enforced. To gate on it, add a `with:` block
       # holding `min-score: 60`.
-      - uses: asale-ai/repolish@v0.4.1
+      - uses: asale-ai/repolish@v0.5.1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -58,7 +58,7 @@ jobs:
           # so there would be nothing to compare against
           fetch-depth: 0
 
-      - uses: asale-ai/repolish@v0.4.1
+      - uses: asale-ai/repolish@v0.5.1
         with:
           base: ${{ github.event.pull_request.base.sha }}
           sarif: repolish.sarif
