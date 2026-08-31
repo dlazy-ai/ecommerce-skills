@@ -140,7 +140,7 @@
   <text class="t" x="74" y="432" font-size="12" fill="#8b87a3" text-anchor="start">Add the missing one of build / version / license</text>
   <text class="t" x="74" y="452" font-size="12" fill="#8b87a3" text-anchor="start">+2 more — run repolish -v</text>
   <rect x="36" y="472" width="808" height="1" fill="#35334a"/>
-  <text class="t" x="36" y="496" font-size="12" fill="#8b87a3" text-anchor="start">dlazy-ai/ecommerce-skills · c6eeb0e4</text>
+  <text class="t" x="36" y="496" font-size="12" fill="#8b87a3" text-anchor="start">dlazy-ai/ecommerce-skills · d7bd1cec</text>
   <text class="t" x="844" y="496" font-size="12" fill="#8b87a3" text-anchor="end">repolish v0.5.0</text>
   <text class="t" x="36" y="514" font-size="11" fill="#8b87a3" text-anchor="start">Scoring is deterministic. No model is involved.</text>
 </svg>
