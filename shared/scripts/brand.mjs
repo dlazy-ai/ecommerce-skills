@@ -93,7 +93,7 @@ if (import.meta.url === `file://${process.argv[1]}`) {
     const tpl = path.join(HERE, '..', 'examples', 'brand.yaml')
     if (!existsSync(tpl)) {
       console.error(`✗ 找不到模板 ${tpl}\n  模板只随 brand-kit 技能分发，装一下：` +
-        `npx skills add https://github.com/dlazyai/ecommerce-skills --skill brand-kit`)
+        `npx skills add https://github.com/dlazy-ai/ecommerce-skills --skill brand-kit`)
       process.exit(1)
     }
     console.log(readFileSync(tpl, 'utf8'))

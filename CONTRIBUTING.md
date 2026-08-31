@@ -9,7 +9,7 @@ Requires Node.js 20 or newer (see `engines` in `package.json`) and Python 3 —
 `npm test` runs a Node suite and a Python suite.
 
 ```bash
-git clone https://github.com/dlazyai/ecommerce-skills
+git clone https://github.com/dlazy-ai/ecommerce-skills
 cd ecommerce-skills
 npm install
 npm test

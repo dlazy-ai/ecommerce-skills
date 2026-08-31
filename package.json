@@ -7,7 +7,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dlazyai/ecommerce-skills.git"
+    "url": "git+https://github.com/dlazy-ai/ecommerce-skills.git"
   },
   "engines": {
     "node": ">=20"

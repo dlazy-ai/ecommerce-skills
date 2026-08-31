@@ -68,7 +68,7 @@ node scripts/gen.mjs --help
 npx @dlazy/cli@1.2.3 <command>     # 不装全局二进制
 ```
 
-- CLI 源码：[github.com/dlazyai/cli](https://github.com/dlazyai/cli) · npm 包 `@dlazy/cli`
+- CLI 源码：[github.com/dlazy-ai/cli](https://github.com/dlazy-ai/cli) · npm 包 `@dlazy/cli`
 
 ---
 

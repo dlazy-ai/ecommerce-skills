@@ -93,7 +93,11 @@ if (!repo) {
 	console.error("探测不到 GitHub 仓库，请用 --repo <owner/repo> 指定");
 	process.exit(1);
 }
-const owner = opt("--owner", repo.split("/")[0]);
+// ClawHub 的 publisher handle 是 dlazyai，跟 GitHub 组织名不是一回事：
+// 2026-08-31 GitHub 组织从 dlazyai 改名成 dlazy-ai，再从 git remote 推 owner
+// 就会把技能发到不存在的 dlazy-ai 账号下。所以写死，别再从 repo 推断。
+const CLAWHUB_OWNER = "dlazyai";
+const owner = opt("--owner", CLAWHUB_OWNER);
 
 // clawhub publish 的 --source-repo 必须和 --source-commit 一起给，
 // 只给 ref 会被 CLI 直接拒掉。素材地址走的是 <ref> 在 GitHub 上的状态，
