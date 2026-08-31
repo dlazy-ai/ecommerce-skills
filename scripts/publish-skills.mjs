@@ -258,7 +258,9 @@ for (const slug of dirs) {
 		continue;
 	}
 
-	const raw = fs.readFileSync(srcPath, "utf8");
+	// Windows 上 git 按 core.autocrlf 检出成 CRLF，而下面的 frontmatter 正则和
+	// withVersion 都是按 LF 写的，不规范化会整批误报「frontmatter 缺 name 或 description」。
+	const raw = fs.readFileSync(srcPath, "utf8").replace(/\r\n/g, "\n");
 	const fm = parseFrontmatter(raw);
 	if (!fm?.name || !fm?.description) {
 		console.log(`FAIL  ${slug}  frontmatter 缺 name 或 description`);
