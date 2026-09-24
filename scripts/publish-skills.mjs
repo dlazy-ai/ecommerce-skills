@@ -72,6 +72,21 @@ const bumpPatch = (v) => {
 	return `${maj}.${min}.${pat + 1}`;
 };
 
+/** a 比 b 新返回正数，旧返回负数，一样返回 0。 */
+const cmpVersion = (a, b) => {
+	const pa = String(a).split(".").map(Number);
+	const pb = String(b).split(".").map(Number);
+	for (let i = 0; i < 3; i++) {
+		const d = (pa[i] || 0) - (pb[i] || 0);
+		if (d !== 0) return d;
+	}
+	return 0;
+};
+
+/** 报错原文的最后一行，截断给日志用 —— 否则「已存在」那条分支一点线索都不留。 */
+const tailLine = (text) =>
+	`｜${String(text).trim().split(/\r?\n/).pop()?.trim().slice(0, 160) ?? ""}`;
+
 // ---------- 仓库信息：素材绝对地址从这里拼 ----------
 
 const gitOut = (cmd) => {
@@ -164,19 +179,55 @@ const parseFrontmatter = (md) => {
 
 // ---------- 线上状态 ----------
 
+/** 查线上现状的重试次数。这台机器到 clawhub.ai 的 TLS 连接时常被掐断。 */
+const REMOTE_TRIES = 3;
+
+/**
+ * 线上现状。**返回 null 只表示「线上没有这个技能」（404，首发）；查不动就抛错。**
+ *
+ * 这两件事以前混成一个 `catch { return null }`，于是网络一抖就当成首发，从
+ * 1.0.0 起跳，挨个撞「已存在」撞满六次，报「重试次数用尽」。
+ */
 const fetchRemote = async (slug) => {
-	try {
-		// 必须带 owner：别的作者可能占用同名 slug，不带会取到别人的技能
-		const res = await fetch(`${API}/${slug}?owner=${encodeURIComponent(owner)}`);
-		if (!res.ok) return null;
-		const j = await res.json();
-		return {
-			displayName: j.skill?.displayName ?? "",
-			latest: j.latestVersion?.version ?? j.skill?.latestVersion ?? null,
-		};
-	} catch {
-		return null;
+	let lastError;
+	for (let attempt = 0; attempt < REMOTE_TRIES; attempt++) {
+		try {
+			// 必须带 owner：别的作者可能占用同名 slug，不带会取到别人的技能
+			const res = await fetch(
+				`${API}/${slug}?owner=${encodeURIComponent(owner)}`,
+			);
+			if (res.status === 404) return null;
+			if (!res.ok) throw new Error(`HTTP ${res.status}`);
+			const j = await res.json();
+			return {
+				displayName: j.skill?.displayName ?? "",
+				latest: j.latestVersion?.version ?? j.skill?.latestVersion ?? null,
+			};
+		} catch (e) {
+			lastError = e;
+			if (attempt < REMOTE_TRIES - 1) await sleep(1500 * 2 ** attempt);
+		}
 	}
+	throw new Error(
+		`查不到线上版本（${REMOTE_TRIES} 次都失败）：${String(lastError?.message ?? lastError)}`,
+	);
+};
+
+/**
+ * 撞上「版本已存在」之后，下一个该试哪个版本号：重新问一次线上 latest 直接跳
+ * 过去，问不到才退回 +1。挨个 +1 爬，落后十几个版本时六步根本爬不到。
+ */
+const nextVersionAfterConflict = async (slug, version) => {
+	try {
+		const remote = await fetchRemote(slug);
+		if (remote?.latest) {
+			const ahead = bumpPatch(remote.latest);
+			return cmpVersion(ahead, version) > 0 ? ahead : bumpPatch(version);
+		}
+	} catch {
+		// 查不动就按老办法 +1，至少还有机会
+	}
+	return bumpPatch(version);
 };
 
 const publish = async (dir, version, displayName, slug) => {
@@ -197,6 +248,10 @@ const publish = async (dir, version, displayName, slug) => {
 	const { stdout, stderr } = await execAsync(cmd, {
 		cwd: ROOT,
 		maxBuffer: 10 * 1024 * 1024,
+		// 没有 timeout 的话，一次挂住的请求就把整批吊死在这个技能上 ——
+		// 2026-09-24 上午那轮卡了十几分钟，后面一百多个技能一个都没跑。
+		timeout: 180_000,
+		killSignal: "SIGKILL",
 	});
 	return `${stdout}\n${stderr}`;
 };
@@ -281,7 +336,15 @@ for (const slug of dirs) {
 		continue;
 	}
 
-	const remote = await fetchRemote(slug);
+	// 问不到线上版本就不发：从 1.0.0 起跳注定撞满六次「已存在」，白占限流额度。
+	let remote;
+	try {
+		remote = await fetchRemote(slug);
+	} catch (e) {
+		console.log(`FAIL  ${slug}  ${String(e.message || e)}`);
+		failed.push(slug);
+		continue;
+	}
 	let version = remote?.latest ? bumpPatch(remote.latest) : "1.0.0";
 	const displayName = names[slug];
 
@@ -326,19 +389,23 @@ for (const slug of dirs) {
 				published = true;
 				ok++;
 			} else if (/already exists/i.test(out)) {
-				version = bumpPatch(version);
+				console.log(`BUMP  ${slug}  ${version} ${tailLine(out)}`);
+				version = await nextVersionAfterConflict(slug, version);
 			} else {
 				throw new Error(out.trim().split("\n").slice(-3).join(" | "));
 			}
 		} catch (e) {
 			const msg = String(e.message || e);
 			if (/already exists/i.test(msg)) {
-				version = bumpPatch(version);
+				console.log(`BUMP  ${slug}  ${version} ${tailLine(msg)}`);
+				version = await nextVersionAfterConflict(slug, version);
 			} else if (/rate limit|too many requests|429/i.test(msg)) {
 				// 注意：不能拿 "reset in" 判限流——clawhub 每条报错末尾都带
 				// "(reset in Ns)"，权限不足之类的硬错误会被误当成限流反复重试。
-				console.log(`WAIT  ${slug}  限流，等 60s`);
-				await sleep(60_000);
+				// 指数退避：固定 60s 等六次全撞在同一个限流窗口里。
+				const wait = Math.min(60_000 * 2 ** attempt, 300_000);
+				console.log(`WAIT  ${slug}  限流，等 ${Math.round(wait / 1000)}s`);
+				await sleep(wait);
 			} else {
 				console.log(`FAIL  ${slug}  ${msg}`);
 				failed.push(slug);
