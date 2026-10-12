@@ -41,6 +41,22 @@ def level_of(rep, name):
 
 
 class TestCompliance(unittest.TestCase):
+    def test_read_errors_return_two_even_with_rejected_image(self):
+        with tempfile.TemporaryDirectory() as directory:
+            missing = os.path.join(directory, "missing.jpg")
+            invalid = os.path.join(directory, "invalid.jpg")
+            with open(invalid, "wb") as stream:
+                stream.write(b"not an image")
+            rejected = make(os.path.join(directory, "rejected.jpg"), size=(600, 600))
+            for paths in ([missing], [invalid], [missing, rejected]):
+                with self.subTest(paths=paths):
+                    result = subprocess.run(
+                        [sys.executable, SCRIPT, *paths, "--json"],
+                        capture_output=True, text=True, encoding="utf-8")
+                    reports = json.loads(result.stdout)
+                    self.assertEqual(result.returncode, 2)
+                    self.assertEqual(reports[0]["verdict"], "error")
+
     def setUp(self):
         self.tmp = tempfile.TemporaryDirectory()
         self.d = self.tmp.name

@@ -796,6 +796,8 @@ npm run build && npm test && npm run eval
 
 ## License
 
+Image preflight CLI exit codes: `0` means no pixel-rule failures (manual content checks still apply), `1` means rejection risk, and `2` means an image could not be read. Read errors take precedence in mixed batches, including with `--fix`.
+
 MIT — see [LICENSE](LICENSE).
 
 ## Polished with repolish
