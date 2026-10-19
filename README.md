@@ -774,6 +774,8 @@ npm run build && npm test && npm run eval
 
 ## License
 
+图片校验命令退出码：`0` 表示没有像素规则失败（仍需人工内容检查），`1` 表示有驳回风险，`2` 表示图片读取失败。混合批次中读取失败优先，包括使用 `--fix` 时。
+
 见 [LICENSE](LICENSE)。
 
 ## 用 repolish 打磨
