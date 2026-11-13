@@ -376,6 +376,8 @@ def main():
     else:
         print(render(reports))
 
+    if any(r.get("verdict") == "error" for r in reports):
+        sys.exit(2)
     sys.exit(1 if any(r.get("verdict") == "reject-risk" for r in reports) else 0)
 
 
